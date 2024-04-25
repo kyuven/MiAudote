@@ -62,3 +62,8 @@
 <div id='responsaveis' />
     
 ## Responsáveis
+> Cyro Francisco Pena Veltman <br><br>
+> Isabella de Moraes Florio <br><br>
+> Leonardo Oliveira Cordeiro <br><br>
+> Lucca Dalosto de Carvalho <br><br>
+> Pedro Henrique Almeida Macedo
