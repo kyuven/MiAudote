@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">MiAudote</string>
+    <string name="email_hint">Ex.: xxxxxxxx@gmail.com</string>
+    <string name="senha_hint">Digite a sua senha:</string>
+    <string name="cadastro"><u>não possuo cadastro</u></string>
+    <string name="entrar">ENTRAR</string>
+    <string name="cidade">Cidade</string>
+    <string name="uf">UF</string>
+    <string name="nome_da_ong">NOME DA ONG</string>
+    <string name="nome_animal">NOME ANIMAL</string>
+    <string name="saiba_mais">SAIBA MAIS</string>
+    <string name="adote">Adote</string>
+    <string name="ache">Ache</string>
+    <string name="ong_s">ONG\'s</string>
+    <string name="perfil">Perfil</string>
+    <string name="e_mail">E-MAIL</string>
+    <string name="senha">SENHA</string>
+    <string name="mostrar_senha">MOSTRAR SENHA</string>
+    <string name="google_login">Google Login</string>
+    <string name="facebook_login">Facebook Login</string>
+    <string name="perfil_fragment">perfil fragment</string>
+    <string name="adotar_fragment">adotar fragment</string>
+    <string name="mapa_fragment">mapa fragment</string>
+    <string name="imagem_da_logo_de_uma_ong">imagem da logo de uma ong</string>
+    <string name="imagem_de_um_animal">imagem de um animal</string>
+    <string name="ong_fragment">ong fragment</string>
+    <string name="logo_alternativa_do_miaudote">logo alternativa do miaudote</string>
+    <string name="logo_do_miaudote">logo do miaudote</string>
+    <string name="apenas_uma_divis_ria_entre_os_bot_es">apenas uma divisória entre os botões</string>
 </resources>

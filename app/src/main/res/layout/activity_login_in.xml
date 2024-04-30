@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginIn_Activity"
+    android:background="#FAF9F6"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/img_logIn_MiAudote"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:src="@drawable/splash_screen_icon"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:contentDescription="@string/logo_do_miaudote"/>
+
+    <TextView
+        android:id="@+id/txt_email_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="8dp"
+
+        android:text="@string/e_mail"
+        android:textColor="@color/black"
+        android:textSize="12sp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/LogIn_email"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/edt_txt_design"
+        android:inputType="textEmailAddress"
+
+        android:hint="@string/email_hint"
+        android:textSize="12sp"
+        android:textColor="#D86A6A6A"
+        android:padding="15dp" />
+
+    <TextView
+        android:id="@+id/txt_senha_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="8dp"
+
+        android:text="@string/senha"
+        android:textColor="@color/black"
+        android:textSize="12sp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/LogIn_senha"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/edt_txt_design"
+        android:inputType="textPassword"
+
+        android:hint="@string/senha_hint"
+        android:textSize="12sp"
+        android:textColor="#D86A6A6A"
+        android:padding="15dp" />
+
+    <CheckBox
+        android:id="@+id/ckb_showSenha_LogIn"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+
+        android:scaleX="0.85"
+        android:scaleY="0.85"
+
+        android:text="@string/mostrar_senha"
+        android:textSize="12sp"
+        android:textColor="@color/black" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp">
+
+        <!-- Cadastro com o gmail -->
+        <ImageButton
+            android:id="@+id/btn_google_login"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginEnd="30dp"
+            android:src="@drawable/google_icon"
+            android:background="#FAF9F6"
+            android:contentDescription="@string/google_login" />
+
+        <!-- Cadastro com o facebook -->
+        <ImageButton
+            android:id="@+id/btn_facebook_login"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@drawable/facebook_icon"
+            android:background="#FAF9F6"
+            android:contentDescription="@string/facebook_login" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/divider_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/divider"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/apenas_uma_divis_ria_entre_os_bot_es" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_semCadastro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/transparent"
+
+        android:text="@string/cadastro"
+        android:textColor="@color/blue_link"
+        android:textSize="12sp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_entrar"
+        android:layout_width="230dp"
+        android:layout_height="120dp"
+        android:background="@drawable/bone"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
+
+        android:text="@string/entrar"
+        android:textColor="@color/black"
+        android:textSize="16sp"/>
+
+</LinearLayout>

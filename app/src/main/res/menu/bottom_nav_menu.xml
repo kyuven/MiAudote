@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navAdote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/paw"
+        android:title="@string/adote" />
+    <item
+        android:id="@+id/navAche"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/baseline_location_on_24"
+        android:title="@string/ache" />
+    <item
+        android:id="@+id/navOng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/baseline_volunteer_activism_24"
+        android:title="@string/ong_s" />
+    <item
+        android:id="@+id/navPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/baseline_person_24"
+        android:title="@string/perfil" />
+</menu>

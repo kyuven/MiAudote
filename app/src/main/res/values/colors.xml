@@ -1,10 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="blue_link">#0017E2</color>
+
+    <!-- Laranja e subtons -->
+    <color name="laranja01">#D76C00</color>
+    <color name="laranja02">#B95D00</color>
+    <color name="laranja03">#9C4E00</color>
+    <color name="laranja04">#814000</color>
+    <color name="laranja05">#653200</color>
+    <color name="laranja06">#2D1600</color>
+    <color name="laranja07">#2D1600</color>
+
+    <!-- Marrom e subtons -->
+    <color name="marrom01">#CC9551</color>
+    <color name="marrom02">#B08046</color>
+    <color name="marrom03">#926B3B</color>
+    <color name="marrom04">#76562F</color>
+    <color name="marrom05">#5A4224</color>
+    <color name="marrom06">#3C2C18</color>
+    <color name="marrom07">#1E160C</color>
+
+    <!-- Amarelo e subtons -->
+    <color name="amarelo01">#DDA637</color>
+    <color name="amarelo02">#C19130</color>
+    <color name="amarelo03">#A47B29</color>
+    <color name="amarelo04">#886622</color>
+    <color name="amarelo05">#6C511B</color>
+    <color name="amarelo06">#503C14</color>
+    <color name="amarelo07">#34270D</color>
+
+    <!-- Vermelho e subtons -->
+    <color name="vermelho01">#D70400</color>
+    <color name="vermelho02">#BA0300</color>
+    <color name="vermelho03">#9C0300</color>
+    <color name="vermelho04">#7E0200</color>
+    <color name="vermelho05">#600200</color>
+    <color name="vermelho06">#440100</color>
+    <color name="vermelho07">#280100</color>
+
 </resources>
