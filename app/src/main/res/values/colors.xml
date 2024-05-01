@@ -25,6 +25,7 @@
     <!-- Amarelo e subtons -->
     <color name="amarelo01">#DDA637</color>
     <color name="amarelo02">#C19130</color>
+    <color name="amarelo02_">#99C19130</color>
     <color name="amarelo03">#A47B29</color>
     <color name="amarelo04">#886622</color>
     <color name="amarelo05">#6C511B</color>

@@ -1,10 +1,217 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Register_Activity"
-    android:background="#FAF9F6">
+    android:background="#FAF9F6"
+    android:scrollbars="none"
+    android:overScrollMode="never">
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/img_logIn_MiAudote"
+            android:layout_width="180dp"
+            android:layout_height="120dp"
+            android:src="@drawable/splash_screen_icon"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:contentDescription="@string/logo_do_miaudote" />
+
+        <TextView
+            android:id="@+id/txt_nome_cad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="8dp"
+
+            android:text="@string/e_mail"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cadastro_nome"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edt_txt_design"
+            android:inputType="textPersonName"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+
+            android:hint="@string/insira_seu_nome"
+            android:textSize="12sp"
+            android:textColor="#D86A6A6A"
+            android:padding="15dp" />
+
+        <TextView
+            android:id="@+id/txt_email_cad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="8dp"
+
+            android:text="@string/e_mail"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cadastro_email"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edt_txt_design"
+            android:inputType="textEmailAddress"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+
+            android:hint="@string/email_hint"
+            android:textSize="12sp"
+            android:textColor="#D86A6A6A"
+            android:padding="15dp" />
+
+        <TextView
+            android:id="@+id/txt_telefone_cad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="8dp"
+
+            android:text="@string/telefone"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cadastro_telefone"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edt_txt_design"
+            android:inputType="phone"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+
+            android:hint="@string/telefone_hint"
+            android:textSize="12sp"
+            android:textColor="#D86A6A6A"
+            android:padding="15dp" />
+
+        <TextView
+            android:id="@+id/txt_senha_cad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="8dp"
+
+            android:text="@string/senha"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/senha_cad"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edt_txt_design"
+            android:inputType="textPassword"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:maxLength="24"
+
+            android:hint="@string/crie_uma_senha"
+            android:textSize="12sp"
+            android:textColor="#D86A6A6A"
+            android:padding="15dp" />
+
+        <TextView
+            android:id="@+id/txt_confirmarSenha_cad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="8dp"
+
+            android:text="@string/confirmar_senha"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/confirmarSenha_cad"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/edt_txt_design"
+            android:inputType="textPassword"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:maxLength="24"
+
+            android:hint="@string/confirmar_sua_senha"
+            android:textSize="12sp"
+            android:textColor="#D86A6A6A"
+            android:padding="15dp" />
+
+        <CheckBox
+            android:id="@+id/ckb_showSenha_Cad"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+
+            android:scaleX="0.85"
+            android:scaleY="0.85"
+
+            android:text="@string/mostrar_senha"
+            android:textSize="12sp"
+            android:textColor="@color/black" />
+
+        <!-- Concordar com os termos aqui -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="50dp">
+
+            <ImageButton
+                android:id="@+id/fab_back_login"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/btn_next_page"
+                android:layout_marginEnd="235dp"
+                android:elevation="8dp"
+                android:src="@drawable/baseline_chevron_left_24"
+
+                android:contentDescription="@string/btn_voltar_login" />
+
+            <ImageButton
+                android:id="@+id/fab_next_confirmar"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/btn_next_page"
+                android:elevation="8dp"
+                android:src="@drawable/baseline_keyboard_arrow_right_24"
+
+                android:contentDescription="@string/btn_confirmar_cad" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

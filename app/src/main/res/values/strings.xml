@@ -27,4 +27,15 @@
     <string name="logo_alternativa_do_miaudote">logo alternativa do miaudote</string>
     <string name="logo_do_miaudote">logo do miaudote</string>
     <string name="apenas_uma_divis_ria_entre_os_bot_es">apenas uma divisória entre os botões</string>
+    <string name="insira_seu_nome">INSIRA SEU NOME</string>
+    <string name="telefone">TELEFONE</string>
+    <string name="confirmar_senha">CONFIRMAR SENHA</string>
+    <string name="btn_confirmar_cad">botão para ir a página de confirmação de cadastro</string>
+    <string name="btn_voltar_login">botõa para voltar a página de login</string>
+    <string name="crie_uma_senha">CRIE UMA SENHA</string>
+    <string name="confirmar_sua_senha">CONFIRMAR SUA SENHA</string>
+    <string name="carta_confirmacao">gatinho segurando uma carta : imagem de confirmação de login</string>
+    <string name="confirmar_cadastro">CONFIRMAR CADASTRO</string>
+    <string name="codigo_6dig">Enviamos um código de 6 (seis) dígitos para o seu número de celular</string>
+    <string name="telefone_hint">Ex.: (xx) x xxxx-xxxx</string>
 </resources>
