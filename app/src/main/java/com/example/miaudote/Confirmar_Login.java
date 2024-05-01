@@ -27,8 +27,14 @@ public class Confirmar_Login extends AppCompatActivity {
         ImageButton btnCadastrar = (ImageButton) findViewById(R.id.btn_final_cad);
         btnCadastrar.setOnClickListener(v -> {
             Intent intent = new Intent(Confirmar_Login.this, Main_Page.class);
+            overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
             startActivity(intent);
             finish();
         });
+    }
+
+    public void onBackPressed(){
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
 }

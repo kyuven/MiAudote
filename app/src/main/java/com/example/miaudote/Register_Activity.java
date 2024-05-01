@@ -40,6 +40,7 @@ public class Register_Activity extends AppCompatActivity {
         btnBackLogin = findViewById(R.id.fab_back_login);
         btnBackLogin.setOnClickListener(v -> {
             Intent intent = new Intent(Register_Activity.this, LoginIn_Activity.class);
+            onBackPressed();
             startActivity(intent);
             finish();
         });
@@ -48,8 +49,14 @@ public class Register_Activity extends AppCompatActivity {
         btnConfirmarCad = findViewById(R.id.fab_next_confirmar);
         btnConfirmarCad.setOnClickListener(v -> {
             Intent intent = new Intent(Register_Activity.this, Confirmar_Login.class);
+            overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
             startActivity(intent);
             finish();
         });
+    }
+
+    public void onBackPressed(){
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
 }
