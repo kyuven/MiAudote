@@ -21,7 +21,7 @@
 
             <!-- Imagem do Animal -->
             <ImageView
-                android:id="@+id/id_img_adptAnimal"
+                android:id="@+id/imgAdpt_Animal"
                 android:layout_width="110dp"
                 android:layout_height="90dp"
                 android:layout_gravity="center_horizontal"
@@ -38,7 +38,7 @@
 
                 <!-- Cidade -->
                 <TextView
-                    android:id="@+id/txt_cd_animal"
+                    android:id="@+id/txtAdpt_CdAnimal"
                     android:layout_width="60dp"
                     android:layout_height="12dp"
                     android:layout_marginTop="2dp"
@@ -49,7 +49,7 @@
 
                 <!-- UF -->
                 <TextView
-                    android:id="@+id/txt_uf_animal"
+                    android:id="@+id/txtAdpt_UfAnimal"
                     android:layout_width="20dp"
                     android:layout_height="12dp"
                     android:layout_marginTop="2dp"
@@ -63,7 +63,7 @@
 
             <!-- Texto nome do animal adotado -->
             <TextView
-                android:id="@+id/txt_nm_adptAnimal"
+                android:id="@+id/txtAdpt_nomeAnimal"
                 android:layout_width="110dp"
                 android:layout_height="18dp"
                 android:layout_gravity="center_horizontal"
@@ -78,7 +78,7 @@
 
         <!-- Botão que redireciona a página com as informações do animal -->
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_card_adptAnimal"
+            android:id="@+id/btnAdpt_infoAnimal"
             android:layout_width="70dp"
             android:layout_height="20dp"
             android:layout_gravity="bottom"

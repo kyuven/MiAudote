@@ -18,7 +18,7 @@
 
             <!-- Imagem da ONG / Símbolo deles -->
             <ImageView
-                android:id="@+id/imkg_card_ong"
+                android:id="@+id/imgOngCard_logo"
                 android:layout_width="140dp"
                 android:layout_height="95dp"
                 android:src="@color/black"
@@ -35,7 +35,7 @@
 
                 <!-- Cidade -->
                 <TextView
-                    android:id="@+id/txt_cd_animal"
+                    android:id="@+id/txtOngCard_CdOng"
                     android:layout_width="60dp"
                     android:layout_height="12dp"
                     android:layout_marginTop="2dp"
@@ -46,7 +46,7 @@
 
                 <!-- UF -->
                 <TextView
-                    android:id="@+id/txt_uf_animal"
+                    android:id="@+id/txtOngCard_UfOng"
                     android:layout_width="20dp"
                     android:layout_height="12dp"
                     android:layout_marginTop="2dp"
@@ -59,7 +59,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/txt_nome_ONG"
+                android:id="@+id/txtOngCard_nome"
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -74,7 +74,7 @@
 
             <!-- Botão para mais informações da ONG -->
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_card_ong"
+                android:id="@+id/btnOngCard_info"
                 android:layout_width="140dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center_horizontal"

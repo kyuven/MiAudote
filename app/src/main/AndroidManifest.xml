@@ -13,6 +13,23 @@
         android:theme="@style/Theme.MiAudote"
         tools:targetApi="31">
         <activity
+            android:name=".AdoptionPet_Info"
+            android:exported="false" />
+        <activity
+            android:name=".ADD_AdoptionPet_Page"
+            android:exported="false" />
+        <activity
+            android:name=".MissingPet_Info"
+            android:exported="false" />
+        <activity
+            android:name=".ADD_MissingPet_Page"
+            android:exported="false" />
+        <activity
+            android:name=".ONG_Page"
+            android:exported="false"
+            android:label="@string/title_activity_ong_page"
+            android:theme="@style/Theme.MiAudote.NoActionBar" />
+        <activity
             android:name=".Confirmar_Login"
             android:exported="false" />
         <activity

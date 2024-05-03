@@ -28,10 +28,11 @@ public class Register_Activity extends AppCompatActivity {
         edtNomeCad = findViewById(R.id.cadastro_nome);
         edtEmailCad = findViewById(R.id.cadastro_email);
         edtTelefoneCad = findViewById(R.id.cadastro_telefone);
-        edtSenhaCad = findViewById(R.id.senha_cad);
-        edtConfirmarSenha = findViewById(R.id.confirmarSenha_cad);
+        edtSenhaCad = findViewById(R.id.cadastro_senha);
+        edtConfirmarSenha = findViewById(R.id.cadastro_confirmarSenha);
 
-        ckbMostrarSenha = findViewById(R.id.ckb_showSenha_Cad);
+        ckbMostrarSenha = findViewById(R.id.ckbCad_mostrarSenha);
+
         // CheckBox dos termos de utilização
         // ? Separar em três telas o registro ?
 

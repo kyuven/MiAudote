@@ -15,7 +15,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/img_logIn_MiAudote"
+            android:id="@+id/imglogIn_MiAudote"
             android:layout_width="180dp"
             android:layout_height="120dp"
             android:src="@drawable/splash_screen_icon"
@@ -25,7 +25,7 @@
             android:contentDescription="@string/logo_do_miaudote" />
 
         <TextView
-            android:id="@+id/txt_nome_cad"
+            android:id="@+id/txtCad_nome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -53,7 +53,7 @@
             android:padding="15dp" />
 
         <TextView
-            android:id="@+id/txt_email_cad"
+            android:id="@+id/txtCad_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -81,7 +81,7 @@
             android:padding="15dp" />
 
         <TextView
-            android:id="@+id/txt_telefone_cad"
+            android:id="@+id/txtCad_telefone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -109,7 +109,7 @@
             android:padding="15dp" />
 
         <TextView
-            android:id="@+id/txt_senha_cad"
+            android:id="@+id/txtCad_senha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -120,7 +120,7 @@
             android:textSize="12sp" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/senha_cad"
+            android:id="@+id/cadastro_senha"
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:layout_marginStart="30dp"
@@ -138,7 +138,7 @@
             android:padding="15dp" />
 
         <TextView
-            android:id="@+id/txt_confirmarSenha_cad"
+            android:id="@+id/txtCad_confirmarSenha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -149,7 +149,7 @@
             android:textSize="12sp" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/confirmarSenha_cad"
+            android:id="@+id/cadastro_confirmarSenha"
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:layout_marginStart="30dp"
@@ -166,7 +166,7 @@
             android:padding="15dp" />
 
         <CheckBox
-            android:id="@+id/ckb_showSenha_Cad"
+            android:id="@+id/ckbCad_mostrarSenha"
             android:layout_width="wrap_content"
             android:layout_height="24dp"
             android:layout_marginStart="20dp"

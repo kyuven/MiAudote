@@ -1,14 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Perfil_Fragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Perfil_Fragment"
+    android:background="#FAF9F6"
+    android:fillViewport="true"
+    android:scrollbars="none"
+    android:overScrollMode="never">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/perfil_fragment" />
+        android:orientation="vertical">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+
+            android:text="@string/seu_perfil"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
+        
+        <ImageView
+            android:id="@+id/imgPerfil_user"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:contentDescription="@string/imagem_enviada_pelo_usu_rio"
+
+            android:background="@color/black" />
+
+        <TextView
+            android:id="@+id/txtPerfil_nomeUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+
+            android:text="@string/nome_usu_rio"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtPerfil_emailUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+
+            android:text="@string/email_randola_gmail_com"
+            android:textSize="14sp"
+            android:textColor="#DC888787"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnPerfil_mudarPerfil"
+            android:layout_width="120dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+
+            android:background="@drawable/btn_perfil"
+            android:text="@string/mudar_perfil"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/linearLyPerfil_mudarSenha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:src="@drawable/baseline_create_24"
+                android:contentDescription="@string/vetor_de_um_l_pis" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+
+                android:text="@string/mudar_senha"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnPerfil_mudarSenha"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="150dp"
+                android:src="@drawable/baseline_keyboard_arrow_right_24"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/bot_o_para_mudar_sua_senha" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLyPerfil_termos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:src="@drawable/baseline_menu_book_24"
+                android:contentDescription="@string/vetor_de_um_livro" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+
+                android:text="@string/termos_de_seguran_a"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnPerfil_termos"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="76dp"
+                android:layout_gravity="center"
+                android:src="@drawable/baseline_keyboard_arrow_right_24"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/bot_o_para_saber_sobre_termos_de_seguran_a"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLyPerfil_sobreNos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:src="@drawable/baseline_person_24"
+                android:contentDescription="@string/vetor_da_silhueta_de_uma_pessoa" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+
+                android:text="@string/sobre_n_s"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnPerfil_sobreNos"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="175dp"
+                android:src="@drawable/baseline_keyboard_arrow_right_24"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/bot_o_para_saber_sobre_os_criadores_do_projeto" />
+
+        </LinearLayout>
+
+        <!-- Botão de logout -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnPerfil_iconLogOut"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/baseline_logout_24"
+                android:background="@android:color/transparent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnPerfil_txtLogOut"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp"
+
+                android:background="@android:color/transparent"
+
+                android:text="LOGOUT"
+                android:textColor="@color/vermelho01"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
