@@ -15,4 +15,5 @@
     </style>
     <style name="Theme.MiAudote.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="Theme.MiAudote.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

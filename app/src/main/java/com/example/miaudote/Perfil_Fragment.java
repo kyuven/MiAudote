@@ -1,9 +1,14 @@
 package com.example.miaudote;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -17,7 +22,7 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 
 public class Perfil_Fragment extends Fragment {
 
-    AppCompatButton btnMudarPerfil, btnTxtLogOut;
+    AppCompatButton btnMudarPerfil, btnTxtLogOut, btnCancelLogout, btnConfirmLogout;
     AppCompatImageButton btnMudarSenha, btnTermos, btnSobreNos, btnIconLogOut;
 
     @Override
@@ -35,12 +40,29 @@ public class Perfil_Fragment extends Fragment {
         btnIconLogOut = view.findViewById(R.id.btnPerfil_iconLogOut);
 
         btnIconLogOut.setOnClickListener(v -> {
-            // Método que mostra a caixa de diálogo para confirmar o log out
-            // lógica de log out + firebase é dentro deste método
-            // showDialogLogOut();
+            View alertCustomDialog = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_custom, null);
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+
+            alertDialog.setView(alertCustomDialog);
+            btnCancelLogout = alertCustomDialog.findViewById(R.id.btnDialogCustom_nao);
+            btnConfirmLogout = alertCustomDialog.findViewById(R.id.btnDialogCustom_sim);
+
+            final AlertDialog dialog = alertDialog.create();
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.show();
+
+            btnCancelLogout.setOnClickListener(v1 -> dialog.cancel());
+            btnConfirmLogout.setOnClickListener(v12 -> {
+                Intent intent = new Intent(getActivity(), LoginIn_Activity.class);
+                startActivity(intent);
+            });
+        });
+
+        btnMudarPerfil.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), Change_Perfil.class);
+            startActivity(intent);
         });
 
         return view;
     }
-
 }

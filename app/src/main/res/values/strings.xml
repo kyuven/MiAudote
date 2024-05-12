@@ -147,4 +147,19 @@
     <string name="nao">NÃO</string>
     <string name="sim">sim</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac varius sapien. Suspendisse nec ex eget lacus condimentum imperdiet nec sed enim. Suspendisse elementum orci leo, a sagittis diam tincidunt et. Pellentesque rutrum eros dignissim facilisis tristique. Duis in elit semper, gravida augue eget, sollicitudin lectus. Vivamus varius eros ex, eu tempor nibh mollis nec. Mauris sit amet consectetur sapien, in elementum tortor. Vivamus sed interdum lorem, eget aliquam augue.</string>
+    <string name="adicione_pet_adocao">ADICIONE O PET - ADOÇÃO</string>
+    <string name="adicione_a_foto">adicione a foto do animal</string>
+    <string name="informa_es">INFORMAÇÕES</string>
+    <string name="nome">NOME</string>
+    <string name="insira_o_nome_do_animal">INSIRA O NOME DO ANIMAL</string>
+    <string name="selecione">SELECIONE</string>
+    <string name="esp_cie">ESPÉCIE</string>
+    <string name="idade">IDADE</string>
+    <string name="salvar">SALVAR</string>
+    <string name="nome_do_animal">nome do animal</string>
+    <string name="especie_doispontos">ESPÉCIE:</string>
+    <string name="idadedoispontos">idade:</string>
+    <string name="e_mail_doispontos">e-mail:</string>
+    <string name="telefone_doispontos">telefone:</string>
+    <string name="filtrar_por">FILTRAR POR...</string>
 </resources>
