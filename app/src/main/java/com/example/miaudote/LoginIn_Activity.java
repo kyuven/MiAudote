@@ -29,7 +29,7 @@ public class LoginIn_Activity extends AppCompatActivity {
         
         CheckBox ckbMostrarSenha = (CheckBox) findViewById(R.id.ckbLogin_mostrarSenha);
 
-        // Usuário não cadastrado
+        // Usuário não cadastrado - SEXO SEXO SEXO
         btnCadastrar = findViewById(R.id.btn_semCadastro);
 
         btnCadastrar.setOnClickListener(v -> {
