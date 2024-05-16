@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/constraingLyt_dialogCustom"
+    android:layout_width="280dp"
+    android:layout_height="240dp"
+    android:background="#F5F5F5">
+
+    <TextView
+        android:id="@+id/txtDialogCustom_sair"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        
+        android:text="@string/deseja_sair"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/imgDialogCustom"
+        android:layout_width="210dp"
+        android:layout_height="210dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="15dp"
+
+        android:src="@drawable/sad_cat" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDialogCustom_nao"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+
+        android:background="@drawable/btn_perfil"
+        android:text="@string/nao"
+        android:textSize="12sp"
+        android:textStyle="bold"
+
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDialogCustom_sim"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/btn_perfil"
+        android:text="@string/sim"
+        android:textSize="12sp"
+
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

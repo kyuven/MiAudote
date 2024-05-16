@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ONG_Page"
+    android:background="#FAF9F6"
+    android:scrollbars="none"
+    android:overScrollMode="never"
+    android:fillViewport="true">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Define a header e a logo da ONG -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgOngPage_header"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@color/black"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="imagem da header de uma ONG" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgOngPage_icon"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="130dp"
+
+                android:src="@color/vermelho01"
+                android:contentDescription="imagem da foto da logo de uma ONG"/>
+            
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Linear Layout da Cidade + UF -->
+        <LinearLayout
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="9dp">
+
+            <!-- Cidade -->
+            <TextView
+                android:id="@+id/txtOngPage_CdOng"
+                android:layout_width="60dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="2dp"
+                android:text="@string/cidade"
+                android:textColor="@color/laranja01"
+                android:textSize="14sp" />
+            <!-- android:fontFamily="" -->
+
+            <!-- UF -->
+            <TextView
+                android:id="@+id/txtOngPage_UfOng"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="2dp"
+                android:text="@string/uf"
+                android:textColor="@color/laranja01"
+                android:textSize="14sp"
+                android:textStyle="italic" />
+            <!-- android:fontFamily="" -->
+
+        </LinearLayout>
+
+        <!-- TextView nome da ONG -->
+        <TextView
+            android:id="@+id/txtOngPage_ongName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="5dp"
+
+            android:text="NOME COMPLETO DA ONG QUE PODE SER GIGANTE TIPO GIGANTE MESMO TIPO MUITO MESMO"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
+
+        <!-- TextView descrição da ONG -->
+        <TextView
+            android:id="@+id/txtOngPage_ongDescricao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="5dp"
+
+            android:text="@string/lorem_ipsum"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:textColor="#515151"
+            android:lineSpacingExtra="4dp"/>
+
+        <!-- Localização da ONG -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgOngPage_iconLoc"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+
+                android:src="@drawable/baseline_location_on_24" />
+
+            <TextView
+                android:id="@+id/txtOngPage_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center"
+
+                android:text="localização x teste"
+                android:textSize="14sp"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+        <!-- Website da ONG -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgOngPage_iconWebSite"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+
+                android:src="@drawable/baseline_website_24" />
+
+            <TextView
+                android:id="@+id/txtOngPage_webSite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center"
+
+                android:text="www.websiteong.com.br"
+                android:textSize="14sp"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+        <!-- Telefone da ONG -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgOngpage_iconPhone"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+
+                android:src="@drawable/baseline_phone_24" />
+
+            <TextView
+                android:id="@+id/txtOngPage_telefone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center"
+
+                android:text="+55 (xx) xxxx-xxxx"
+                android:textSize="14sp"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+        <!-- Instagram da ONG -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgOngPage_iconInstagram"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+
+                android:src="@drawable/instagram_logo" />
+
+            <TextView
+                android:id="@+id/txtOngPage_instagram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center"
+
+                android:text="instagram.com/jinngarden/"
+                android:textSize="14sp"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+        <!-- Gmail da ONG -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgOngPage_iconGmail"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+
+                android:src="@drawable/gmail_icon_logo" />
+
+            <TextView
+                android:id="@+id/txtOngPage_gmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center"
+
+                android:text="emaildaong@gmail.com"
+                android:textSize="14sp"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+        <!-- Twitter da ONG -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgOngPage_iconTwitter"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+
+                android:src="@drawable/twitter" />
+
+            <TextView
+                android:id="@+id/txtOngPage_twitter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center"
+
+                android:text="twitter.com/jingardenn"
+                android:textSize="14sp"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+        
+    </LinearLayout>
+
+</ScrollView>

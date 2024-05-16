@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ADD_AdoptionPet_Page"
+    android:background="#FAF9F6"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/logo_alternativa"
+        android:layout_width="56dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/logo_alternativa"
+        android:contentDescription="@string/logo_alternativa_do_miaudote" />
+
+    <SearchView
+        android:id="@+id/search_view"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/edt_txt_design" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="start"
+                android:layout_marginTop="20dp">
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/btnAddAdpt_back"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="15dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/baseline_chevron_left_24" />
+
+                <TextView
+                    android:id="@+id/txtAddAdpt_adocao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="35dp"
+
+                    android:text="@string/adicione_pet_adocao"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtAddAdpt_addFoto"
+                    android:layout_width="150dp"
+                    android:layout_height="45dp"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+
+                    android:text="@string/adicione_a_foto"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="#2B2B2B"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/imgAddAdpt_fotoAnimal"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtAddAdpt_addFoto"
+
+                    android:background="@drawable/edt_txt_design"
+                    android:src="@color/black"
+                    android:contentDescription="imagem do animal para adoção" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fabAddAdpt_uploadImg"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:fabCustomSize="50dp"
+                    android:elevation="1dp"
+                    android:layout_marginStart="120dp"
+                    android:layout_marginTop="100dp"
+                    android:backgroundTint="@color/amarelo03_"
+                    android:src="@drawable/baseline_photo_camera_24"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtAddAdpt_addFoto" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="40dp"
+                android:background="@drawable/divider" />
+
+            <TextView
+                android:id="@+id/txtAddAdpt_informacoes"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+
+                android:text="@string/informa_es"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/txtAddAdpt_nomeAnimal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="8dp"
+
+                android:text="@string/nome"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtAddAdpt_nomeAnimal"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/edt_txt_design"
+                android:inputType="textPersonName"
+
+                android:hint="@string/insira_o_nome_do_animal"
+                android:textSize="12sp"
+                android:textColor="#D86A6A6A"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/txtAddAdpt_idade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="8dp"
+
+                android:text="@string/idade"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtAddAdpt_idade"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/edt_txt_design"
+                android:inputType="number"
+                android:maxLength="2"
+
+                android:hint="INSIRA A IDADE DO ANIMAL"
+                android:textSize="12sp"
+                android:textColor="#D86A6A6A"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/txtAddAdpt_especie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="3dp"
+
+                android:text="@string/esp_cie"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="30dp"
+                android:hint="@string/selecione"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+                <AutoCompleteTextView
+                    android:id="@+id/edtAddAdpt_especieAutoComplete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:inputType="none"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtAddAdpt_uf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginBottom="3dp"
+
+                        android:text="@string/uf"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="160dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="30dp"
+                        android:hint="@string/selecione"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/edtAddAdpt_ufAutoComplete"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:inputType="none"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtAddAdpt_cidade"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginBottom="3dp"
+
+                        android:text="@string/cidade"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="160dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="30dp"
+                        android:hint="@string/selecione"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/edtAddAdpt_cidadeAutoComplete"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:inputType="none"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtAddAdpt_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="20dp"
+
+                android:text="DESCRIÇÃO"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtAddAdpt_desc"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
+                android:maxLength="140"
+                android:background="@drawable/edt_txt_design"
+                android:inputType="text"
+                android:gravity="start"
+
+                android:hint="ESCREVA UM POUCO SOBRE O BICHINHO"
+                android:textSize="12sp"
+                android:textColor="#D86A6A6A"
+                android:padding="10dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnAddAdpt_salvar"
+                android:layout_width="145dp"
+                android:layout_height="45dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/btn_perfil"
+
+                android:text="@string/salvar"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
