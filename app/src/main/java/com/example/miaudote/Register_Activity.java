@@ -1,15 +1,24 @@
 package com.example.miaudote;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.Firebase;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Register_Activity extends AppCompatActivity {
+
+    private FirebaseAuth auth;
 
     // Input que recebe as informações de cadastro do usuário
     TextInputEditText edtNomeCad, edtEmailCad, edtTelefoneCad,edtSenhaCad, edtConfirmarSenha;
@@ -49,10 +58,27 @@ public class Register_Activity extends AppCompatActivity {
         // Envia para a página de confirmação de cadastro (código OTP)
         btnConfirmarCad = findViewById(R.id.fab_next_confirmar);
         btnConfirmarCad.setOnClickListener(v -> {
-            Intent intent = new Intent(Register_Activity.this, Confirmar_Login.class);
-            overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
-            startActivity(intent);
-            finish();
+
+            // FALTA A PARTE DE NOME, TELEFONE, E CONFIRMAÇÃO DE SENHA!!!
+
+            String usuario = edtEmailCad.getText().toString().trim();
+            String senha = edtSenhaCad.getText().toString().trim();
+
+            if (usuario.isEmpty()){
+                edtEmailCad.setError("O campo e-mail não pode estar vazio");
+            }
+            if (senha.isEmpty()){
+                edtSenhaCad.setError("O campo senha não pode estar vazio");
+            } else{
+                auth.createUserWithEmailAndPassword((usuario, senha) .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(Register_Activity.this, "Cadastro concluído", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
         });
     }
 
