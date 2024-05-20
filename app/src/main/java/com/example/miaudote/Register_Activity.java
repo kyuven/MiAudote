@@ -1,5 +1,6 @@
 package com.example.miaudote;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +16,8 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.Firebase;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Register_Activity extends AppCompatActivity {
 
@@ -28,6 +31,10 @@ public class Register_Activity extends AppCompatActivity {
 
     //CheckBox para mostrar senha e dos termos
     CheckBox ckbMostrarSenha, ckbTermos;
+
+    // Firebase e Database
+    FirebaseDatabase database;
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,26 +66,21 @@ public class Register_Activity extends AppCompatActivity {
         btnConfirmarCad = findViewById(R.id.fab_next_confirmar);
         btnConfirmarCad.setOnClickListener(v -> {
 
-            // FALTA A PARTE DE NOME, TELEFONE, E CONFIRMAÇÃO DE SENHA!!!
+            // REGISTRO: NOME, EMAIL, TELEFONE (FALTA), SENHA, CONFIRMAÇÃO DE SENHA
+            database = FirebaseDatabase.getInstance();
+            reference = database.getReference("users");
 
-            String usuario = edtEmailCad.getText().toString().trim();
-            String senha = edtSenhaCad.getText().toString().trim();
+            String nome = edtNomeCad.getText().toString();
+            String email = edtEmailCad.getText().toString();
+            String senha= edtSenhaCad.getText().toString();
 
-            if (usuario.isEmpty()){
-                edtEmailCad.setError("O campo e-mail não pode estar vazio");
-            }
-            if (senha.isEmpty()){
-                edtSenhaCad.setError("O campo senha não pode estar vazio");
-            } else{
-                auth.createUserWithEmailAndPassword((usuario, senha) .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(Register_Activity.this, "Cadastro concluído", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-            }
+            HelperClass helperClass = new HelperClass(nome, email, senha);
+            reference.child(nome).setValue(helperClass);
+
+            Toast.makeText(Register_Activity.this, "Cadastro realizado com sucesso", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(Register_Activity.this, LoginIn_Activity.class);
+            startActivity(intent);
+
         });
     }
 
