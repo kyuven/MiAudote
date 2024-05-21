@@ -1,6 +1,5 @@
 package com.example.miaudote;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,14 +12,12 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.Firebase;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class Register_Activity extends AppCompatActivity {
 
+    // Firebase
     private FirebaseAuth auth;
 
     // Input que recebe as informações de cadastro do usuário
@@ -32,14 +29,12 @@ public class Register_Activity extends AppCompatActivity {
     //CheckBox para mostrar senha e dos termos
     CheckBox ckbMostrarSenha, ckbTermos;
 
-    // Firebase e Database
-    FirebaseDatabase database;
-    DatabaseReference reference;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        auth = FirebaseAuth.getInstance();
 
         edtNomeCad = findViewById(R.id.cadastro_nome);
         edtEmailCad = findViewById(R.id.cadastro_email);
@@ -66,22 +61,42 @@ public class Register_Activity extends AppCompatActivity {
         btnConfirmarCad = findViewById(R.id.fab_next_confirmar);
         btnConfirmarCad.setOnClickListener(v -> {
 
-            // REGISTRO: NOME, EMAIL, TELEFONE (FALTA), SENHA, CONFIRMAÇÃO DE SENHA
-            database = FirebaseDatabase.getInstance();
-            reference = database.getReference("users");
+        // REGISTRO: NOME, EMAIL, TELEFONE (FALTA), SENHA, CONFIRMAÇÃO DE SENHA
 
-            String nome = edtNomeCad.getText().toString();
-            String email = edtEmailCad.getText().toString();
-            String senha= edtSenhaCad.getText().toString();
+            String nome = edtNomeCad.getText().toString().trim();
+            String email = edtEmailCad.getText().toString().trim();
+            String senha= edtSenhaCad.getText().toString().trim();
 
             HelperClass helperClass = new HelperClass(nome, email, senha);
-            reference.child(nome).setValue(helperClass);
+            // reference.child(nome).setValue(helperClass);
 
-            Toast.makeText(Register_Activity.this, "Cadastro realizado com sucesso", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Register_Activity.this, LoginIn_Activity.class);
-            startActivity(intent);
+            if (nome.isEmpty()){
+                edtNomeCad.setError("Nome não pode ser vazio!");
+            }
+
+            if (email.isEmpty()){
+                edtEmailCad.setError("Email não pode ser vazio!");
+            }
+
+            if (senha.isEmpty()){
+                edtSenhaCad.setError("Email não pode ser vazio!");
+            } else {
+                auth.createUserWithEmailAndPassword(email, senha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(Register_Activity.this, "Cadastro realizado com sucesso", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(Register_Activity.this, LoginIn_Activity.class));
+                        } else {
+                            Toast.makeText(Register_Activity.this, "Ocorreu um erro ao realizar o cadastro" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
 
         });
+
+
     }
 
     public void onBackPressed(){
