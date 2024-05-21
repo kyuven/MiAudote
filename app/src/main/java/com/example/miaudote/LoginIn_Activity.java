@@ -36,34 +36,6 @@ public class LoginIn_Activity extends AppCompatActivity {
         imgBtnGoogle = findViewById(R.id.btnLogin_google);
         imgBtnFacebook = findViewById(R.id.btnLogin_facebook);
 
-        String email = edtEmailLogin.getText().toString();
-        String senha = edtSenhaLogin.getText().toString();
-
-        if (!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            if (!senha.isEmpty()){
-                auth.signInWithEmailAndPassword(email, senha)
-                        .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                            @Override
-                            public void onSuccess(AuthResult authResult) {
-                                Toast.makeText(LoginIn_Activity.this, "Login realizado com sucesso!", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(LoginIn_Activity.this, Main_Page.class));
-                                finish();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(LoginIn_Activity.this, "Login falhou!", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-            } else {
-                edtSenhaLogin.setError("Senha não pode estar vazio");
-            }
-        } else if (email.isEmpty()){
-            edtEmailLogin.setError("Email não pode estar vazio");
-        } else {
-            edtEmailLogin.setError("Por favor, insira um email válido");
-        }
-
         CheckBox ckbMostrarSenha = (CheckBox) findViewById(R.id.ckbLogin_mostrarSenha);
 
         // Usuário não cadastrado
@@ -79,9 +51,34 @@ public class LoginIn_Activity extends AppCompatActivity {
         btnEntrar = findViewById(R.id.btn_entrar);
 
         btnEntrar.setOnClickListener(v -> {
-            Intent intent = new Intent(LoginIn_Activity.this, Main_Page.class);
-            startActivity(intent);
-            finish();
+
+            String email = edtEmailLogin.getText().toString();
+            String senha = edtSenhaLogin.getText().toString();
+
+            if (!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                if (!senha.isEmpty()){
+                    auth.signInWithEmailAndPassword(email, senha)
+                            .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                                @Override
+                                public void onSuccess(AuthResult authResult) {
+                                    Toast.makeText(LoginIn_Activity.this, "Login realizado com sucesso!", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(LoginIn_Activity.this, Main_Page.class));
+                                    finish();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(LoginIn_Activity.this, "Login falhou!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                } else {
+                    edtSenhaLogin.setError("Senha não pode estar vazio");
+                }
+            } else if (email.isEmpty()){
+                edtEmailLogin.setError("Email não pode estar vazio");
+            } else {
+                edtEmailLogin.setError("Por favor, insira um email válido");
+            }
         });
     }
 }
