@@ -17,11 +17,11 @@
         <ImageView
             android:layout_width="250dp"
             android:layout_height="200dp"
-            android:src="@drawable/codigo_de_verifica__o"
             android:layout_gravity="center"
             android:layout_marginStart="20dp"
             android:layout_marginTop="100dp"
-            android:contentDescription="@string/carta_confirmacao"/>
+            android:contentDescription="@string/carta_confirmacao"
+            android:src="@drawable/codigo_de_verifica__o" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -50,16 +50,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_marginTop="60dp">
-            
+            android:orientation="horizontal">
+
             <EditText
                 android:id="@+id/inputCodigo01"
                 android:layout_width="40dp"
                 android:layout_height="45dp"
-                android:gravity="center"
+                android:layout_margin="5dp"
                 android:background="@drawable/edt_txt_design"
+                android:gravity="center"
                 android:imeOptions="actionNext"
                 android:importantForAutofill="no"
                 android:inputType="number"
@@ -67,15 +68,15 @@
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                tools:ignore="LabelFor"
-                android:layout_margin="5dp" />
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/inputCodigo02"
                 android:layout_width="40dp"
                 android:layout_height="45dp"
-                android:gravity="center"
+                android:layout_margin="5dp"
                 android:background="@drawable/edt_txt_design"
+                android:gravity="center"
                 android:imeOptions="actionNext"
                 android:importantForAutofill="no"
                 android:inputType="number"
@@ -83,15 +84,15 @@
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                tools:ignore="LabelFor"
-                android:layout_margin="5dp" />
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/inputCodigo03"
                 android:layout_width="40dp"
                 android:layout_height="45dp"
-                android:gravity="center"
+                android:layout_margin="5dp"
                 android:background="@drawable/edt_txt_design"
+                android:gravity="center"
                 android:imeOptions="actionNext"
                 android:importantForAutofill="no"
                 android:inputType="number"
@@ -99,15 +100,15 @@
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                tools:ignore="LabelFor"
-                android:layout_margin="5dp" />
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/inputCodigo04"
                 android:layout_width="40dp"
                 android:layout_height="45dp"
-                android:gravity="center"
+                android:layout_margin="5dp"
                 android:background="@drawable/edt_txt_design"
+                android:gravity="center"
                 android:imeOptions="actionNext"
                 android:importantForAutofill="no"
                 android:inputType="number"
@@ -115,15 +116,15 @@
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                tools:ignore="LabelFor"
-                android:layout_margin="5dp" />
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/inputCodigo05"
                 android:layout_width="40dp"
                 android:layout_height="45dp"
-                android:gravity="center"
+                android:layout_margin="5dp"
                 android:background="@drawable/edt_txt_design"
+                android:gravity="center"
                 android:imeOptions="actionNext"
                 android:importantForAutofill="no"
                 android:inputType="number"
@@ -131,15 +132,15 @@
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                tools:ignore="LabelFor"
-                android:layout_margin="5dp" />
+                tools:ignore="LabelFor" />
 
             <EditText
                 android:id="@+id/inputCodigo06"
                 android:layout_width="40dp"
                 android:layout_height="45dp"
-                android:gravity="center"
+                android:layout_margin="5dp"
                 android:background="@drawable/edt_txt_design"
+                android:gravity="center"
                 android:imeOptions="actionDone"
                 android:importantForAutofill="no"
                 android:inputType="number"
@@ -147,22 +148,45 @@
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                tools:ignore="LabelFor"
-                android:layout_margin="5dp" />
-            
+                tools:ignore="LabelFor" />
+
         </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="120dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="30dp"
 
-            android:textColor="@android:color/transparent"
             android:textAlignment="center"
-            android:textSize="14sp"/>
+            android:textColor="@android:color/transparent"
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_reenviar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/transparent"
+
+            android:text="@string/btn_reenviar"
+            android:textColor="@color/blue_link"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="30dp"
+
+            android:textAlignment="center"
+            android:textColor="@android:color/transparent"
+            android:textSize="14sp" />
 
         <ImageButton
             android:id="@+id/btn_final_cad"

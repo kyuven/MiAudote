@@ -37,6 +37,7 @@
     <string name="carta_confirmacao">gatinho segurando uma carta : imagem de confirmação de login</string>
     <string name="confirmar_cadastro">CONFIRMAR CADASTRO</string>
     <string name="codigo_6dig">Enviamos um código de 6 (seis) dígitos para o seu número de celular</string>
+    <string name="btn_reenviar">Reenviar código</string>
     <string name="telefone_hint">Ex.: (xx) x xxxx-xxxx</string>
     <string name="title_activity_ong_page">ONG_Page</string>
     <string name="large_text">

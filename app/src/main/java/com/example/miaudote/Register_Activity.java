@@ -5,7 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -19,6 +24,7 @@ public class Register_Activity extends AppCompatActivity {
 
     // Firebase
     private FirebaseAuth auth;
+
 
     // Input que recebe as informações de cadastro do usuário
     TextInputEditText edtNomeCad, edtEmailCad, edtTelefoneCad,edtSenhaCad, edtConfirmarSenha;
@@ -59,12 +65,14 @@ public class Register_Activity extends AppCompatActivity {
 
         // Envia para a página de confirmação de cadastro (código OTP)
         btnConfirmarCad = findViewById(R.id.fab_next_confirmar);
+
         btnConfirmarCad.setOnClickListener(v -> {
 
         // REGISTRO: NOME, EMAIL, TELEFONE (FALTA), SENHA, CONFIRMAÇÃO DE SENHA
 
             String nome = edtNomeCad.getText().toString().trim();
             String email = edtEmailCad.getText().toString().trim();
+            String telefone = edtTelefoneCad.getText().toString().trim();
             String senha= edtSenhaCad.getText().toString().trim();
 
             HelperClass helperClass = new HelperClass(nome, email, senha);
@@ -85,8 +93,12 @@ public class Register_Activity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Toast.makeText(Register_Activity.this, "Cadastro realizado com sucesso", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(Register_Activity.this, LoginIn_Activity.class));
+                            Toast.makeText(Register_Activity.this, "Pré-cadastro realizado com sucesso", Toast.LENGTH_SHORT).show();
+
+                            // OTP apenas com telefone
+                            getIntent().putExtra("telefone", telefone);
+
+                            startActivity(new Intent(Register_Activity.this, Confirmar_Login.class));
                         } else {
                             Toast.makeText(Register_Activity.this, "Ocorreu um erro ao realizar o cadastro" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -94,6 +106,20 @@ public class Register_Activity extends AppCompatActivity {
                 });
             }
 
+        });
+
+        // Mostrar Senha - Checkbox
+        ckbMostrarSenha.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    edtSenhaCad.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    edtConfirmarSenha.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }else {
+                    edtSenhaCad.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    edtConfirmarSenha.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+            }
         });
 
 

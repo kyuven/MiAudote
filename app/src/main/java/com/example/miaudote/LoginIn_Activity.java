@@ -4,9 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -36,7 +39,7 @@ public class LoginIn_Activity extends AppCompatActivity {
         imgBtnGoogle = findViewById(R.id.btnLogin_google);
         imgBtnFacebook = findViewById(R.id.btnLogin_facebook);
 
-        CheckBox ckbMostrarSenha = (CheckBox) findViewById(R.id.ckbLogin_mostrarSenha);
+        CheckBox ckbLoginMostrarSenha = (CheckBox) findViewById(R.id.ckbLogin_mostrarSenha);
 
         // Usuário não cadastrado
         btnCadastrar = findViewById(R.id.btn_semCadastro);
@@ -78,6 +81,18 @@ public class LoginIn_Activity extends AppCompatActivity {
                 edtEmailLogin.setError("Email não pode estar vazio");
             } else {
                 edtEmailLogin.setError("Por favor, insira um email válido");
+            }
+        });
+
+        // Mostrar Senha - Checkbox
+        ckbLoginMostrarSenha.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    edtSenhaLogin.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }else {
+                    edtSenhaLogin.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
             }
         });
     }
