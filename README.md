@@ -4,7 +4,7 @@
     :construction:  Projeto em construção  :construction:
 </h2>
 
-<h3 align="center"> Olá! O MiAudote é um aplicativo que visa ajudar na adoção e no econtro de animais perdidos, criado para o TCC da ETEC de Cotia, 2024! </h3>
+<h3 align="center"> Olá! O MiAudote é um aplicativo que visa ajudar na adoção e no econtro de animais perdidos, criado para o TCC no curso técnico de Desenvolvimento de Sistemas da ETEC de Cotia, 2024! </h3>
 
 *******
 # ÍNDICE
