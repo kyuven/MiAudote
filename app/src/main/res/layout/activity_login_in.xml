@@ -94,25 +94,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
 
             <!-- Cadastro com o gmail -->
-            <ImageButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnLogin_google"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
                 android:layout_marginEnd="30dp"
-                android:src="@drawable/google_icon"
-                android:background="#FAF9F6"
+                android:background="@drawable/google_icon"
                 android:contentDescription="@string/google_login" />
 
             <!-- Cadastro com o facebook -->
-            <ImageButton
+            <com.facebook.login.widget.LoginButton
                 android:id="@+id/btnLogin_facebook"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:src="@drawable/facebook_icon"
-                android:background="#FAF9F6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/facebook_icon"
                 android:contentDescription="@string/facebook_login" />
 
         </LinearLayout>

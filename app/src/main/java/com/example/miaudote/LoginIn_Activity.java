@@ -19,6 +19,7 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,11 +36,14 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginIn_Activity extends AppCompatActivity {
 
-    private FirebaseAuth auth, mAuth;
+    private FirebaseAuth auth;
+    private static final String EMAIL = "email";
 
     TextInputEditText edtEmailLogin, edtSenhaLogin;
-    ImageButton imgBtnGoogle, imgBtnFacebook;
-    Button btnCadastrar, btnEntrar;
+
+    LoginButton btnFacebook;
+
+    Button btnCadastrar, btnEntrar, btnGoogle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +55,8 @@ public class LoginIn_Activity extends AppCompatActivity {
         edtEmailLogin = findViewById(R.id.LogIn_email);
         edtSenhaLogin = findViewById(R.id.LogIn_senha);
 
-        imgBtnGoogle = findViewById(R.id.btnLogin_google);
-        imgBtnFacebook = findViewById(R.id.btnLogin_facebook);
+        btnGoogle = findViewById(R.id.btnLogin_google);
+        btnFacebook = findViewById(R.id.btnLogin_facebook);
 
         CheckBox ckbLoginMostrarSenha = (CheckBox) findViewById(R.id.ckbLogin_mostrarSenha);
 
@@ -104,8 +108,8 @@ public class LoginIn_Activity extends AppCompatActivity {
 
         // Inicialização Facebook Login botão
         CallbackManager mCallbackManager = CallbackManager.Factory.create();
-        imgBtnFacebook.setReadPermissions("email", "public_profile");
-        imgBtnFacebook.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+        btnFacebook.setReadPermissions("email", "public_profile");
+        btnFacebook.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 handleFacebookAccessToken(loginResult.getAccessToken());
@@ -139,13 +143,13 @@ public class LoginIn_Activity extends AppCompatActivity {
     private void handleFacebookAccessToken(AccessToken token) {
 
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
-        mAuth.signInWithCredential(credential)
+        auth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            FirebaseUser user = auth.getCurrentUser();
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
