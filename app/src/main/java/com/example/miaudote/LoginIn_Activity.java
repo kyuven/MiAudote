@@ -20,6 +20,7 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -38,12 +39,10 @@ public class LoginIn_Activity extends AppCompatActivity {
 
     private FirebaseAuth auth;
     private static final String EMAIL = "email";
-
     TextInputEditText edtEmailLogin, edtSenhaLogin;
-
+    SignInButton btnGoogle;
     LoginButton btnFacebook;
-
-    Button btnCadastrar, btnEntrar, btnGoogle;
+    Button btnCadastrar, btnEntrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

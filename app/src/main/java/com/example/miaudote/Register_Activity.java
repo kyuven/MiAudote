@@ -27,7 +27,7 @@ public class Register_Activity extends AppCompatActivity {
 
 
     // Input que recebe as informações de cadastro do usuário
-    TextInputEditText edtNomeCad, edtEmailCad, edtTelefoneCad,edtSenhaCad, edtConfirmarSenha;
+    TextInputEditText edtNomeCad, edtEmailCad, edtSenhaCad, edtConfirmarSenha;
 
     // Botão que volta para a página anterior e vai para a próxima página, respectivamente
     ImageButton btnBackLogin, btnConfirmarCad;
@@ -44,7 +44,6 @@ public class Register_Activity extends AppCompatActivity {
 
         edtNomeCad = findViewById(R.id.cadastro_nome);
         edtEmailCad = findViewById(R.id.cadastro_email);
-        edtTelefoneCad = findViewById(R.id.cadastro_telefone);
         edtSenhaCad = findViewById(R.id.cadastro_senha);
         edtConfirmarSenha = findViewById(R.id.cadastro_confirmarSenha);
 
@@ -55,7 +54,7 @@ public class Register_Activity extends AppCompatActivity {
 
 
         // Envia para a página de login (volta a página)
-        btnBackLogin = findViewById(R.id.fab_back_login);
+        btnBackLogin = findViewById(R.id.fab_back);
         btnBackLogin.setOnClickListener(v -> {
             Intent intent = new Intent(Register_Activity.this, LoginIn_Activity.class);
             onBackPressed();
@@ -65,14 +64,12 @@ public class Register_Activity extends AppCompatActivity {
 
         // Envia para a página de confirmação de cadastro (código OTP)
         btnConfirmarCad = findViewById(R.id.fab_next_confirmar);
-
         btnConfirmarCad.setOnClickListener(v -> {
 
         // REGISTRO: NOME, EMAIL, TELEFONE (FALTA), SENHA, CONFIRMAÇÃO DE SENHA
 
             String nome = edtNomeCad.getText().toString().trim();
             String email = edtEmailCad.getText().toString().trim();
-            String telefone = edtTelefoneCad.getText().toString().trim();
             String senha= edtSenhaCad.getText().toString().trim();
 
             HelperClass helperClass = new HelperClass(nome, email, senha);
@@ -95,10 +92,7 @@ public class Register_Activity extends AppCompatActivity {
                         if (task.isSuccessful()){
                             Toast.makeText(Register_Activity.this, "Pré-cadastro realizado com sucesso", Toast.LENGTH_SHORT).show();
 
-                            // OTP apenas com telefone
-                            getIntent().putExtra("telefone", telefone);
-
-                            startActivity(new Intent(Register_Activity.this, Confirmar_Login.class));
+                            startActivity(new Intent(Register_Activity.this, Cellphone_Activity.class));
                         } else {
                             Toast.makeText(Register_Activity.this, "Ocorreu um erro ao realizar o cadastro" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }

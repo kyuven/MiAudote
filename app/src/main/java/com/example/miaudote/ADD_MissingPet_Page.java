@@ -20,7 +20,7 @@ public class ADD_MissingPet_Page extends AppCompatActivity {
     String[] itemsAnimalTipo = {"Visto", "Resgatado"};
     String[] itemsEspecie = {"Cachorro", "Gato", "Outros"};
     String[] itemsUF = {"AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"};
-    ArrayAdapter<String> adapterTipoAnimal, adapterUF;
+    ArrayAdapter<String> adapterTipoAnimal, adapterUF, adapterEspecie;
     AutoCompleteTextView autoCompleteAnimalTipo, autoCompleteEspecie, autoCompleteUf;
 
     @Override
@@ -53,6 +53,24 @@ public class ADD_MissingPet_Page extends AppCompatActivity {
             // Lógica para salvar no banco de dados ao invés do toast
             Toast.makeText(getApplicationContext(), "Item:" + item, Toast.LENGTH_SHORT).show();
         });
+
+        adapterTipoAnimal = new ArrayAdapter<String>(this, R.layout.list_item, itemsAnimalTipo);
+        autoCompleteAnimalTipo.setAdapter(adapterTipoAnimal);
+        autoCompleteAnimalTipo.setOnItemClickListener(((parent, view, position, id) -> {
+            String item = parent.getItemAtPosition(position).toString();
+
+            // Lógica para salvar no banco de dados ao invés do toast
+            Toast.makeText(getApplicationContext(), "Item:" + item, Toast.LENGTH_SHORT).show();
+        }));
+
+        adapterEspecie = new ArrayAdapter<String>(this, R.layout.list_item, itemsAnimalTipo);
+        autoCompleteEspecie.setAdapter(adapterEspecie);
+        autoCompleteEspecie.setOnItemClickListener(((parent, view, position, id) -> {
+            String item = parent.getItemAtPosition(position).toString();
+
+            // Lógica para salvar no banco de dados ao invés do toast
+            Toast.makeText(getApplicationContext(), "Item:" + item, Toast.LENGTH_SHORT).show();
+        }));
 
         btnSalvarAnimalPerdido.setOnClickListener(v -> {
             // Lógica para salvar no firebase os dados

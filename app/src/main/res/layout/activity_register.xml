@@ -11,220 +11,228 @@
     android:overScrollMode="never"
     android:fillViewport="true">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imglogIn_MiAudote"
-            android:layout_width="180dp"
-            android:layout_height="120dp"
-            android:src="@drawable/splash_screen_icon"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:contentDescription="@string/logo_do_miaudote" />
-
-        <TextView
-            android:id="@+id/txtCad_nome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginBottom="8dp"
-
-            android:text="@string/nome"
-            android:textColor="@color/black"
-            android:textSize="12sp" />
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/cadastro_nome"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/edt_txt_design"
-            android:inputType="textPersonName"
-            android:imeOptions="actionNext"
-            android:importantForAutofill="no"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            android:hint="@string/insira_seu_nome"
-            android:textSize="12sp"
-            android:textColor="#D86A6A6A"
-            android:padding="10dp" />
+            <ImageView
+                android:id="@+id/imglogIn_MiAudote"
+                android:layout_width="180dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:contentDescription="@string/logo_do_miaudote"
+                android:src="@drawable/splash_screen_icon" />
 
-        <TextView
-            android:id="@+id/txtCad_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginBottom="8dp"
-
-            android:text="@string/e_mail"
-            android:textColor="@color/black"
-            android:textSize="12sp" />
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/cadastro_email"
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/edt_txt_design"
-            android:inputType="textEmailAddress"
-            android:imeOptions="actionNext"
-            android:importantForAutofill="no"
-
-            android:hint="@string/email_hint"
-            android:textSize="12sp"
-            android:textColor="#D86A6A6A"
-            android:padding="10dp" />
-
-        <TextView
-            android:id="@+id/txtCad_telefone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginBottom="8dp"
-
-            android:text="@string/telefone"
-            android:textColor="@color/black"
-            android:textSize="12sp" />
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/cadastro_telefone"
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/edt_txt_design"
-            android:inputType="phone"
-            android:imeOptions="actionNext"
-            android:importantForAutofill="no"
-
-            android:hint="@string/telefone_hint"
-            android:textSize="12sp"
-            android:textColor="#D86A6A6A"
-            android:padding="10dp" />
-
-        <TextView
-            android:id="@+id/txtCad_senha"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginBottom="8dp"
-
-            android:text="@string/senha"
-            android:textColor="@color/black"
-            android:textSize="12sp" />
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/cadastro_senha"
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/edt_txt_design"
-            android:inputType="textPassword"
-            android:imeOptions="actionNext"
-            android:importantForAutofill="no"
-            android:maxLength="24"
-
-            android:hint="@string/crie_uma_senha"
-            android:textSize="12sp"
-            android:textColor="#D86A6A6A"
-            android:padding="10dp" />
-
-        <TextView
-            android:id="@+id/txtCad_confirmarSenha"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginBottom="8dp"
-
-            android:text="@string/confirmar_senha"
-            android:textColor="@color/black"
-            android:textSize="12sp" />
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/cadastro_confirmarSenha"
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/edt_txt_design"
-            android:inputType="textPassword"
-            android:imeOptions="actionNext"
-            android:importantForAutofill="no"
-            android:maxLength="24"
-
-            android:hint="@string/confirmar_sua_senha"
-            android:textSize="12sp"
-            android:textColor="#D86A6A6A"
-            android:padding="10dp" />
-
-        <CheckBox
-            android:id="@+id/ckbCad_mostrarSenha"
-            android:layout_width="wrap_content"
-            android:layout_height="24dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
-
-            android:scaleX="0.85"
-            android:scaleY="0.85"
-
-            android:text="@string/mostrar_senha"
-            android:textSize="12sp"
-            android:textColor="@color/black" />
-
-        <!-- Concordar com os termos aqui -->
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_gravity=""
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="30dp">
-
-            <ImageButton
-                android:id="@+id/fab_back_login"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:background="@drawable/btn_next_page"
-
-                android:contentDescription="@string/btn_voltar_login"
-                android:elevation="8dp"
-                android:src="@drawable/baseline_chevron_left_24"
-
+            <TextView
+                android:id="@+id/txtCad_nome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginBottom="8dp"
 
-            <ImageButton
-                android:id="@+id/fab_next_confirmar"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:background="@drawable/btn_next_page"
+                android:text="@string/nome"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
 
-                android:contentDescription="@string/btn_confirmar_cad"
-                android:elevation="8dp"
-                android:src="@drawable/baseline_keyboard_arrow_right_24"
-
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/cadastro_nome"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/edt_txt_design"
+                android:hint="@string/insira_seu_nome"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:textColor="#D86A6A6A"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtCad_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="8dp"
+
+                android:text="@string/e_mail"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/cadastro_email"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/edt_txt_design"
+                android:hint="@string/email_hint"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:textColor="#D86A6A6A"
+                android:textSize="12sp" />
 
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/txtCad_senha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="8dp"
+
+                android:text="@string/senha"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/cadastro_senha"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/edt_txt_design"
+                android:hint="@string/crie_uma_senha"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+
+                android:maxLength="24"
+                android:padding="10dp"
+                android:textColor="#D86A6A6A"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtCad_confirmarSenha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="8dp"
+
+                android:text="@string/confirmar_senha"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/cadastro_confirmarSenha"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/edt_txt_design"
+                android:hint="@string/confirmar_sua_senha"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+
+                android:maxLength="24"
+                android:padding="10dp"
+                android:textColor="#D86A6A6A"
+                android:textSize="12sp" />
+
+            <CheckBox
+                android:id="@+id/ckbCad_mostrarSenha"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+
+                android:scaleX="0.85"
+                android:scaleY="0.85"
+
+                android:text="@string/mostrar_senha"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <!-- Concordar com os termos aqui -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/ckbTermos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnTermos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@android:color/transparent"
+
+                    android:text="concordar com os termos de uso"
+                    android:textColor="@color/blue_link"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/fab_next_confirmar"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginBottom="30dp"
+
+                    android:background="@drawable/btn_next_page"
+                    android:contentDescription="@string/btn_confirmar_cad"
+                    android:elevation="8dp"
+
+                    android:src="@drawable/baseline_keyboard_arrow_right_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/fab_back"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+
+            android:background="trans"
+            android:contentDescription="@string/btn_confirmar_cad"
+            android:elevation="8dp"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+
+            android:src="@drawable/baseline_chevron_left_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

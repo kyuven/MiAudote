@@ -98,20 +98,20 @@
             android:orientation="vertical">
 
             <!-- Cadastro com o gmail -->
-            <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.gms.common.SignInButton
                 android:id="@+id/btnLogin_google"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                android:layout_marginEnd="30dp"
-                android:background="@drawable/google_icon"
+                android:layout_width="186dp"
+                android:layout_height="38dp"
+                android:elevation="0dp"
+                android:layout_marginBottom="8dp"
                 android:contentDescription="@string/google_login" />
 
             <!-- Cadastro com o facebook -->
             <com.facebook.login.widget.LoginButton
                 android:id="@+id/btnLogin_facebook"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/facebook_icon"
+                android:layout_height="42dp"
+                android:layout_margin="4dp"
                 android:contentDescription="@string/facebook_login" />
 
         </LinearLayout>
