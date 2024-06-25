@@ -1,5 +1,7 @@
 package com.example.miaudote;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -129,9 +131,6 @@ public class LoginIn_Activity extends AppCompatActivity {
             }
         });
 
-
-
-
         // Mostrar Senha - Checkbox
         ckbLoginMostrarSenha.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -145,8 +144,6 @@ public class LoginIn_Activity extends AppCompatActivity {
         });
     }
 
-
-
     private void handleFacebookAccessToken(AccessToken token) {
 
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
@@ -156,10 +153,12 @@ public class LoginIn_Activity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = auth.getCurrentUser();
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithCredential:failure", task.getException());
                             Toast.makeText(LoginIn_Activity.this, "Autenticação falhou.",
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
@@ -177,11 +176,20 @@ public class LoginIn_Activity extends AppCompatActivity {
         }
     };
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         mCallbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
     };
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if(currentUser != null){
+            updateUI(currentUser);
+        }
+    }
 
 }

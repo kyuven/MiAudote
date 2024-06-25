@@ -1,8 +1,9 @@
 <resources>
 
     // Facebook Login
-    <string name="facebook_app_id">488536120326330</string>
-    <string name="fb_login_protocol_scheme">fb488536120326330</string>
+    <string name="facebook_app_id">7996503070411938</string>
+    <string name="fb_login_protocol_scheme">fb7996503070411938</string>
+    <string name="facebook_client_token">56789</string>
 
     <string name="app_name">MiAudote</string>
     <string name="email_hint">Ex.: xxxxxxxx@gmail.com</string>
