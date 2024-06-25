@@ -19,6 +19,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Register_Activity extends AppCompatActivity {
 
@@ -91,8 +95,33 @@ public class Register_Activity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             Toast.makeText(Register_Activity.this, "Pré-cadastro realizado com sucesso", Toast.LENGTH_SHORT).show();
+                            FirebaseUser firebaseUser = auth.getCurrentUser();
 
                             startActivity(new Intent(Register_Activity.this, Cellphone_Activity.class));
+
+                            // Firebase Realtime Database
+                            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(nome, senha);
+
+                            // Firebase Database - Usuários registrados
+                            DatabaseReference referencePerfil = FirebaseDatabase.getInstance().getReference("Usuários registrados");
+
+                            referencePerfil.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+
+                                    if (task.isSuccessful()){
+
+                                        Toast.makeText(Register_Activity.this, "Usuário cadastrado com sucesso", Toast.LENGTH_SHORT).show();
+
+                                        startActivity(new Intent(Register_Activity.this, Cellphone_Activity.class));
+
+                                    } else {
+
+                                        Toast.makeText(Register_Activity.this, "Falha ao cadastrar o usuário", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+
                         } else {
                             Toast.makeText(Register_Activity.this, "Ocorreu um erro ao realizar o cadastro" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -115,7 +144,6 @@ public class Register_Activity extends AppCompatActivity {
                 }
             }
         });
-
 
     }
 
