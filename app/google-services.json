@@ -1,36 +1,26 @@
 {
   "project_info": {
-    "project_number": "199528527709",
-    "project_id": "miaudote-tcc",
-    "storage_bucket": "miaudote-tcc.appspot.com"
+    "project_number": "478798480234",
+    "project_id": "miaudote-projeto",
+    "storage_bucket": "miaudote-projeto.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:199528527709:android:a233116e7dc6f4d0815ab4",
+        "mobilesdk_app_id": "1:478798480234:android:7f0fdede6159626104db13",
         "android_client_info": {
           "package_name": "com.example.miaudote"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "199528527709-e6l4544o7npbmnp789v08uevrku9codn.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDRyLINOKKPEoO8B0ZP5PmS747Rc0UX3fo"
+          "current_key": "AIzaSyD-twjBgeXDfbqs-LaoV5NdHm2eAfntDPw"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "199528527709-e6l4544o7npbmnp789v08uevrku9codn.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

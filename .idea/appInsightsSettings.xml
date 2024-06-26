@@ -9,9 +9,9 @@
               <option name="connection">
                 <ConnectionSetting>
                   <option name="appId" value="com.example.miaudote" />
-                  <option name="mobileSdkAppId" value="1:199528527709:android:a233116e7dc6f4d0815ab4" />
-                  <option name="projectId" value="miaudote-tcc" />
-                  <option name="projectNumber" value="199528527709" />
+                  <option name="mobileSdkAppId" value="1:478798480234:android:7f0fdede6159626104db13" />
+                  <option name="projectId" value="miaudote-projeto" />
+                  <option name="projectNumber" value="478798480234" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

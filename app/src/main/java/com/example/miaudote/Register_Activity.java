@@ -28,8 +28,7 @@ public class Register_Activity extends AppCompatActivity {
 
     // Firebase
     FirebaseAuth auth;
-    FirebaseDatabase database;
-    DatabaseReference reference;
+
     // Input que recebe as informações de cadastro do usuário
     TextInputEditText edtNomeCad, edtEmailCad, edtSenhaCad, edtConfirmarSenha;
 
@@ -56,7 +55,6 @@ public class Register_Activity extends AppCompatActivity {
         // CheckBox dos termos de utilização
         // ? Separar em três telas o registro ?
 
-
         // Envia para a página de login (volta a página)
         btnBackLogin = findViewById(R.id.fab_back);
         btnBackLogin.setOnClickListener(v -> {
@@ -72,15 +70,9 @@ public class Register_Activity extends AppCompatActivity {
 
             // REGISTRO: NOME, EMAIL, TELEFONE (FALTA), SENHA, CONFIRMAÇÃO DE SENHA
 
-            database = FirebaseDatabase.getInstance();
-            reference = database.getReference("Usuários Registrados");
-
             String nome = edtNomeCad.getText().toString().trim();
             String email = edtEmailCad.getText().toString().trim();
             String senha = edtSenhaCad.getText().toString().trim();
-
-            HelperClass helperClass = new HelperClass(nome, email, senha);
-            reference.child(email).setValue(helperClass);
 
             if (nome.isEmpty()){
                 edtNomeCad.setError("Nome não pode ser vazio!");

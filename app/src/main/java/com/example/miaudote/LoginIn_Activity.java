@@ -30,9 +30,7 @@ import java.security.NoSuchAlgorithmException;
 public class LoginIn_Activity extends AppCompatActivity {
 
     private FirebaseAuth auth;
-    GoogleSignInClient googleSignInClient;
     private static final String EMAIL = "email";
-    private static final int RC_SIGN_IN = 9001;
     TextInputEditText edtEmailLogin, edtSenhaLogin;
     LoginButton btnFacebook;
     Button btnCadastrar, btnEntrar, btnGoogle;
@@ -43,12 +41,6 @@ public class LoginIn_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_login_in);
 
         auth = FirebaseAuth.getInstance();
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN)
-                .requestIdToken(getString(R.string.client_id))
-                .requestEmail()
-                .build();
-
-        googleSignInClient = GoogleSignIn.getClient(this, gso);
 
         edtEmailLogin = findViewById(R.id.LogIn_email);
         edtSenhaLogin = findViewById(R.id.LogIn_senha);
@@ -88,7 +80,7 @@ public class LoginIn_Activity extends AppCompatActivity {
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(LoginIn_Activity.this, "Login falhou!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginIn_Activity.this, e.toString(), Toast.LENGTH_SHORT).show();
                                 }
                             });
                 } else {
