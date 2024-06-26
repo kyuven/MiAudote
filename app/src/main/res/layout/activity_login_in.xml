@@ -98,7 +98,7 @@
             android:orientation="vertical">
 
             <!-- Cadastro com o gmail -->
-            <com.google.android.gms.common.SignInButton
+            <Button
                 android:id="@+id/btnLogin_google"
                 android:layout_width="186dp"
                 android:layout_height="38dp"
@@ -109,9 +109,10 @@
             <!-- Cadastro com o facebook -->
             <com.facebook.login.widget.LoginButton
                 android:id="@+id/btnLogin_facebook"
-                android:layout_width="wrap_content"
+                android:layout_width="180dp"
                 android:layout_height="42dp"
-                android:layout_margin="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
                 android:contentDescription="@string/facebook_login" />
 
         </LinearLayout>

@@ -3,23 +3,19 @@ package com.example.miaudote;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
-import android.util.Base64;
-import android.util.Log;
 import android.util.Patterns;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
-import com.facebook.CallbackManager;
 import com.facebook.login.widget.LoginButton;
-import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
@@ -33,13 +29,13 @@ import java.security.NoSuchAlgorithmException;
 
 public class LoginIn_Activity extends AppCompatActivity {
 
-
     private FirebaseAuth auth;
+    GoogleSignInClient googleSignInClient;
     private static final String EMAIL = "email";
+    private static final int RC_SIGN_IN = 9001;
     TextInputEditText edtEmailLogin, edtSenhaLogin;
-    SignInButton btnGoogle;
     LoginButton btnFacebook;
-    Button btnCadastrar, btnEntrar;
+    Button btnCadastrar, btnEntrar, btnGoogle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +43,12 @@ public class LoginIn_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_login_in);
 
         auth = FirebaseAuth.getInstance();
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN)
+                .requestIdToken(getString(R.string.client_id))
+                .requestEmail()
+                .build();
+
+        googleSignInClient = GoogleSignIn.getClient(this, gso);
 
         edtEmailLogin = findViewById(R.id.LogIn_email);
         edtSenhaLogin = findViewById(R.id.LogIn_senha);

@@ -223,7 +223,8 @@
             android:layout_height="56dp"
             android:background="#FAF9F6"
 
-
+            android:contentDescription="@string/btn_confirmar_cad"
+            android:elevation="8dp"
 
             android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"

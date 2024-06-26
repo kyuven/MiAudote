@@ -27,9 +27,9 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Register_Activity extends AppCompatActivity {
 
     // Firebase
-    private FirebaseAuth auth;
-
-
+    FirebaseAuth auth;
+    FirebaseDatabase database;
+    DatabaseReference reference;
     // Input que recebe as informações de cadastro do usuário
     TextInputEditText edtNomeCad, edtEmailCad, edtSenhaCad, edtConfirmarSenha;
 
@@ -70,14 +70,17 @@ public class Register_Activity extends AppCompatActivity {
         btnConfirmarCad = findViewById(R.id.fab_next_confirmar);
         btnConfirmarCad.setOnClickListener(v -> {
 
-        // REGISTRO: NOME, EMAIL, TELEFONE (FALTA), SENHA, CONFIRMAÇÃO DE SENHA
+            // REGISTRO: NOME, EMAIL, TELEFONE (FALTA), SENHA, CONFIRMAÇÃO DE SENHA
+
+            database = FirebaseDatabase.getInstance();
+            reference = database.getReference("Usuários Registrados");
 
             String nome = edtNomeCad.getText().toString().trim();
             String email = edtEmailCad.getText().toString().trim();
-            String senha= edtSenhaCad.getText().toString().trim();
+            String senha = edtSenhaCad.getText().toString().trim();
 
             HelperClass helperClass = new HelperClass(nome, email, senha);
-            // reference.child(nome).setValue(helperClass);
+            reference.child(email).setValue(helperClass);
 
             if (nome.isEmpty()){
                 edtNomeCad.setError("Nome não pode ser vazio!");
@@ -94,34 +97,7 @@ public class Register_Activity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Toast.makeText(Register_Activity.this, "Pré-cadastro realizado com sucesso", Toast.LENGTH_SHORT).show();
-                            FirebaseUser firebaseUser = auth.getCurrentUser();
-
                             startActivity(new Intent(Register_Activity.this, Cellphone_Activity.class));
-
-                            // Firebase Realtime Database
-                            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(nome, senha);
-
-                            // Firebase Database - Usuários registrados
-                            DatabaseReference referencePerfil = FirebaseDatabase.getInstance().getReference("Usuários registrados");
-
-                            referencePerfil.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-
-                                    if (task.isSuccessful()){
-
-                                        Toast.makeText(Register_Activity.this, "Usuário cadastrado com sucesso", Toast.LENGTH_SHORT).show();
-
-                                        startActivity(new Intent(Register_Activity.this, Cellphone_Activity.class));
-
-                                    } else {
-
-                                        Toast.makeText(Register_Activity.this, "Falha ao cadastrar o usuário", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
-
                         } else {
                             Toast.makeText(Register_Activity.this, "Ocorreu um erro ao realizar o cadastro" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
