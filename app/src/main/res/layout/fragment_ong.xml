@@ -64,21 +64,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="25dp" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnTesteOng"
-                android:layout_width="100dp"
-                android:layout_height="35dp"
-                android:layout_gravity="center_horizontal"
-
-                android:background="@drawable/btn_perfil"
-                android:text="ONG INFO"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
         </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabAddAnimalPerdido"
+            android:id="@+id/fabAddOng"
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:layout_margin="30dp"

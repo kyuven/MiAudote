@@ -28,16 +28,12 @@ public class Cellphone_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cellphone);
 
-
-
         // Envia para a página de confirmação de cadastro (código OTP)
         btnConfirmarCad = findViewById(R.id.fab_next_tel);
         btnConfirmarCad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 startActivity(new Intent(Cellphone_Activity.this, Confirmar_Login.class));
-
             }
         });
 
