@@ -20,20 +20,6 @@ public class Adotar_Fragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_adotar_, container, false);
 
-        FloatingActionButton btnTeste = (FloatingActionButton) view.findViewById(R.id.btnTeste);
-        AppCompatButton btnTeste02 = (AppCompatButton) view.findViewById(R.id.btnTeste02);
-
-
-        btnTeste.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), ADD_AdoptionPet_Page.class);
-            startActivity(intent);
-        });
-
-        btnTeste02.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), AdoptionPet_Info.class);
-            startActivity(intent);
-        });
-
         return view;
     }
 }

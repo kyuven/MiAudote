@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FAF9F6">
+
+    <ImageButton
+        android:id="@+id/fab_back"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="#FAF9F6"
+
+        android:contentDescription="@string/btn_confirmar_cad"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+
+        android:src="@drawable/baseline_chevron_left_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="34dp"
+        android:text="MUDAR PERFIL"
+        android:fontFamily="@font/arimo_variable_font_wght"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- MUDAR DADOS -->
+    <LinearLayout
+        android:id="@+id/linearlyt_dados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="52dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6">
+
+        <ImageView
+            android:id="@+id/imgUser"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+
+            android:contentDescription="vetor de um cadeado"
+            android:src="@drawable/baseline_person_24" />
+
+        <TextView
+            android:id="@+id/txtMudarDados"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+            android:layout_marginStart="15dp"
+
+            android:text="@string/mudar_senha"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/arimo_variable_font_wght" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="right">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnEdtDados"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@android:color/transparent"
+
+                android:contentDescription="botão para editar seus dados"
+                android:src="@drawable/baseline_keyboard_arrow_right_24" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- MUDAR EMAIL -->
+    <LinearLayout
+        android:id="@+id/linearlyt_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="38dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearlyt_dados">
+
+        <ImageView
+            android:id="@+id/imgEmail"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+
+            android:contentDescription="vetor de email"
+            android:src="@drawable/baseline_email_24" />
+
+        <TextView
+            android:id="@+id/txtMudarEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+            android:layout_marginStart="15dp"
+
+            android:text="MUDAR E-MAIL"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/arimo_variable_font_wght"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="right">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnEdtEmail"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@android:color/transparent"
+
+                android:contentDescription="@string/bot_o_para_mudar_sua_senha"
+                android:src="@drawable/baseline_keyboard_arrow_right_24" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- MUDAR SENHA -->
+    <LinearLayout
+        android:id="@+id/linearlyt_senha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="38dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearlyt_email">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+
+            android:contentDescription="vetor de um cadeado"
+            android:src="@drawable/baseline_lock_24" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+            android:layout_marginStart="15dp"
+
+            android:text="@string/mudar_senha"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/arimo_variable_font_wght" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="right">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnPerfil_mudarSenha"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@android:color/transparent"
+
+                android:contentDescription="@string/bot_o_para_mudar_sua_senha"
+                android:src="@drawable/baseline_keyboard_arrow_right_24" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnDeleteUserIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+
+        android:background="@android:color/transparent"
+        android:src="@drawable/baseline_delete_24"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDeleteUser"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+
+        android:background="@android:color/transparent"
+
+        android:text="LOGOUT"
+        android:textColor="@color/vermelho01"
+        android:textSize="16sp"
+        android:textStyle="bold"
+
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnDeleteUserIcon" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

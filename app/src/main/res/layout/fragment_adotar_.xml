@@ -66,32 +66,4 @@
 
     </ScrollView>
 
-    <!-- Ajeitar o tamanho e as bordas depois -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnTeste"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="30dp"
-
-        android:backgroundTint="@color/amarelo02"
-        android:src="@drawable/baseline_add_icon_24"
-        app:fabCustomSize="56dp" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnTeste02"
-        android:layout_width="100dp"
-        android:layout_height="35dp"
-        android:layout_gravity="center"
-
-        android:background="@drawable/btn_perfil"
-        android:text="Ver info"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
