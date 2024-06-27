@@ -19,8 +19,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Perfil_Fragment extends Fragment {
+
+    private FirebaseAuth auth;
 
     AppCompatButton btnMudarPerfil, btnTxtLogOut, btnCancelLogout, btnConfirmLogout;
     AppCompatImageButton btnMudarSenha, btnTermos, btnSobreNos, btnIconLogOut;
@@ -31,6 +34,8 @@ public class Perfil_Fragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_perfil, container, false);
 
+        auth = FirebaseAuth.getInstance();
+
         btnMudarPerfil = view.findViewById(R.id.btnPerfil_mudarPerfil);
         btnTxtLogOut = view.findViewById(R.id.btnPerfil_txtLogOut);
 
@@ -40,6 +45,7 @@ public class Perfil_Fragment extends Fragment {
         btnIconLogOut = view.findViewById(R.id.btnPerfil_iconLogOut);
 
         btnIconLogOut.setOnClickListener(v -> {
+
             View alertCustomDialog = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_custom, null);
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
 
@@ -53,6 +59,7 @@ public class Perfil_Fragment extends Fragment {
 
             btnCancelLogout.setOnClickListener(v1 -> dialog.cancel());
             btnConfirmLogout.setOnClickListener(v12 -> {
+                auth.signOut();
                 Intent intent = new Intent(getActivity(), LoginIn_Activity.class);
                 startActivity(intent);
             });

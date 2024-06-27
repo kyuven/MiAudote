@@ -68,7 +68,9 @@ public class Register_Activity extends AppCompatActivity {
         btnConfirmarCad = findViewById(R.id.fab_next_confirmar);
         btnConfirmarCad.setOnClickListener(v -> {
 
-            // REGISTRO: NOME, EMAIL, TELEFONE (FALTA), SENHA, CONFIRMAÇÃO DE SENHA
+            // REGISTRO: NOME, EMAIL, SENHA, CONFIRMAÇÃO DE SENHA
+
+
 
             String nome = edtNomeCad.getText().toString().trim();
             String email = edtEmailCad.getText().toString().trim();
@@ -76,13 +78,9 @@ public class Register_Activity extends AppCompatActivity {
 
             if (nome.isEmpty()){
                 edtNomeCad.setError("Nome não pode ser vazio!");
-            }
-
-            if (email.isEmpty()){
+            } else if (email.isEmpty()){
                 edtEmailCad.setError("Email não pode ser vazio!");
-            }
-
-            if (senha.isEmpty()){
+            } else if (senha.isEmpty()){
                 edtSenhaCad.setError("Email não pode ser vazio!");
             } else {
                 auth.createUserWithEmailAndPassword(email, senha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
