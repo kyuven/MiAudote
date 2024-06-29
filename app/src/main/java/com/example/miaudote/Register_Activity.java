@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
@@ -68,30 +69,27 @@ public class Register_Activity extends AppCompatActivity {
         btnConfirmarCad = findViewById(R.id.fab_next_confirmar);
         btnConfirmarCad.setOnClickListener(v -> {
 
-            // REGISTRO: NOME, EMAIL, TELEFONE (FALTA), SENHA, CONFIRMAÇÃO DE SENHA
+            // REGISTRO: NOME, EMAIL, SENHA, CONFIRMAÇÃO DE SENHA
 
-            String nome = edtNomeCad.getText().toString().trim();
-            String email = edtEmailCad.getText().toString().trim();
-            String senha = edtSenhaCad.getText().toString().trim();
+            UserModel userModel = new UserModel();
 
-            if (nome.isEmpty()){
-                edtNomeCad.setError("Nome não pode ser vazio!");
-            }
+            userModel.setNome(edtNomeCad.getText().toString().trim());
+            userModel.setEmail(edtEmailCad.getText().toString().trim());
+            userModel.setSenha(edtSenhaCad.getText().toString().trim());
 
-            if (email.isEmpty()){
-                edtEmailCad.setError("Email não pode ser vazio!");
-            }
+            if(!TextUtils.isEmpty(userModel.getNome()) || !TextUtils.isEmpty(userModel.getEmail()) || !TextUtils.isEmpty(userModel.getSenha())){
 
-            if (senha.isEmpty()){
-                edtSenhaCad.setError("Email não pode ser vazio!");
-            } else {
-                auth.createUserWithEmailAndPassword(email, senha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                auth.createUserWithEmailAndPassword(userModel.getEmail(), userModel.getSenha())
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
+                            userModel.setId(auth.getUid());
+                            userModel.salvar();
                             startActivity(new Intent(Register_Activity.this, Cellphone_Activity.class));
-                        } else {
-                            Toast.makeText(Register_Activity.this, "Ocorreu um erro ao realizar o cadastro" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }else {
+                            String error = task.getException().getMessage();
+                            Toast.makeText(Register_Activity.this, ""+error, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
