@@ -15,6 +15,18 @@
         android:theme="@style/Theme.MiAudote"
         tools:targetApi="31">
         <activity
+            android:name=".Actv_EdtDadosAnimal"
+            android:exported="false" />
+        <activity
+            android:name=".Actv_EdtSenha"
+            android:exported="false" />
+        <activity
+            android:name=".Actv_EdtEmail"
+            android:exported="false" />
+        <activity
+            android:name=".Actv_EdtDados"
+            android:exported="false" />
+        <activity
             android:name=".ONG_Register_Contact"
             android:exported="false" />
         <activity
@@ -24,13 +36,7 @@
             android:name=".Cellphone_Activity"
             android:exported="false" />
         <activity
-            android:name=".Change_Perfil"
-            android:exported="false" />
-        <activity
             android:name=".AdoptionPet_Info"
-            android:exported="false" />
-        <activity
-            android:name=".ADD_AdoptionPet_Page"
             android:exported="false" />
         <activity
             android:name=".MissingPet_Info"

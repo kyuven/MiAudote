@@ -3,9 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ADD_MissingPet_Page"
+    tools:context=".Actv_EdtDadosAnimal"
     android:orientation="vertical"
     android:background="#FAF9F6">
 
@@ -43,22 +44,20 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginStart="12dp">
+                android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/btnAnimal_back"
+                    android:id="@+id/btnEdtDadosAnimal_back"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:background="@android:color/transparent"
                     android:src="@drawable/baseline_chevron_left_24"
-
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/txtAnimal"
+                    android:id="@+id/txtEdtDados_adocao"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
@@ -72,7 +71,7 @@
                     android:layout_marginEnd="32dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/btnAnimal_back"
+                    app:layout_constraintStart_toEndOf="@+id/btnAddAdpt_back"
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -100,7 +99,7 @@
                     android:layout_marginStart="15dp">
 
                     <ImageView
-                        android:id="@+id/imgAnimal"
+                        android:id="@+id/imgEdtDadosPet"
                         android:layout_width="130dp"
                         android:layout_height="130dp"
                         android:src="@color/black"
@@ -112,14 +111,13 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/fabAnimal_photo"
+                        android:id="@+id/fabDadosAnimal_photo"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:backgroundTint="@color/amarelo03_"
                         android:elevation="1dp"
                         android:src="@drawable/baseline_photo_camera_24"
                         app:fabCustomSize="50dp"
-
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -151,7 +149,7 @@
                         android:hint="@string/filtrar_por">
 
                         <AutoCompleteTextView
-                            android:id="@+id/edtAnimal_filtrar"
+                            android:id="@+id/edtDadosPet_filtrar"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="none"
@@ -206,7 +204,7 @@
                 android:textSize="12sp" />
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtAnimal_nomeAnimal"
+                android:id="@+id/edtDadosAnimal_nomeAnimal"
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
                 android:layout_marginStart="30dp"
@@ -232,7 +230,7 @@
                 android:textSize="12sp" />
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtAnimal_idade"
+                android:id="@+id/edtDadosAnimal_idade"
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
                 android:layout_marginStart="30dp"
@@ -266,7 +264,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
                 <AutoCompleteTextView
-                    android:id="@+id/edtAnimal_especieAutoComplete"
+                    android:id="@+id/edtDadosAnimal_especieAutoComplete"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
@@ -287,7 +285,7 @@
                 android:textSize="12sp" />
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtAnimal_desc"
+                android:id="@+id/edtDadosAnimal_desc"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:layout_marginStart="30dp"
@@ -316,7 +314,7 @@
                 android:textSize="16sp" />
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/ckbAnimal"
+                android:id="@+id/ckbDadosAnimal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="23dp"
@@ -340,7 +338,7 @@
                 android:textAllCaps="true" />
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtAnimal_logradouro"
+                android:id="@+id/edtDadosAnimal_logradouro"
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
                 android:layout_marginStart="30dp"
@@ -363,7 +361,7 @@
                 android:textAllCaps="true" />
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtAnimal_bairro"
+                android:id="@+id/edtDadosAnimal_bairro"
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
                 android:layout_marginStart="30dp"
@@ -390,12 +388,12 @@
                 android:hint="@string/selecione"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
-            <AutoCompleteTextView
-                android:id="@+id/edtAnimal_ufAutoComplete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:inputType="none" />
+                <AutoCompleteTextView
+                    android:id="@+id/edtDadosAnimal_ufAutoComplete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:inputType="none" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -414,7 +412,7 @@
                 android:textAllCaps="true" />
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtAnimal_cidade"
+                android:id="@+id/edtDadosAnimal_cidade"
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
                 android:layout_marginStart="30dp"
@@ -422,6 +420,57 @@
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/edt_txt_design"
                 android:inputType="textPersonName" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnDadosAnimal_salvar"
+                    android:layout_width="145dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="end"
+                    android:background="@drawable/btn_perfil"
+
+                    android:text="@string/salvar"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/btnDeleteUserIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/baseline_delete_24"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnDeleteUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+
+                    android:background="@android:color/transparent"
+
+                    android:text="EXCLUIR ANIMAL"
+                    android:textColor="@color/vermelho01"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/btnDeleteUserIcon"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         </LinearLayout>
 

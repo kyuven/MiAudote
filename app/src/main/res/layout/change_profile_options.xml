@@ -6,7 +6,7 @@
     android:background="#FAF9F6">
 
     <ImageButton
-        android:id="@+id/fab_back"
+        android:id="@+id/fab_backEdtDados"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:background="#FAF9F6"
@@ -68,7 +68,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="15dp"
 
-            android:text="@string/mudar_senha"
+            android:text="EDITAR DADOS"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -190,7 +190,7 @@
             android:gravity="right">
 
             <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/btnPerfil_mudarSenha"
+                android:id="@+id/btnEdtSenha"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:background="@android:color/transparent"
@@ -222,7 +222,7 @@
 
         android:background="@android:color/transparent"
 
-        android:text="LOGOUT"
+        android:text="EXCLUIR PERFIL"
         android:textColor="@color/vermelho01"
         android:textSize="16sp"
         android:textStyle="bold"
