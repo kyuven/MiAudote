@@ -164,6 +164,42 @@
     <string name="e_mail_doispontos">e-mail:</string>
     <string name="telefone_doispontos">telefone:</string>
     <string name="filtrar_por">FILTRAR POR...</string>
-    <string name="client_id">199528527709-e6l4544o7npbmnp789v08uevrku9codn.apps.googleusercontent.com</string>
+
+    <string name="web_client_id">478798480234-sbnca72agsmnbmreef6om26vkhfo14hf.apps.googleusercontent.com</string>
+
     <string name="atualizar">atualizar</string>
+    <string name="e_mail_novo">E-MAIL NOVO</string>
+    <string name="aviso_email">Note que o novo email não pode ser igual ao anterior.</string>
+    <string name="e_mail_anterior">E-MAIL ANTERIOR</string>
+    <string name="mudar_e_mail">MUDAR E-MAIL</string>
+    <string name="btn_pagAnt">botão para voltar a página anterior</string>
+    <string name="aviso_senha">Note que a nova senha não pode ser igual a anterior.</string>
+    <string name="senha_anterior">senha anterior</string>
+    <string name="senha_nova">senha nova</string>
+    <string name="foto_do_animal">foto do animal</string>
+    <string name="situation_do_animal">situação do animal</string>
+    <string name="foto_em_branco">*caso não tenha foto, deixar em branco</string>
+    <string name="logradouro">logradouro</string>
+    <string name="bairro">bairro</string>
+    <string name="imagem_do_animal">imagem do animal</string>
+    <string name="edite_os_dados_do_animal">EDITE OS DADOS DO ANIMAL</string>
+    <string name="escreva_um_pouco_sobre_o_bichinho">escreva um pouco sobre o bichinho</string>
+    <string name="descricao">descrição</string>
+    <string name="endereco">endereço</string>
+    <string name="excluir_animal">EXCLUIR ANIMAL</string>
+    <string name="usar_endere_o_atual">usar endereço atual</string>
+    <string name="selecione_especie_animal">selecione a espécie do animal</string>
+    <string name="insira_a_idade_do_animal">INSIRA A IDADE DO ANIMAL</string>
+    <string name="contentDesc_iconeAddFoto">ícone de câmera para adicionar foto do animal</string>
+    <string name="mudar_user_data">mudar seus dados</string>
+    <string name="nome_atual">DIGITE O NOME ATUAL</string>
+    <string name="imagem">imagem</string>
+    <string name="info_img_edtUserData">Carregue uma imagem PNG, JPEG ou JPG de no máximo 2MB. Prefira imagens no formato quadrado, caso contrário a imagem será cortada e centralizada, podendo não ficar da forma desejada.</string>
+    <string name="aviso_info_ong">Preencha as informações abaixo</string>
+    <string name="contato">CONTATO</string>
+    <string name="inta_ex">Ex.: @instagram.ong</string>
+    <string name="instagram">instagram</string>
+    <string name="twitter">twitter</string>
+    <string name="ex_twitter_ong">Ex.: @twitter.ong</string>
+    <string name="facebook">facebook</string>
 </resources>

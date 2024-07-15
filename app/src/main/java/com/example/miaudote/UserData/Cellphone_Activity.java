@@ -1,18 +1,13 @@
-package com.example.miaudote;
+package com.example.miaudote.UserData;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.ImageButton;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import com.google.android.material.textfield.TextInputEditText;
+import com.example.miaudote.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Cellphone_Activity extends AppCompatActivity {

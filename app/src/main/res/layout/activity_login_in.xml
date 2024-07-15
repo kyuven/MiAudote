@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:scrollbars="none"
     android:overScrollMode="never"
-    tools:context=".LoginIn_Activity"
+    tools:context=".UserData.LoginIn_Activity"
     android:background="#FAF9F6"
     android:fillViewport="true">
 
@@ -98,7 +98,7 @@
             android:orientation="vertical">
 
             <!-- Cadastro com o gmail -->
-            <Button
+            <com.google.android.gms.common.SignInButton
                 android:id="@+id/btnLogin_google"
                 android:layout_width="186dp"
                 android:layout_height="38dp"

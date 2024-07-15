@@ -19,7 +19,8 @@
         android:text="@string/deseja_sair"
         android:textStyle="bold"
         android:textColor="@color/black"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textAllCaps="true" />
 
     <ImageView
         android:id="@+id/imgDialogCustom"

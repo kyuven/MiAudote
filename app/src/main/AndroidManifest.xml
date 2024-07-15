@@ -15,51 +15,51 @@
         android:theme="@style/Theme.MiAudote"
         tools:targetApi="31">
         <activity
-            android:name=".Actv_EdtDadosAnimal"
+            android:name=".PetInfo.Actv_EdtDadosAnimal"
             android:exported="false" />
         <activity
-            android:name=".Actv_EdtSenha"
+            android:name=".UserData.Actv_EdtSenha"
             android:exported="false" />
         <activity
-            android:name=".Actv_EdtEmail"
+            android:name=".UserData.Actv_EdtEmail"
             android:exported="false" />
         <activity
-            android:name=".Actv_EdtDados"
+            android:name=".UserData.Actv_EdtDados"
             android:exported="false" />
         <activity
-            android:name=".ONG_Register_Contact"
+            android:name=".ONGInfo.ONG_Register_Contact"
             android:exported="false" />
         <activity
-            android:name=".ONG_Register_General"
+            android:name=".ONGInfo.ONG_Register_General"
             android:exported="false" />
         <activity
-            android:name=".Cellphone_Activity"
+            android:name=".UserData.Cellphone_Activity"
             android:exported="false" />
         <activity
-            android:name=".AdoptionPet_Info"
+            android:name=".PetInfo.AdoptionPet_Info"
             android:exported="false" />
         <activity
-            android:name=".MissingPet_Info"
+            android:name=".PetInfo.MissingPet_Info"
             android:exported="false" />
         <activity
-            android:name=".ADD_MissingPet_Page"
+            android:name=".PetInfo.ADD_MissingPet_Page"
             android:exported="false" />
         <activity
-            android:name=".ONG_Page"
+            android:name=".ONGInfo.ONG_Page"
             android:exported="false"
             android:label="@string/title_activity_ong_page"
             android:theme="@style/Theme.MiAudote.NoActionBar" />
         <activity
-            android:name=".Confirmar_Login"
+            android:name=".UserData.Confirmar_Login"
             android:exported="false" />
         <activity
-            android:name=".Main_Page"
+            android:name=".Fragments.Main_Page"
             android:exported="false" />
         <activity
-            android:name=".Register_Activity"
+            android:name=".UserData.Register_Activity"
             android:exported="false" />
         <activity
-            android:name=".LoginIn_Activity"
+            android:name=".UserData.LoginIn_Activity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

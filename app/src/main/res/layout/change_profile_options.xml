@@ -3,13 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#FAF9F6">
+    android:background="@color/white">
 
-    <ImageButton
+    <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/fab_backEdtDados"
         android:layout_width="56dp"
         android:layout_height="56dp"
-        android:background="#FAF9F6"
+        android:background="@color/white"
 
         android:contentDescription="@string/btn_confirmar_cad"
 
@@ -77,7 +77,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="right">
+            android:gravity="end">
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/btnEdtDados"
@@ -132,7 +132,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="right">
+            android:gravity="end">
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/btnEdtEmail"
@@ -140,7 +140,7 @@
                 android:layout_height="32dp"
                 android:background="@android:color/transparent"
 
-                android:contentDescription="@string/bot_o_para_mudar_sua_senha"
+                android:contentDescription="botão para mudar email"
                 android:src="@drawable/baseline_keyboard_arrow_right_24" />
 
         </LinearLayout>
@@ -187,7 +187,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="right">
+            android:gravity="end">
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/btnEdtSenha"
@@ -202,33 +202,54 @@
 
     </LinearLayout>
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/btnDeleteUserIcon"
+    <LinearLayout
+        android:id="@+id/linearlyt_delete"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
 
-        android:background="@android:color/transparent"
-        android:src="@drawable/baseline_delete_24"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="120dp"
 
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearlyt_senha">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnDeleteUser"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnDeleteUserIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
 
-        android:background="@android:color/transparent"
+            android:background="@android:color/transparent"
+            android:contentDescription="apagar conta"
+            android:src="@drawable/baseline_delete_24"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
 
-        android:text="EXCLUIR PERFIL"
-        android:textColor="@color/vermelho01"
-        android:textSize="16sp"
-        android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearlyt_senha" />
 
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnDeleteUserIcon" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnDeleteUser"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+
+            android:background="@android:color/transparent"
+            android:text="EXCLUIR PERFIL"
+            android:textColor="@color/vermelho01"
+            android:textSize="16sp"
+            android:textStyle="bold"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnDeleteUserIcon"
+            app:layout_constraintTop_toBottomOf="@+id/linearlyt_senha" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

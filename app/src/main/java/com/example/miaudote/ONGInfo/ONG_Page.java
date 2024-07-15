@@ -1,10 +1,12 @@
-package com.example.miaudote;
+package com.example.miaudote.ONGInfo;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.example.miaudote.R;
 
 public class ONG_Page extends AppCompatActivity {
 

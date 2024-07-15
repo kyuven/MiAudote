@@ -1,4 +1,4 @@
-package com.example.miaudote;
+package com.example.miaudote.UserData;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,12 +11,13 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.InputMethod;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
+
+import com.example.miaudote.Fragments.Main_Page;
+import com.example.miaudote.R;
 
 public class Confirmar_Login extends AppCompatActivity {
 

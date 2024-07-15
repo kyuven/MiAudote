@@ -1,4 +1,4 @@
-package com.example.miaudote;
+package com.example.miaudote.UserData;
 
 import android.provider.ContactsContract;
 

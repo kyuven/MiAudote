@@ -1,4 +1,4 @@
-package com.example.miaudote;
+package com.example.miaudote.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.miaudote.PetInfo.ADD_MissingPet_Page;
+import com.example.miaudote.PetInfo.MissingPet_Info;
+import com.example.miaudote.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class Map_Animals_Fragment extends Fragment {

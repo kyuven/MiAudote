@@ -1,4 +1,4 @@
-package com.example.miaudote;
+package com.example.miaudote.PetInfo;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.miaudote.R;
 
 public class AdoptionPet_Info extends AppCompatActivity {
 

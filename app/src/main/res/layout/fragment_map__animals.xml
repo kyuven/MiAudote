@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Map_Animals_Fragment"
+    tools:context=".Fragments.Map_Animals_Fragment"
     android:overScrollMode="never"
     android:scrollbars="none"
     android:fillViewport="true">

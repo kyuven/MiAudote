@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "478798480234",
+    "firebase_url": "https://miaudote-projeto-default-rtdb.firebaseio.com",
     "project_id": "miaudote-projeto",
     "storage_bucket": "miaudote-projeto.appspot.com"
   },
@@ -12,7 +13,20 @@
           "package_name": "com.example.miaudote"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "478798480234-fa7jv0f65gj6sg64hbnrfe1nnd3nrrdu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.miaudote",
+            "certificate_hash": "c8f0bdf2d95c925224b22fb7d7358caeb5185157"
+          }
+        },
+        {
+          "client_id": "478798480234-sbnca72agsmnbmreef6om26vkhfo14hf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyD-twjBgeXDfbqs-LaoV5NdHm2eAfntDPw"
@@ -20,7 +34,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478798480234-sbnca72agsmnbmreef6om26vkhfo14hf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

@@ -1,4 +1,4 @@
-package com.example.miaudote;
+package com.example.miaudote.PetInfo;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.miaudote.R;
+
 public class MissingPet_Info extends AppCompatActivity {
 
     TextView txtNomeAnimal, txtEspecieAnimal, txtIdadeAnimal, txtDescAnimal, txtEmail, txtTelefone;
@@ -16,20 +18,6 @@ public class MissingPet_Info extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_missing_pet_info);
-
-        AppCompatImageButton btnBack = (AppCompatImageButton) findViewById(R.id.btnMissingPet_back);
-        ImageView imgAnimalPerdido = (ImageView) findViewById(R.id.imgMissingPet);
-
-        txtNomeAnimal = findViewById(R.id.txtMissingPet_nomeAnimal);
-        txtEspecieAnimal = findViewById(R.id.txtMissingPet_especieAnimal);
-        txtIdadeAnimal = findViewById(R.id.txtMissingPet_idadeAnimal);
-        txtDescAnimal = findViewById(R.id.txtMissingPet_descAnimal);
-        txtEmail = findViewById(R.id.txtMissingPet_email);
-        txtTelefone = findViewById(R.id.txtMissingPet_telefone);
-
-        btnBack.setOnClickListener(v -> {
-            onBackPressed();
-        });
     }
 
     public void onBackPressed(){

@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Actv_EdtSenha"
+    tools:context=".UserData.Actv_EdtSenha"
     android:background="#FAF9F6"
     android:overScrollMode="never"
     android:scrollbars="none"
@@ -14,13 +14,16 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="28dp">
+        android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/btnEdtSenha_back"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="34dp"
+            android:layout_marginStart="16dp"
+
+            android:contentDescription="@string/btn_pagAnt"
             android:background="@android:color/transparent"
             android:src="@drawable/baseline_chevron_left_24"
 
@@ -30,14 +33,15 @@
         <TextView
             android:id="@+id/txtEdtSenha"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/arimo_variable_font_wght"
+            android:layout_marginTop="42dp"
 
+            android:fontFamily="@font/arimo_variable_font_wght"
             android:gravity="center"
-            android:text="MUDAR SENHA"
+            android:text="@string/mudar_senha"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:textStyle="bold"
 
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,23 +52,25 @@
             android:id="@+id/txt_editar_senha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:text="senha ANTERIOR"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            android:textAllCaps="true"
-            android:fontFamily="@font/arimo_variable_font_wght"
-
-            android:layout_marginStart="24dp"
             android:layout_marginTop="48dp"
+            android:layout_marginEnd="222dp"
+
+            android:fontFamily="@font/arimo_variable_font_wght"
+            android:text="@string/senha_anterior"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtEdtSenha" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editar_senha_edt"
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
+            android:layout_width="348dp"
+            android:layout_height="48dp"
             android:background="@drawable/edt_txt_design"
+
             android:hint="@string/email_hint"
             android:imeOptions="actionNext"
             android:inputType="textEmailAddress"
@@ -83,22 +89,25 @@
             android:id="@+id/txt_nova_senha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:text="SENHA NOVA"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            android:fontFamily="@font/arimo_variable_font_wght"
-
-            android:layout_marginStart="24dp"
             android:layout_marginTop="26dp"
+            android:layout_marginEnd="252dp"
+
+            android:fontFamily="@font/arimo_variable_font_wght"
+            android:text="@string/senha_nova"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editar_senha_edt" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edt_novaSenha"
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
+            android:layout_width="348dp"
+            android:layout_height="48dp"
             android:background="@drawable/edt_txt_design"
+
             android:hint="@string/email_hint"
             android:imeOptions="actionNext"
             android:inputType="textEmailAddress"
@@ -117,24 +126,26 @@
             android:id="@+id/txt_aviso"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:text="Note que o novo email não pode ser igual ao anterior."
-            android:textColor="#515151"
-            android:textSize="10sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/arimo_variable_font_wght"
-
-            android:layout_marginStart="24dp"
             android:layout_marginTop="4dp"
+            android:layout_marginEnd="54dp"
+
+            android:fontFamily="@font/arimo_variable_font_wght"
+            android:text="@string/aviso_senha"
+            android:textColor="#515151"
+            android:textSize="12sp"
+            android:textStyle="bold"
+
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edt_novaSenha" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnAttSenha"
             android:layout_width="164dp"
-            android:layout_height="40dp"
+            android:layout_height="48dp"
             android:layout_gravity="end"
             android:background="@drawable/btn_perfil"
+            android:contentDescription="@string/atualizar"
 
             android:text="@string/atualizar"
             android:textSize="12sp"
