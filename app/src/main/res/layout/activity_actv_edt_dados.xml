@@ -66,7 +66,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txtEdtUserData" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_editarNome_userData"
+            android:id="@+id/edt_novoNome"
             android:layout_width="348dp"
             android:layout_height="48dp"
             android:background="@drawable/edt_txt_design"
@@ -101,16 +101,18 @@
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_editarNome_userData" />
+            app:layout_constraintTop_toBottomOf="@+id/edt_novoNome" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/edt_fotoPerfil"
             android:layout_width="140dp"
             android:layout_height="140dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="208dp"
 
             android:background="#9CB8B8B8"
+            android:contentDescription="@string/imagem_enviada_pelo_usu_rio"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtEdt_userDataImg" />
@@ -128,8 +130,42 @@
             android:textStyle="bold"
 
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView4"
-            app:layout_constraintTop_toBottomOf="@+id/edt_editarNome_userData" />
+            app:layout_constraintStart_toEndOf="@+id/edt_fotoPerfil"
+            app:layout_constraintTop_toBottomOf="@+id/edt_novoNome" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAttFotoPerfil"
+            android:layout_width="180dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:background="#03A9F4"
+            android:contentDescription="@string/envie_sua_foto"
+
+            android:text="@string/envie_sua_foto"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="bold"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/edt_fotoPerfil"
+            app:layout_constraintTop_toBottomOf="@+id/txt_avisoImg" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAttDadosUser"
+            android:layout_width="164dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="84dp"
+            android:background="@drawable/btn_perfil"
+            android:contentDescription="@string/atualizar"
+
+            android:text="@string/atualizar"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="bold"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_fotoPerfil" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

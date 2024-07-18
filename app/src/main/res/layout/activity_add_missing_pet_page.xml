@@ -34,13 +34,13 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginStart="12dp">
+                android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/btnAnimal_back"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
+                    android:layout_marginStart="24dp"
                     android:background="@android:color/transparent"
                     android:src="@drawable/baseline_chevron_left_24"
 
@@ -55,12 +55,12 @@
                     android:layout_gravity="center"
                     android:gravity="center"
 
-                    android:text="ADICIONE O PET"
+                    android:text="@string/adicione_o_pet"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold"
 
-                    android:layout_marginEnd="32dp"
+                    android:layout_marginEnd="40dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/btnAnimal_back"
@@ -74,7 +74,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="35dp"
 
-                android:text="ADICIONE A FOTO DO ANIMAL"
+                android:text="@string/adicione_a_foto_do_animal"
                 android:textSize="14sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -95,6 +95,7 @@
                         android:layout_width="130dp"
                         android:layout_height="130dp"
                         android:src="@color/black"
+                        android:contentDescription="@string/imagem_do_animal"
 
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -110,6 +111,7 @@
                         android:elevation="1dp"
                         android:src="@drawable/baseline_photo_camera_24"
                         app:fabCustomSize="50dp"
+                        android:contentDescription="@string/icone_cam"
 
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent" />
@@ -134,10 +136,41 @@
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="28dp"
+
+                            android:text="@string/animal_perdido"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="28dp"
+
+                            android:text="@string/animal_para_adocao"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="28dp"
+
+                            android:text="@string/animal_encontrado_resgatado"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+
+                    </RadioGroup>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="40dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginStart="10dp"
 
@@ -224,7 +257,7 @@
                 android:inputType="number"
                 android:maxLength="2"
 
-                android:hint="INSIRA A IDADE DO ANIMAL"
+                android:hint="@string/insira_a_idade_do_animal"
                 android:textSize="12sp"
                 android:textColor="#D86A6A6A"
                 android:padding="10dp" />
@@ -269,8 +302,9 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="20dp"
 
-                android:text="DESCRIÇÃO"
+                android:text="@string/descricao"
                 android:textStyle="bold"
+                android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
@@ -286,7 +320,8 @@
                 android:inputType="textLongMessage"
                 android:gravity="start"
 
-                android:hint="ESCREVA UM POUCO SOBRE O BICHINHO"
+                android:hint="@string/escreva_um_pouco_sobre_o_bichinho"
+                android:textAllCaps="true"
                 android:textSize="12sp"
                 android:textColor="#D86A6A6A"
                 android:padding="10dp" />
@@ -301,7 +336,8 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="10dp"
 
-                android:text="ENDEREÇO"
+                android:text="@string/endereco"
+                android:textAllCaps="true"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
@@ -312,7 +348,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="23dp"
 
-                android:text="USAR ENDEREÇO ATUAL"
+                android:text="@string/usar_endere_o_atual"
+                android:textAllCaps="true"
                 android:textColor="@color/marrom07"
                 android:textStyle="bold" />
 
@@ -325,7 +362,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="10dp"
 
-                android:text="logradouro"
+                android:text="@string/logradouro"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="12sp"
@@ -350,7 +387,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginBottom="8dp"
 
-                android:text="bairro"
+                android:text="@string/bairro"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="12sp"
@@ -429,7 +466,8 @@
                 android:layout_gravity="end"
                 android:background="@drawable/btn_perfil"
 
-                android:text="ADICIONAR"
+                android:text="@string/adicionar"
+                android:textAllCaps="true"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:textColor="@color/white"

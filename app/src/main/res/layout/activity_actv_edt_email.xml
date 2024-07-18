@@ -66,7 +66,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txtEdtEmail" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editar_email_edt"
+            android:id="@+id/edt_emailAntigo"
             android:layout_width="348dp"
             android:layout_height="48dp"
             android:background="@drawable/edt_txt_design"
@@ -86,10 +86,58 @@
             app:layout_constraintTop_toBottomOf="@+id/txt_editar_email" />
 
         <TextView
-            android:id="@+id/txt_novo_email"
+            android:id="@+id/txt_senha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="26dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="266dp"
+
+            android:fontFamily="@font/arimo_variable_font_wght"
+            android:text="@string/sua_senha"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_emailAntigo" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_emailSenha"
+            android:layout_width="348dp"
+            android:layout_height="48dp"
+            android:background="@drawable/edt_txt_design"
+
+            android:hint="@string/senha_hint"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:textColor="#D86A6A6A"
+            android:textSize="12sp"
+
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_senha" />
+
+        <View
+            android:id="@+id/viewEdtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@drawable/divider"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="32dp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_emailSenha" />
+
+        <TextView
+            android:id="@+id/txt_novoEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="252dp"
 
             android:fontFamily="@font/arimo_variable_font_wght"
@@ -99,7 +147,7 @@
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editar_email_edt" />
+            app:layout_constraintTop_toBottomOf="@+id/viewEdtEmail" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edt_novoEmail"
@@ -119,13 +167,12 @@
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_novo_email" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_novoEmail" />
 
         <TextView
             android:id="@+id/txt_aviso"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:layout_marginEnd="54dp"
 
             android:fontFamily="@font/arimo_variable_font_wght"

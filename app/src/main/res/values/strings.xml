@@ -202,4 +202,13 @@
     <string name="twitter">twitter</string>
     <string name="ex_twitter_ong">Ex.: @twitter.ong</string>
     <string name="facebook">facebook</string>
+    <string name="sua_senha">SUA SENHA</string>
+    <string name="envie_sua_foto">envie sua foto</string>
+    <string name="adicione_o_pet">ADICIONE O PET</string>
+    <string name="adicione_a_foto_do_animal">ADICIONE A FOTO DO ANIMAL</string>
+    <string name="icone_cam">ícone de uma câmera para adicionar imagem animal</string>
+    <string name="animal_perdido">Animal perdido</string>
+    <string name="animal_para_adocao">Animal para adoção</string>
+    <string name="animal_encontrado_resgatado">Animal encontrado/resgatado</string>
+    <string name="adicionar">adicionar</string>
 </resources>

@@ -66,7 +66,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txtEdtSenha" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editar_senha_edt"
+            android:id="@+id/edt_senhaAntiga"
             android:layout_width="348dp"
             android:layout_height="48dp"
             android:background="@drawable/edt_txt_design"
@@ -100,7 +100,7 @@
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editar_senha_edt" />
+            app:layout_constraintTop_toBottomOf="@+id/edt_senhaAntiga" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edt_novaSenha"

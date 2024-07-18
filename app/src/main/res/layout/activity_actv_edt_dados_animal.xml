@@ -19,15 +19,6 @@
         android:src="@drawable/logo_alternativa"
         android:contentDescription="@string/logo_alternativa_do_miaudote" />
 
-    <SearchView
-        android:id="@+id/search_view"
-        android:layout_width="match_parent"
-        android:layout_height="32dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:background="@drawable/edt_txt_design" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -50,6 +41,7 @@
                     android:id="@+id/btnEdtDadosAnimal_back"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
+                    android:layout_marginStart="24dp"
 
                     android:contentDescription="@string/btn_pagAnt"
                     android:background="@android:color/transparent"
@@ -131,40 +123,6 @@
                         app:layout_constraintEnd_toEndOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <!-- Box das informações laterais direitas -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginStart="10dp"
-
-                        android:text="@string/situation_do_animal"
-                        android:textAllCaps="true"
-                        android:textSize="14sp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="40dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginStart="10dp"
-
-                        android:text="@string/foto_em_branco"
-                        android:textAllCaps="true"
-                        android:textSize="11sp"
-                        android:textColor="@color/vermelho01"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
 
             </LinearLayout>
 
