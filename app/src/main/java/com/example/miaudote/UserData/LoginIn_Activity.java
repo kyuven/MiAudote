@@ -109,9 +109,7 @@ public class LoginIn_Activity extends AppCompatActivity {
         // Usuário não cadastrado
         btnCadastrar = findViewById(R.id.btn_semCadastro);
         btnCadastrar.setOnClickListener(v -> {
-            Intent intent = new Intent(LoginIn_Activity.this, Register_Activity.class);
-            startActivity(intent);
-            finish();
+
         });
 
         btnGoogle.setOnClickListener(new View.OnClickListener() {

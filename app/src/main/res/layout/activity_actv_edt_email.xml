@@ -65,16 +65,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtEdtEmail" />
 
-        <com.google.android.material.textfield.TextInputEditText
+        <TextView
             android:id="@+id/edt_emailAntigo"
             android:layout_width="348dp"
             android:layout_height="48dp"
             android:background="@drawable/edt_txt_design"
 
-            android:hint="@string/email_hint"
             android:imeOptions="actionNext"
             android:inputType="textEmailAddress"
             android:padding="10dp"
+            android:gravity="center_vertical"
             android:textColor="#D86A6A6A"
             android:textSize="12sp"
 
@@ -101,7 +101,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edt_emailAntigo" />
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:id="@+id/edt_emailSenha"
             android:layout_width="348dp"
             android:layout_height="48dp"
@@ -109,7 +109,7 @@
 
             android:hint="@string/senha_hint"
             android:imeOptions="actionNext"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             android:padding="10dp"
             android:textColor="#D86A6A6A"
             android:textSize="12sp"
@@ -149,7 +149,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/viewEdtEmail" />
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:id="@+id/edt_novoEmail"
             android:layout_width="348dp"
             android:layout_height="48dp"
@@ -189,15 +189,14 @@
             android:id="@+id/btnAttEmail"
             android:layout_width="164dp"
             android:layout_height="48dp"
-            android:layout_gravity="end"
+            android:layout_marginTop="32dp"
             android:background="@drawable/btn_perfil"
 
             android:text="@string/atualizar"
+            android:textColor="@color/white"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:textColor="@color/white"
 
-            android:layout_marginTop="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_aviso" />
