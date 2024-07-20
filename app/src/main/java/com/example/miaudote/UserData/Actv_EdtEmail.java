@@ -83,9 +83,9 @@ public class Actv_EdtEmail extends AppCompatActivity {
                                     Toast.makeText(Actv_EdtEmail.this, "Insira um E-Mail válido.", Toast.LENGTH_SHORT).show();
                                     edtNovoEmail.requestFocus();
                                 } else if(!Patterns.EMAIL_ADDRESS.matcher(strNovoEmail).matches()) {
-                                    Toast.makeText(Actv_EdtEmail.this, "Caralho nao pode ser o mesmo email", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Actv_EdtEmail.this, "O novo email não pode ser igual ao anterior.", Toast.LENGTH_SHORT).show();
                                 } else if(strEmailAntigo.matches(strNovoEmail)) {
-                                    Toast.makeText(Actv_EdtEmail.this, "NÃO PODE SER IGUAL BUCETA", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Actv_EdtEmail.this, "O novo email não pode ser igual ao anterior.", Toast.LENGTH_SHORT).show();
                                 } else {
                                     updateEmail(firebaseUser);
                                 }
@@ -109,7 +109,7 @@ public class Actv_EdtEmail extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isComplete()) {
                     firebaseUser.sendEmailVerification();
-                    Toast.makeText(Actv_EdtEmail.this, "Já no email po", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Actv_EdtEmail.this, "O email de verificação já foi enviado!", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(Actv_EdtEmail.this, LoginIn_Activity.class);
                     startActivity(i);
                     finish();
