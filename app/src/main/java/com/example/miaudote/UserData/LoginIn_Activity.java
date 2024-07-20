@@ -134,6 +134,7 @@ public class LoginIn_Activity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()){
+                                        //leonardo da a bundinha
                                         startActivity(new Intent(LoginIn_Activity.this, Main_Page.class));
                                     }else {
                                         String error = task.getException().getMessage();
