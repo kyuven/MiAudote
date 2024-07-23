@@ -109,6 +109,9 @@ public class LoginIn_Activity extends AppCompatActivity {
         // Usuário não cadastrado
         btnCadastrar = findViewById(R.id.btn_semCadastro);
         btnCadastrar.setOnClickListener(v -> {
+            Intent i = new Intent(LoginIn_Activity.this, Register_Activity.class);
+            startActivity(i);
+            finish();
 
         });
 
@@ -134,7 +137,6 @@ public class LoginIn_Activity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()){
-                                        //leonardo da a bundinha
                                         startActivity(new Intent(LoginIn_Activity.this, Main_Page.class));
                                     }else {
                                         String error = task.getException().getMessage();

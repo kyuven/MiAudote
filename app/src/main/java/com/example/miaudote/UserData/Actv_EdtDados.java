@@ -16,10 +16,14 @@ import com.example.miaudote.Fragments.Perfil_Fragment;
 import com.example.miaudote.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Actv_EdtDados extends AppCompatActivity {
 
     FirebaseAuth mAuth;
+    FirebaseUser firebaseUser;
+    ImageView edt_fotoPerfil;
+    TextInputEditText edt_novoNome;
     AppCompatButton btnUploadFoto, btnAtualizarDados;
 
     @Override
@@ -28,6 +32,7 @@ public class Actv_EdtDados extends AppCompatActivity {
         setContentView(R.layout.activity_actv_edt_dados);
 
         mAuth = FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
 
         TextInputEditText edtNovoNome = findViewById(R.id.edt_novoNome);
         ImageView fotoPerfil = findViewById(R.id.edt_fotoPerfil);

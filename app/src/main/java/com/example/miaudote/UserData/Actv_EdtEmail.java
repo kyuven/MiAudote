@@ -46,6 +46,10 @@ public class Actv_EdtEmail extends AppCompatActivity {
         edtNovoEmail = findViewById(R.id.edt_novoEmail);
         edtSenha = findViewById(R.id.edt_emailSenha);
 
+        // Puxar o email antigo do usuário
+        strEmailAntigo = firebaseUser.getEmail();
+        txtEmailAntigo.setText(strEmailAntigo);
+
         btnAttEmail = findViewById(R.id.btnAttEmail);
         AppCompatImageButton btnBack = findViewById(R.id.btnEdtEmail_back);
 

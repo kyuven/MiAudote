@@ -71,18 +71,18 @@
             android:id="@+id/edt_senhaAntiga"
             android:layout_width="348dp"
             android:layout_height="48dp"
-            android:background="@drawable/edt_txt_design"
+            android:layout_marginStart="24dp"
 
-            android:hint="@string/email_hint"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/edt_txt_design"
+            android:hint="Digite sua senha atual"
             android:imeOptions="actionNext"
             android:inputType="textEmailAddress"
+
             android:padding="10dp"
             android:textColor="#D86A6A6A"
             android:textSize="12sp"
-
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_editar_senha" />
@@ -108,18 +108,18 @@
             android:id="@+id/edt_novaSenha"
             android:layout_width="348dp"
             android:layout_height="48dp"
-            android:background="@drawable/edt_txt_design"
+            android:layout_marginStart="24dp"
 
-            android:hint="@string/email_hint"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/edt_txt_design"
+            android:hint="Digite sua nova senha"
             android:imeOptions="actionNext"
             android:inputType="textEmailAddress"
+
             android:padding="10dp"
             android:textColor="#D86A6A6A"
             android:textSize="12sp"
-
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_nova_senha" />

@@ -42,8 +42,18 @@ public class Actv_EdtSenha extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();
 
+        btnAttSenha = findViewById(R.id.btnAttSenha);
         edtSenhaAntiga = findViewById(R.id.edt_senhaAntiga);
         edtNovaSenha = findViewById(R.id.edt_novaSenha);
+
+        if (firebaseUser.equals("")){
+            Toast.makeText(Actv_EdtSenha.this, "Alguma coisa deu errado!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(Actv_EdtSenha.this, Perfil_Fragment.class);
+            startActivity(intent);
+            finish();
+        } else {
+            reAuthenticate(firebaseUser);
+        }
 
         AppCompatImageButton btnBack = findViewById(R.id.btnEdtSenha_back);
         btnBack.setOnClickListener(v -> {
@@ -51,43 +61,28 @@ public class Actv_EdtSenha extends AppCompatActivity {
             startActivity(i);
             finish();
         });
-
-        if (firebaseUser.equals("")) {
-            Toast.makeText(Actv_EdtSenha.this, "Algo deu errado.", Toast.LENGTH_LONG);
-        } else {
-            reAuthenticated(firebaseUser);
-        }
-
     }
 
-    private void reAuthenticated(FirebaseUser firebaseUser) {
+    private void reAuthenticate(FirebaseUser firebaseUser) {
         btnAttSenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 strSenhaAntiga = edtSenhaAntiga.getText().toString();
-
-                if(TextUtils.isEmpty(strSenhaAntiga)) {
-                    Toast.makeText(Actv_EdtSenha.this, "Insira sua senha para continuar.", Toast.LENGTH_LONG);
+                if(TextUtils.isEmpty(strSenhaAntiga)){
+                    Toast.makeText(Actv_EdtSenha.this, "É necessário digitar sua senha", Toast.LENGTH_SHORT).show();
+                    edtSenhaAntiga.setError("Por favor digite sua senha atual");
                     edtSenhaAntiga.requestFocus();
                 } else {
-                    AuthCredential authCredential = EmailAuthProvider.getCredential(firebaseUser.getEmail(), strSenhaAntiga);
-                    firebaseUser.reauthenticate(authCredential).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    AuthCredential credential = EmailAuthProvider.getCredential(firebaseUser.getEmail(), strSenhaAntiga);
+                    firebaseUser.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()) {
-                                strSenhaNova = edtNovaSenha.getText().toString();
-                                if(TextUtils.isEmpty(strSenhaNova)) {
-                                    Toast.makeText(Actv_EdtSenha.this, "Insira uma senha válida.", Toast.LENGTH_SHORT).show();
-                                    edtNovaSenha.requestFocus();
-                                } else if (strSenhaAntiga.matches(strSenhaNova)){
-                                    Toast.makeText(Actv_EdtSenha.this, "A nova senha não pode ser igual ao anterior.", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    mudarSenha(firebaseUser);
-                                }
+                                mudarSenha(firebaseUser);
                             } else {
                                 try {
                                     throw task.getException();
-                                } catch (Exception e) {
+                                } catch (Exception e){
                                     Toast.makeText(Actv_EdtSenha.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -99,24 +94,35 @@ public class Actv_EdtSenha extends AppCompatActivity {
     }
 
     private void mudarSenha(FirebaseUser firebaseUser) {
-        String  strSenhaNova = edtNovaSenha.getText().toString();
-        firebaseUser.updatePassword(strSenhaNova).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
-                    Toast.makeText(Actv_EdtSenha.this, "A senha foi alterada com sucesso!", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(Actv_EdtSenha.this, LoginIn_Activity.class);
-                    startActivity(i);
-                    finish();
-                } else {
-                    try {
-                        throw task.getException();
-                    } catch (Exception e) {
-                        Toast.makeText(Actv_EdtSenha.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        strSenhaNova = edtNovaSenha.getText().toString();
+        strSenhaAntiga = edtSenhaAntiga.getText().toString();
+
+        if (TextUtils.isEmpty(strSenhaNova)){
+            Toast.makeText(Actv_EdtSenha.this, "É necessário digitar uma nova senha", Toast.LENGTH_SHORT).show();
+            edtNovaSenha.setError("Por favor, digite sua nova senha!");
+            edtNovaSenha.requestFocus();
+        } else if (strSenhaAntiga.matches(strSenhaNova)) {
+            Toast.makeText(Actv_EdtSenha.this, "A nova senha não pode ser igual a anterior.", Toast.LENGTH_SHORT).show();
+            edtNovaSenha.setError("Por favor, digite uma senha diferente que a anterior!");
+            edtNovaSenha.requestFocus();
+        } else {
+            firebaseUser.updatePassword(strSenhaNova).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()){
+                        Toast.makeText(Actv_EdtSenha.this, "A senha foi atualizada com sucesso!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Actv_EdtSenha.this, Perfil_Fragment.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        try {
+                            throw task.getException();
+                        } catch (Exception e){
+                            Toast.makeText(Actv_EdtSenha.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
-            }
-        });
-
+            });
+        }
     }
 }
