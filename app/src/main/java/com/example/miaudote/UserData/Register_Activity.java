@@ -79,8 +79,8 @@ public class Register_Activity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            userModel.setId(auth.getUid());
-                            userModel.salvar();
+                            userModel.setId(auth.getUid()); // pega o ID de usuário e seta no ID
+                            userModel.salvar(); // SALVA OS DADOS
                             startActivity(new Intent(Register_Activity.this, Cellphone_Activity.class));
                         }else {
                             String error = task.getException().getMessage();
