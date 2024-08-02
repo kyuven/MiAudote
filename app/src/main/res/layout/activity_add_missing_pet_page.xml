@@ -72,7 +72,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="35dp"
+                android:layout_marginTop="24dp"
 
                 android:text="@string/adicione_a_foto_do_animal"
                 android:textSize="14sp"
@@ -91,7 +91,7 @@
                     android:layout_marginStart="15dp">
 
                     <ImageView
-                        android:id="@+id/Add"
+                        android:id="@+id/addImgAnimal"
                         android:layout_width="130dp"
                         android:layout_height="130dp"
                         android:src="@color/black"
@@ -137,6 +137,7 @@
                         android:textStyle="bold" />
 
                     <RadioGroup
+                        android:id="@+id/radioGroup"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="6dp">
@@ -147,7 +148,9 @@
 
                             android:text="@string/animal_perdido"
                             android:textColor="@color/black"
-                            android:textSize="12sp" />
+                            android:textSize="12sp"
+
+                            android:id="@+id/animalPerdido" />
 
                         <RadioButton
                             android:layout_width="wrap_content"
@@ -155,7 +158,9 @@
 
                             android:text="@string/animal_para_adocao"
                             android:textColor="@color/black"
-                            android:textSize="12sp" />
+                            android:textSize="12sp"
+
+                            android:id="@+id/animalAdocao" />
 
                         <RadioButton
                             android:layout_width="wrap_content"
@@ -163,7 +168,9 @@
 
                             android:text="@string/animal_encontrado_resgatado"
                             android:textColor="@color/black"
-                            android:textSize="12sp" />
+                            android:textSize="12sp"
+
+                            android:id="@+id/animalResgatado" />
 
                     </RadioGroup>
 
@@ -218,7 +225,7 @@
                 android:textSize="12sp" />
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtAddAnimal_nomeAnimal"
+                android:id="@+id/edtAddAnimal_nome"
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
                 android:layout_marginStart="30dp"
@@ -232,36 +239,6 @@
                 android:textColor="#D86A6A6A"
                 android:padding="10dp" />
             <!-- NOME ANIMAL -->
-
-            <!-- IDADE ANIMAL -->
-            <TextView
-                android:id="@+id/txtAddAnimalIdade"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginBottom="8dp"
-
-                android:text="@string/idade"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtAddAnimalIdade"
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/edt_txt_design"
-                android:inputType="number"
-                android:maxLength="2"
-
-                android:hint="@string/insira_a_idade_do_animal"
-                android:textSize="12sp"
-                android:textColor="#D86A6A6A"
-                android:padding="10dp" />
-            <!-- IDADE ANIMAL -->
 
             <!-- ESPÉCIE ANIMAL -->
             <TextView
@@ -353,6 +330,33 @@
                 android:textColor="@color/marrom07"
                 android:textStyle="bold" />
 
+            <!-- CEP -->
+            <TextView
+                android:id="@+id/txtAddAnimalCep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="10dp"
+
+                android:text="CEP"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textAllCaps="true" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtAddAnimal_cep"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
+                android:padding="10dp"
+                android:background="@drawable/edt_txt_design"
+                android:inputType="textPersonName" />
+            <!-- CEP -->
+
             <!-- Logradouro -->
             <TextView
                 android:id="@+id/txtAddAnimalLogradouro"
@@ -369,12 +373,13 @@
                 android:textAllCaps="true" />
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtAddAnimalLogradouro"
+                android:id="@+id/edtAddAnimal_logradouro"
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="20dp"
+                android:padding="10dp"
                 android:background="@drawable/edt_txt_design"
                 android:inputType="textPersonName" />
             <!-- Logradouro -->
@@ -394,12 +399,13 @@
                 android:textAllCaps="true" />
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtAddAnimalBairro"
+                android:id="@+id/edtAddAnimal_bairro"
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="20dp"
+                android:padding="10dp"
                 android:background="@drawable/edt_txt_design"
                 android:inputType="textPersonName" />
             <!-- Bairro -->
@@ -449,12 +455,13 @@
                 android:textAllCaps="true" />
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtAddAnimalCidade"
+                android:id="@+id/edtAddAnimal_cidade"
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="20dp"
+                android:padding="10dp"
                 android:background="@drawable/edt_txt_design"
                 android:inputType="textPersonName" />
             <!-- Cidade -->

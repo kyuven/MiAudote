@@ -18,7 +18,7 @@
         android:src="@drawable/logo_alternativa"
         android:contentDescription="@string/logo_alternativa_do_miaudote" />
 
-    <SearchView
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="32dp"

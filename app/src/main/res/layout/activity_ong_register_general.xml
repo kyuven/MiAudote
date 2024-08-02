@@ -16,12 +16,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnOngGeneralBack"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="24dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/baseline_chevron_left_24"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/textViewSuaOng"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
-            android:layout_marginEnd="244dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="32dp"
 
             android:text="sua ong"
             android:textAllCaps="true"
@@ -29,16 +41,15 @@
             android:textSize="24sp"
             android:textStyle="bold"
 
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/btnOngGeneralBack" />
 
         <TextView
             android:id="@+id/textViewResumo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:layout_marginEnd="140dp"
+            android:layout_marginStart="32dp"
 
             android:text="@string/aviso_info_ong"
             android:textAllCaps="false"
@@ -46,7 +57,6 @@
             android:textSize="14sp"
             android:textStyle="bold"
 
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewSuaOng" />
 
@@ -55,32 +65,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
-            android:layout_marginEnd="308dp"
+            android:layout_marginStart="32dp"
 
             android:text="@string/nome"
             android:textColor="@color/black"
             android:textSize="14sp"
             android:textStyle="bold"
 
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewResumo" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtNomeONG"
-            android:layout_width="348dp"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
-
             android:layout_marginTop="10dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="32dp"
+
             android:background="@drawable/edt_txt_design"
             android:hint="INSIRA O NOME DA ONG"
             android:inputType="text"
-            android:padding="10dp"
-
+            android:padding="12dp"
             android:textColor="#D86A6A6A"
             android:textSize="12sp"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtNomeONG" />
@@ -104,19 +113,20 @@
             android:id="@+id/edtDescONG"
             android:layout_width="match_parent"
             android:layout_height="180dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="32dp"
 
             android:background="@drawable/edt_txt_design"
             android:gravity="start"
             android:hint="FAÇA UMA BREVE DESCRIÇÃO DA SUA ONG, CONTANDO \nA HISTÓRIA E ATIVIDADES REALIZADAS."
             android:inputType="text"
-            android:padding="10dp"
             android:maxLength="240"
+            android:padding="12dp"
             android:textColor="#D86A6A6A"
             android:textSize="12sp"
 
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtDescONG" />
 
@@ -125,7 +135,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="250dp"
+            android:layout_marginStart="32dp"
 
             android:text="@string/endereco"
             android:textAllCaps="true"
@@ -133,7 +143,6 @@
             android:textSize="20sp"
             android:textStyle="bold"
 
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtDescONG" />
 
@@ -143,14 +152,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="334dp"
+            android:layout_marginStart="32dp"
 
             android:text="@string/uf"
             android:textColor="@color/black"
             android:textSize="12sp"
             android:textStyle="bold"
 
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -181,7 +189,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="304dp"
+            android:layout_marginStart="32dp"
 
             android:text="@string/cidade"
             android:textAllCaps="true"
@@ -189,18 +197,19 @@
             android:textSize="12sp"
             android:textStyle="bold"
 
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtDadosOng_cidade"
-            android:layout_width="348dp"
+            android:id="@+id/edtOngCidade"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="24dp"
 
             android:background="@drawable/edt_txt_design"
-            android:inputType="textPersonName"
+            android:inputType="text"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -213,7 +222,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="268dp"
+            android:layout_marginStart="32dp"
 
             android:text="@string/logradouro"
             android:textAllCaps="true"
@@ -221,18 +230,19 @@
             android:textSize="12sp"
             android:textStyle="bold"
 
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtDadosOng_cidade" />
+            app:layout_constraintTop_toBottomOf="@+id/edtOngCidade" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtDadosOng_logradouro"
-            android:layout_width="348dp"
+            android:id="@+id/edtOngLogradouro"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="24dp"
 
             android:background="@drawable/edt_txt_design"
-            android:inputType="textPersonName"
+            android:inputType="text"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -244,7 +254,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="304dp"
+            android:layout_marginStart="32dp"
 
             android:text="@string/bairro"
             android:textAllCaps="true"
@@ -252,25 +262,27 @@
             android:textSize="12sp"
             android:textStyle="bold"
 
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtDadosOng_logradouro" />
+            app:layout_constraintTop_toBottomOf="@+id/edtOngLogradouro" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtDadosOng_bairro"
-            android:layout_width="348dp"
+            android:id="@+id/edtOngBairro"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="24dp"
 
+            android:padding="12dp"
             android:background="@drawable/edt_txt_design"
-            android:inputType="textPersonName"
+            android:inputType="text"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-        <ImageButton
-            android:id="@+id/fab_next_confirmar"
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/fab_nextCtt_confirmar"
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:layout_marginEnd="30dp"
@@ -284,7 +296,7 @@
             android:src="@drawable/baseline_keyboard_arrow_right_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtDadosOng_bairro" />
+            app:layout_constraintTop_toBottomOf="@+id/edtOngBairro" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
