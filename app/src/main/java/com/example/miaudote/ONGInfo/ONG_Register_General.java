@@ -27,6 +27,7 @@ public class ONG_Register_General extends AppCompatActivity {
 
     // WIDGETS
     TextInputEditText edtNomeOng, edtDescOng, edtCidadeOng, edtBairroOng, edtLograOng;
+    String nomeOng, descOng, cidadeOng, bairroOng, logradouroOng;
     AppCompatImageButton btnCttOng, btnBack;
 
     @Override
@@ -40,11 +41,17 @@ public class ONG_Register_General extends AppCompatActivity {
         edtBairroOng = findViewById(R.id.edtOngBairro);
         edtLograOng = findViewById(R.id.edtOngLogradouro);
 
+        nomeOng = edtNomeOng.getText().toString();
+        descOng = edtDescOng.getText().toString();
+        cidadeOng = edtCidadeOng.getText().toString();
+        bairroOng = edtBairroOng.getText().toString();
+        logradouroOng = edtLograOng.getText().toString();
+
         btnCttOng = findViewById(R.id.fab_nextCtt_confirmar);
         btnBack = findViewById(R.id.btnOngGeneralBack);
 
         btnCttOng.setOnClickListener(v -> {
-            saveDataOng();
+            intentDataOng();
         });
 
         btnBack.setOnClickListener(v -> {
@@ -53,26 +60,15 @@ public class ONG_Register_General extends AppCompatActivity {
 
     }
 
-    private void saveDataOng() {
-        Map<String, String> map = new HashMap<>();
-        map.put("nomeOng", edtNomeOng.getText().toString());
-        map.put("descOng", edtDescOng.getText().toString());
-        map.put("cidadeOng", edtCidadeOng.getText().toString());
-        map.put("bairroOng", edtBairroOng.getText().toString());
-        map.put("lograOng", edtLograOng.getText().toString());
+    private void intentDataOng() {
 
-        FirebaseDatabase.getInstance().getReference().child("ONG para adicionar").push()
-                .setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        Intent i = new Intent(ONG_Register_General.this, ONG_Register_Contact.class);
-                        startActivity(i);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(ONG_Register_General.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+        Intent i = new Intent(ONG_Register_General.this, ONG_Register_Contact.class);
+        i.putExtra("nomeOng", nomeOng);
+        i.putExtra("descOng", descOng);
+        i.putExtra("cidadeOng", cidadeOng);
+        i.putExtra("bairroOng", bairroOng);
+        i.putExtra("logradouroOng", logradouroOng);
+        startActivity(i);
+
     }
 }
