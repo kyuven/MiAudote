@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.miaudote.UserData.Actv_EdtDados;
 import com.example.miaudote.UserData.Actv_EdtEmail;
@@ -27,16 +28,23 @@ import com.example.miaudote.UserData.LoginIn_Activity;
 import com.example.miaudote.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Perfil_Fragment extends Fragment {
 
     private FirebaseAuth auth;
-    TextView txtDeleteAcc;
+    TextView txtDeleteAcc, txtPerfil_nomeUser, txtPerfil_emailUser;
     LinearLayout linearlyt_dados, linearlyt_email, linearlyt_senha, linearlyt_delete;
     AppCompatButton btnMudarPerfil, btnTxtLogOut, btnCancelLogout, btnConfirmLogout;
     AppCompatImageButton btnTermos, btnSobreNos, btnIconLogOut, btn_backEdtDados;
+    String name, email;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,13 +53,23 @@ public class Perfil_Fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_perfil, container, false);
 
         auth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = auth.getCurrentUser();
 
-        btnMudarPerfil = view.findViewById(R.id.btnPerfil_mudarPerfil);
-        btnTxtLogOut = view.findViewById(R.id.btnPerfil_txtLogOut);
+        txtPerfil_nomeUser = view.findViewById(R.id.txtPerfil_nomeUser);
+        txtPerfil_emailUser = view.findViewById(R.id.txtPerfil_emailUser);
 
         btnTermos = view.findViewById(R.id.btnPerfil_termos);
         btnSobreNos = view.findViewById(R.id.btnPerfil_sobreNos);
         btnIconLogOut = view.findViewById(R.id.btnPerfil_iconLogOut);
+
+        btnMudarPerfil = view.findViewById(R.id.btnPerfil_mudarPerfil);
+        btnTxtLogOut = view.findViewById(R.id.btnPerfil_txtLogOut);
+
+        if (firebaseUser == null){
+            Toast.makeText(getActivity(), "Alguma coisa deu errado!", Toast.LENGTH_SHORT).show();
+        } else {
+            showUserPerfil(firebaseUser);
+        }
 
         btnTxtLogOut.setOnClickListener(v -> {
 
@@ -172,5 +190,26 @@ public class Perfil_Fragment extends Fragment {
             });
         });
         return view;
+    }
+
+    private void showUserPerfil(FirebaseUser firebaseUser) {
+        String userID = firebaseUser.getUid();
+
+        DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Usuários registrados");
+        referenceProfile.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                name = firebaseUser.getDisplayName();
+                email = firebaseUser.getEmail();
+
+                txtPerfil_nomeUser.setText(name);
+                txtPerfil_emailUser.setText(email);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getActivity(), "Alguma coisa deu errado!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
