@@ -54,18 +54,18 @@ public class ONG_Register_Contact extends AppCompatActivity {
 
     public void saveDataContato() {
 
-        nomeOng = extras.getString("nomeOng");
-        descOng = extras.getString("descOng");
-        cidadeOng = extras.getString("cidadeOng");
-        bairroOng = extras.getString("bairroOng");
-        logradouroOng = extras.getString("logradouroOng");
+        // nomeOng = extras.getString("nomeOng");
+        // descOng = extras.getString("descOng");
+        // cidadeOng = extras.getString("cidadeOng");
+        // bairroOng = extras.getString("bairroOng");
+        // logradouroOng = extras.getString("logradouroOng");
 
         HashMap<String, String> map = new HashMap<>();
-        map.put("nomeOng", nomeOng);
-        map.put("descOng", descOng);
-        map.put("cidadeOng", cidadeOng);
-        map.put("bairroOng", bairroOng);
-        map.put("lograOng", logradouroOng);
+        // map.put("nomeOng", nomeOng);
+        // map.put("descOng", descOng);
+        // map.put("cidadeOng", cidadeOng);
+        // map.put("bairroOng", bairroOng);
+        // map.put("lograOng", logradouroOng);
         map.put("telOng", edtTelOng.getText().toString());
         map.put("instaOng", edtInstaOng.getText().toString());
         map.put("emailOng", edtEmailOng.getText().toString());

@@ -6,10 +6,9 @@ public class OngModel {
 
     }
 
-    public OngModel(String idOng, String nomeOng, String descOng, String cidadeOng,
+    public OngModel(String nomeOng, String descOng, String cidadeOng,
                     String bairroOng, String lograOng, String telOng, String instaOng,
                     String emailOng, String twitterOng, String faceOng) {
-        this.idOng = idOng;
         this.nomeOng = nomeOng;
         this.descOng = descOng;
         this.cidadeOng = cidadeOng;
@@ -20,14 +19,6 @@ public class OngModel {
         this.emailOng = emailOng;
         this.twitterOng = twitterOng;
         this.faceOng = faceOng;
-    }
-
-    public String getIdOng() {
-        return idOng;
-    }
-
-    public void setIdOng(String idOng) {
-        this.idOng = idOng;
     }
 
     public String getNomeOng() {
@@ -110,7 +101,7 @@ public class OngModel {
         this.faceOng = faceOng;
     }
 
-    String idOng, nomeOng, descOng, cidadeOng, bairroOng, lograOng,
+    String nomeOng, descOng, cidadeOng, bairroOng, lograOng,
         telOng, instaOng, emailOng, twitterOng, faceOng; // add imagem
 
 }

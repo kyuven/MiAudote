@@ -195,7 +195,7 @@ public class Perfil_Fragment extends Fragment {
     private void showUserPerfil(FirebaseUser firebaseUser) {
         String userID = firebaseUser.getUid();
 
-        DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Usuários registrados");
+        DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("usuarios");
         referenceProfile.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
