@@ -41,12 +41,6 @@ public class ONG_Register_General extends AppCompatActivity {
         edtBairroOng = findViewById(R.id.edtOngBairro);
         edtLograOng = findViewById(R.id.edtOngLogradouro);
 
-        // nomeOng = edtNomeOng.getText().toString();
-        // descOng = edtDescOng.getText().toString();
-        // cidadeOng = edtCidadeOng.getText().toString();
-        // bairroOng = edtBairroOng.getText().toString();
-        // logradouroOng = edtLograOng.getText().toString();
-
         btnCttOng = findViewById(R.id.fab_nextCtt_confirmar);
         btnBack = findViewById(R.id.btnOngGeneralBack);
 
@@ -64,12 +58,18 @@ public class ONG_Register_General extends AppCompatActivity {
     }
 
     private void intentDataOng() {
+        nomeOng = edtNomeOng.getText().toString();
+        descOng = edtDescOng.getText().toString();
+        cidadeOng = edtCidadeOng.getText().toString();
+        bairroOng = edtBairroOng.getText().toString();
+        logradouroOng = edtLograOng.getText().toString();
+
         Intent i = new Intent(ONG_Register_General.this, ONG_Register_Contact.class);
-        // i.putExtra("nomeOng", nomeOng);
-        // i.putExtra("descOng", descOng);
-        // i.putExtra("cidadeOng", cidadeOng);
-        // i.putExtra("bairroOng", bairroOng);
-        // i.putExtra("logradouroOng", logradouroOng);
+        i.putExtra("nomeOngE", nomeOng);
+        i.putExtra("descOngE", descOng);
+        i.putExtra("cidadeOngE", cidadeOng);
+        i.putExtra("bairroOngE", bairroOng);
+        i.putExtra("logradouroOngE", logradouroOng);
         startActivity(i);
 
     }

@@ -168,9 +168,8 @@
             android:layout_width="160dp"
             android:layout_height="40dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="190dp"
+            android:layout_marginStart="32dp"
             android:hint="@string/selecione"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView10">
 
@@ -208,8 +207,11 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="24dp"
 
+            android:padding="12dp"
             android:background="@drawable/edt_txt_design"
             android:inputType="text"
+            android:textSize="12sp"
+            android:textColor="#D86A6A6A"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -241,8 +243,10 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="24dp"
 
+            android:padding="12dp"
             android:background="@drawable/edt_txt_design"
             android:inputType="text"
+            android:textSize="12sp"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -276,6 +280,8 @@
             android:padding="12dp"
             android:background="@drawable/edt_txt_design"
             android:inputType="text"
+            android:textSize="12sp"
+            android:textColor="#D86A6A6A"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
