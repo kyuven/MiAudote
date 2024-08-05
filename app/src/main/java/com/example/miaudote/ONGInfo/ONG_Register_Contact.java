@@ -85,6 +85,6 @@ public class ONG_Register_Contact extends AppCompatActivity {
                         Toast.makeText(ONG_Register_Contact.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
-        }
-
     }
+
+}

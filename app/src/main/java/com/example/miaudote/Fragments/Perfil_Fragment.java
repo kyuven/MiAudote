@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.miaudote.Models.UserModel;
 import com.example.miaudote.UserData.Actv_EdtDados;
 import com.example.miaudote.UserData.Actv_EdtEmail;
 import com.example.miaudote.UserData.Actv_EdtSenha;
@@ -44,7 +45,7 @@ public class Perfil_Fragment extends Fragment {
     LinearLayout linearlyt_dados, linearlyt_email, linearlyt_senha, linearlyt_delete;
     AppCompatButton btnMudarPerfil, btnTxtLogOut, btnCancelLogout, btnConfirmLogout;
     AppCompatImageButton btnTermos, btnSobreNos, btnIconLogOut, btn_backEdtDados;
-    String name, email;
+    String nome, email;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -193,17 +194,18 @@ public class Perfil_Fragment extends Fragment {
     }
 
     private void showUserPerfil(FirebaseUser firebaseUser) {
+
         String userID = firebaseUser.getUid();
 
         DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("usuarios");
         referenceProfile.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                name = firebaseUser.getDisplayName();
-                email = firebaseUser.getEmail();
-
-                txtPerfil_nomeUser.setText(name);
-                txtPerfil_emailUser.setText(email);
+                UserModel model = snapshot.getValue(UserModel.class);
+                if(model != null) {
+                    txtPerfil_nomeUser.setText(model.getNome());
+                    txtPerfil_emailUser.setText(model.getEmail());
+                }
             }
 
             @Override
@@ -211,5 +213,7 @@ public class Perfil_Fragment extends Fragment {
                 Toast.makeText(getActivity(), "Alguma coisa deu errado!", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
+
 }

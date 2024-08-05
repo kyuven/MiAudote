@@ -53,6 +53,6 @@ public class UserModel {
 
     public void salvar(){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-        reference.child("usuarios").child(getEmail()).setValue(this);
+        reference.child("usuarios").child(getId()).setValue(this);
     }
 }

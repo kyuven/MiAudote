@@ -25,11 +25,14 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Actv_EdtSenha extends AppCompatActivity {
 
     FirebaseAuth mAuth;
     FirebaseUser firebaseUser;
+    DatabaseReference reference;
     TextInputEditText edtSenhaAntiga, edtNovaSenha;
     String strSenhaAntiga, strSenhaNova;
     AppCompatButton btnAttSenha;
@@ -39,6 +42,7 @@ public class Actv_EdtSenha extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actv_edt_senha);
 
+        reference = FirebaseDatabase.getInstance().getReference("usuarios");
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();
 
@@ -110,6 +114,8 @@ public class Actv_EdtSenha extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()){
+                        String userID = firebaseUser.getUid();
+                        reference.child(userID).child("senha").setValue(strSenhaNova);
                         Toast.makeText(Actv_EdtSenha.this, "A senha foi atualizada com sucesso!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(Actv_EdtSenha.this, Perfil_Fragment.class);
                         startActivity(intent);

@@ -24,11 +24,13 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 
 public class Actv_EdtEmail extends AppCompatActivity {
 
     FirebaseAuth mAtuh;
     FirebaseUser firebaseUser;
+    DatabaseReference reference;
     EditText edtSenha, edtNovoEmail;
     String strNovoEmail, strEmailAntigo, strSenha;
     AppCompatButton btnAttEmail;

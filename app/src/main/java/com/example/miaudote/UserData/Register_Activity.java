@@ -83,6 +83,7 @@ public class Register_Activity extends AppCompatActivity {
                             userModel.setId(auth.getUid()); // pega o ID de usuário e seta no ID
                             userModel.salvar(); // SALVA OS DADOS
                             Intent i = new Intent(Register_Activity.this, Cellphone_Activity.class);
+                            startActivity(i);
                         }else {
                             String error = task.getException().getMessage();
                             Toast.makeText(Register_Activity.this, ""+error, Toast.LENGTH_SHORT).show();
