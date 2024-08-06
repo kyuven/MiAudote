@@ -211,4 +211,11 @@
     <string name="animal_para_adocao">Animal para adoção</string>
     <string name="animal_encontrado_resgatado">Animal encontrado/resgatado</string>
     <string name="adicionar">adicionar</string>
+    <string name="botao_voltar">botão para voltar a página anterior</string>
+    <string name="sua_ong">sua ong</string>
+    <string name="insira_nome_ong">INSIRA O NOME DA ONG</string>
+    <string name="desc">DESCRIÇÃO</string>
+    <string name="hint_descOng">FAÇA UMA BREVE DESCRIÇÃO DA SUA ONG, CONTANDO \nA HISTÓRIA E ATIVIDADES REALIZADAS.</string>
+    <string name="img_animal_adocao">imagem do animal para adoção</string>
+    <string name="img_animal_perdido">imagem do animal perdido</string>
 </resources>

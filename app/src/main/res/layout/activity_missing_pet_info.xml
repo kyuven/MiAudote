@@ -18,22 +18,270 @@
         android:src="@drawable/logo_alternativa"
         android:contentDescription="@string/logo_alternativa_do_miaudote" />
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search_view"
-        android:layout_width="match_parent"
-        android:layout_height="32dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:background="@drawable/edt_txt_design" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scrollbars="none"
         android:overScrollMode="never"
-        android:scrollbars="none">
+        android:fillViewport="true">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/btnAdpt_infoAnimal"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/baseline_chevron_left_24"
+
+                    android:layout_marginStart="15dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imgAdptInfo_fotoAnimal"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+
+                    android:background="@drawable/edt_txt_design"
+                    android:contentDescription="@string/img_animal_perdido"
+                    android:src="@color/black"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/txtAdptInfo_nomeAnimal"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+
+                android:text="@string/nome_do_animal"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#2B2B2B"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <!-- Espécie do animal -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="30dp"
+
+                    android:text="@string/especie_doispontos"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="#2B2B2B"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtAdptInfo_especie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="10dp"
+
+                    android:textAlignment="textStart"
+                    android:textAllCaps="true"
+                    android:textColor="#000000"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+            <!-- Idade do animal -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="30dp"
+
+                    android:text="@string/idadedoispontos"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="#2B2B2B"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtAdptInfo_idade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="10dp"
+
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="#000000"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+            <!-- Descrição do animal -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:gravity="center"
+                    android:layout_marginStart="30dp"
+
+                    android:text="@string/descricao"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="#2B2B2B"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtAdptInfo_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+
+                    android:textAlignment="textStart"
+                    android:textAllCaps="true"
+                    android:textColor="#000000"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+            <!-- E-Mail do dono -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="30dp"
+
+                    android:text="@string/e_mail_doispontos"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="#2B2B2B"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtAdptInfo_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="10dp"
+
+                    android:textAlignment="textStart"
+                    android:textAllCaps="true"
+                    android:textColor="#000000"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+            <!-- Telefone do dono -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="30dp"
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal"
+
+                    android:text="@string/telefone_doispontos"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="#2B2B2B"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:maxLength="140" />
+
+                <TextView
+                    android:id="@+id/txtAdptInfo_telefone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="10dp"
+
+                    android:textAlignment="textStart"
+                    android:textAllCaps="true"
+                    android:textColor="#000000"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+            <!-- retirar o linear, deixar só o text -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="52dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:gravity="center"
+                    android:layout_marginStart="30dp"
+
+                    android:text="@string/descricao"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="#2B2B2B"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/imgMapaUltimoLocal"
+                    android:layout_width="340dp"
+                    android:layout_height="340dp"
+                    android:layout_marginStart="30dp"
+                    android:src="@color/black" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </ScrollView>
 

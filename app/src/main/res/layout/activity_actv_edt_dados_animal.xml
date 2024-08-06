@@ -91,7 +91,7 @@
                 android:orientation="horizontal">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="160dp"
+                    android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:layout_marginStart="15dp">
 
@@ -103,7 +103,6 @@
                         android:contentDescription="@string/imagem_do_animal"
 
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.466"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -112,15 +111,33 @@
                         android:id="@+id/fabDadosAnimal_photo"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+                        android:layout_marginStart="100dp"
 
-                        android:contentDescription="@string/contentDesc_iconeAddFoto"
                         android:backgroundTint="@color/amarelo03_"
+                        android:contentDescription="@string/contentDesc_iconeAddFoto"
                         android:elevation="1dp"
                         android:src="@drawable/baseline_photo_camera_24"
                         app:fabCustomSize="50dp"
 
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent" />
+                        app:layout_constraintEnd_toStartOf="@+id/txt_avisoImg"
+                        app:layout_constraintStart_toStartOf="@+id/imgEdtDadosPet" />
+
+                    <TextView
+                        android:id="@+id/txt_avisoImg"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="20dp"
+
+                        android:fontFamily="@font/arimo_variable_font_wght"
+                        android:text="@string/info_img_edtUserData"
+                        android:textColor="#515151"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+
+                        app:layout_constraintStart_toEndOf="@+id/imgEdtDadosPet"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -158,7 +175,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtDadosAnimal_nomeAnimal"
-                android:layout_width="348dp"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
@@ -184,7 +201,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtDadosAnimal_idade"
-                android:layout_width="348dp"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
@@ -242,7 +259,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtDadosAnimal_desc"
-                android:layout_width="348dp"
+                android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
@@ -283,59 +300,13 @@
                 android:textColor="@color/marrom07"
                 android:textStyle="bold" />
 
-            <!-- Logradouro -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="10dp"
-
-                android:text="@string/logradouro"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textAllCaps="true" />
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtDadosAnimal_logradouro"
-                android:layout_width="348dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/edt_txt_design"
-                android:inputType="textPersonName" />
-
-            <!-- Bairro -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginBottom="8dp"
-
-                android:text="@string/bairro"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textAllCaps="true" />
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtDadosAnimal_bairro"
-                android:layout_width="348dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/edt_txt_design"
-                android:inputType="textPersonName" />
-
             <!-- UF -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginBottom="3dp"
+                android:layout_marginTop="10dp"
 
                 android:text="@string/uf"
                 android:textStyle="bold"
@@ -374,7 +345,53 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtDadosAnimal_cidade"
-                android:layout_width="348dp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/edt_txt_design"
+                android:inputType="textPersonName" />
+
+            <!-- Bairro -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="8dp"
+
+                android:text="@string/bairro"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textAllCaps="true" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtDadosAnimal_bairro"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/edt_txt_design"
+                android:inputType="textPersonName" />
+
+            <!-- Logradouro -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="8dp"
+
+                android:text="@string/logradouro"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textAllCaps="true" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtDadosAnimal_logradouro"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
