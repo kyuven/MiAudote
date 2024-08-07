@@ -76,7 +76,7 @@
             android:hint="@string/telefone_hint"
             android:imeOptions="actionNext"
             android:inputType="phone"
-            android:padding="10dp"
+            android:padding="12dp"
             android:textColor="#D86A6A6A"
             android:textSize="12sp"
 
@@ -116,7 +116,7 @@
             android:hint="@string/inta_ex"
             android:imeOptions="actionNext"
             android:inputType="text"
-            android:padding="10dp"
+            android:padding="12dp"
             android:textColor="#D86A6A6A"
             android:textSize="12sp"
 
@@ -156,7 +156,7 @@
             android:hint="@string/email_hint"
             android:imeOptions="actionNext"
             android:inputType="text"
-            android:padding="10dp"
+            android:padding="12dp"
             android:textColor="#D86A6A6A"
             android:textSize="12sp"
 
@@ -196,7 +196,7 @@
             android:hint="@string/ex_twitter_ong"
             android:imeOptions="actionNext"
             android:inputType="text"
-            android:padding="10dp"
+            android:padding="12dp"
             android:textColor="#D86A6A6A"
             android:textSize="12sp"
 
@@ -236,7 +236,7 @@
             android:hint="@string/ex_twitter_ong"
             android:imeOptions="actionNext"
             android:inputType="text"
-            android:padding="10dp"
+            android:padding="12dp"
             android:textColor="#D86A6A6A"
             android:textSize="12sp"
 

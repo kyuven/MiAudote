@@ -26,6 +26,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+
 public class ADD_MissingPet_Page extends AppCompatActivity {
 
     // FIREBASE
@@ -33,9 +35,9 @@ public class ADD_MissingPet_Page extends AppCompatActivity {
     DatabaseReference databaseReference;
 
     // WIDGTES
-    TextInputEditText edtNomeAnimal, edtIdadeAnimal, edtDescAnimal, edtCep, edtCidade, edtBairro, edtLogradouro;
+    TextInputEditText edtNomeAnimal, edtDescAnimal, edtCep, edtCidade, edtBairro, edtLogradouro;
     RadioGroup radioGroup;
-
+    String nomeAnimal, descAnimal, cepAnimal, cidadeAnimal, bairroAnimal, logradouroAnimal;
     String[] itemsEspecie = {"Cachorro", "Gato", "Outros"};
     String[] itemsUF = {"AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"};
     ArrayAdapter<String> adapterUF, adapterEspecie;
@@ -67,6 +69,17 @@ public class ADD_MissingPet_Page extends AppCompatActivity {
     }
 
     public void uploadData() {
+        nomeAnimal = edtNomeAnimal.getText().toString();
+        descAnimal = edtDescAnimal.getText().toString();
+        // cidadeAnimal = edtCidade.getText().toString();
+        // bairroAnimal = edtBairro.getText().toString();
+        // logradouroAnimal = edtLogradouro.getText().toString();
+
+        // chamar método de conversão de local para longitude e latitude
+
+        HashMap<String, String> map = new HashMap<>();
+        map.put("nomeAnimal", nomeAnimal);
+        map.put("descAnimal", descAnimal);
 
     }
 }

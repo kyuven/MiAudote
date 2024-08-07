@@ -55,9 +55,7 @@ public class Register_Activity extends AppCompatActivity {
         // Envia para a página de login (volta a página)
         btnBackLogin = findViewById(R.id.fab_back);
         btnBackLogin.setOnClickListener(v -> {
-            Intent intent = new Intent(Register_Activity.this, LoginIn_Activity.class);
             onBackPressed();
-            startActivity(intent);
             finish();
         });
 
