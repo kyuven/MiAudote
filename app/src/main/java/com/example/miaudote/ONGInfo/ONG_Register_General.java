@@ -33,16 +33,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class ONG_Register_General extends AppCompatActivity {
 
     // FIREBASE
     FirebaseAuth mAuth;
     StorageReference storageReference;
+    FirebaseStorage storage;
     FirebaseUser firebaseUser;
 
     // WIDGETS
@@ -52,7 +53,6 @@ public class ONG_Register_General extends AppCompatActivity {
     ImageView imgOng;
 
     Uri uriImage;
-    private static final int PICK_IMAGE_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +61,8 @@ public class ONG_Register_General extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
 
         edtNomeOng = findViewById(R.id.edtNomeONG);
         edtDescOng = findViewById(R.id.edtDescONG);
@@ -76,7 +78,7 @@ public class ONG_Register_General extends AppCompatActivity {
         btnAddFotoOng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                escolherImage();
+                uploadFoto();
             }
         });
 
@@ -93,14 +95,38 @@ public class ONG_Register_General extends AppCompatActivity {
 
     }
 
-    private void escolherImage() {
-
+    private void uploadFoto() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, 1);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            uriImage = data.getData();
+            imgOng.setImageURI(uriImage);
+            enviarImagem();
+        }
+    }
 
+    private void enviarImagem() {
+        final String randomKey = UUID.randomUUID().toString();
+        StorageReference stoRef = storageReference.child("images/" + randomKey);
+
+        stoRef.putFile(uriImage).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle unsuccessful uploads
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(ONG_Register_General.this, "Funfou", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void intentDataOng() {
