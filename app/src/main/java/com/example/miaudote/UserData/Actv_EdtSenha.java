@@ -117,8 +117,6 @@ public class Actv_EdtSenha extends AppCompatActivity {
                         String userID = firebaseUser.getUid();
                         reference.child(userID).child("senha").setValue(strSenhaNova);
                         Toast.makeText(Actv_EdtSenha.this, "A senha foi atualizada com sucesso!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(Actv_EdtSenha.this, Perfil_Fragment.class);
-                        startActivity(intent);
                         finish();
                     } else {
                         try {

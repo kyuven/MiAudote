@@ -46,7 +46,6 @@
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
 
-            android:text="@string/nome_usu_rio"
             android:textSize="20sp"
             android:textColor="@color/black"
             android:textStyle="bold" />
@@ -58,7 +57,6 @@
             android:layout_gravity="center"
             android:layout_marginTop="2dp"
 
-            android:text="@string/email_randola_gmail_com"
             android:textSize="14sp"
             android:textColor="#DC888787"
             android:textStyle="bold" />

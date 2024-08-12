@@ -25,6 +25,7 @@ import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Actv_EdtEmail extends AppCompatActivity {
 
@@ -32,7 +33,7 @@ public class Actv_EdtEmail extends AppCompatActivity {
     FirebaseUser firebaseUser;
     DatabaseReference reference;
     EditText edtSenha, edtNovoEmail;
-    String strNovoEmail, strEmailAntigo, strSenha;
+    String strNovoEmail, strEmailAntigo, strEmail, strSenha;
     AppCompatButton btnAttEmail;
 
     @Override
@@ -42,7 +43,7 @@ public class Actv_EdtEmail extends AppCompatActivity {
 
         mAtuh = FirebaseAuth.getInstance();
         firebaseUser = mAtuh.getCurrentUser();
-        strEmailAntigo = firebaseUser.getEmail();
+        reference = FirebaseDatabase.getInstance().getReference("usuarios");
 
         TextView txtEmailAntigo = findViewById(R.id.edt_emailAntigo);
         edtNovoEmail = findViewById(R.id.edt_novoEmail);
@@ -94,6 +95,8 @@ public class Actv_EdtEmail extends AppCompatActivity {
                                     Toast.makeText(Actv_EdtEmail.this, "O novo email não pode ser igual ao anterior.", Toast.LENGTH_SHORT).show();
                                 } else {
                                     updateEmail(firebaseUser);
+                                    String userID = firebaseUser.getUid();
+                                    reference.child(userID).child("email").setValue(strNovoEmail);
                                 }
                             } else {
                                 try {
@@ -116,8 +119,6 @@ public class Actv_EdtEmail extends AppCompatActivity {
                 if(task.isComplete()) {
                     firebaseUser.sendEmailVerification();
                     Toast.makeText(Actv_EdtEmail.this, "O email de verificação já foi enviado!", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(Actv_EdtEmail.this, LoginIn_Activity.class);
-                    startActivity(i);
                     finish();
                 } else {
                     try {

@@ -17,11 +17,14 @@ import com.example.miaudote.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Actv_EdtDados extends AppCompatActivity {
 
     FirebaseAuth mAuth;
     FirebaseUser firebaseUser;
+    DatabaseReference reference;
     ImageView edt_fotoPerfil;
     TextInputEditText edt_novoNome;
     AppCompatButton btnUploadFoto, btnAtualizarDados;
@@ -33,6 +36,7 @@ public class Actv_EdtDados extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("usuarios");
 
         TextInputEditText edtNovoNome = findViewById(R.id.edt_novoNome);
         ImageView fotoPerfil = findViewById(R.id.edt_fotoPerfil);
