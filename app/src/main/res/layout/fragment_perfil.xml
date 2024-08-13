@@ -37,7 +37,7 @@
             android:layout_marginTop="30dp"
             android:contentDescription="@string/imagem_enviada_pelo_usu_rio"
 
-            android:background="@color/black" />
+            android:background="@drawable/icon_person_base" />
 
         <TextView
             android:id="@+id/txtPerfil_nomeUser"

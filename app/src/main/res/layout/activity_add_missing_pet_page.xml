@@ -241,36 +241,6 @@
                 android:padding="12dp" />
             <!-- NOME ANIMAL -->
 
-            <!-- ESPÉCIE ANIMAL -->
-            <TextView
-                android:id="@+id/txtAddAnimalEspecie"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginBottom="3dp"
-
-                android:text="@string/esp_cie"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="160dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="30dp"
-                android:hint="@string/selecione"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
-
-                <AutoCompleteTextView
-                    android:id="@+id/edtAddAnimal_especieAutoComplete"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:inputType="none"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-            <!-- ESPÉCIE ANIMAL -->
-
             <!-- DESCRIÇÃO ANIMAL -->
             <TextView
                 android:id="@+id/txtAddAnimalDesc"
@@ -278,7 +248,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginTop="20dp"
 
                 android:text="@string/descricao"
                 android:textStyle="bold"
@@ -346,9 +315,10 @@
                 android:textSize="12sp" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="160dp"
-                android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
+                android:layout_marginEnd="164dp"
                 android:hint="@string/selecione"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
@@ -384,9 +354,12 @@
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="20dp"
                 android:padding="12dp"
+
                 android:textSize="12sp"
+                android:textColor="#D86A6A6A"
+
                 android:background="@drawable/edt_txt_design"
-                android:inputType="textPersonName" />
+                android:inputType="text" />
             <!-- Cidade -->
 
             <!-- Bairro -->
@@ -411,9 +384,12 @@
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="20dp"
                 android:padding="12dp"
+
+                android:textColor="#D86A6A6A"
                 android:textSize="12sp"
+
                 android:background="@drawable/edt_txt_design"
-                android:inputType="textPersonName" />
+                android:inputType="text" />
             <!-- Bairro -->
 
             <!-- Logradouro -->
@@ -438,9 +414,12 @@
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="20dp"
                 android:padding="12dp"
+
+                android:textColor="#D86A6A6A"
                 android:textSize="12sp"
+
                 android:background="@drawable/edt_txt_design"
-                android:inputType="textPersonName" />
+                android:inputType="text" />
             <!-- Logradouro -->
 
             <androidx.appcompat.widget.AppCompatButton

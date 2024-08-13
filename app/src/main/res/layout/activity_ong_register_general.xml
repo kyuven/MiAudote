@@ -169,7 +169,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="164dp"
             android:hint="@string/selecione"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             app:layout_constraintEnd_toEndOf="parent"
@@ -284,6 +284,7 @@
             android:background="@drawable/edt_txt_design"
             android:inputType="text"
             android:textSize="12sp"
+            android:textColor="#D86A6A6A"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
