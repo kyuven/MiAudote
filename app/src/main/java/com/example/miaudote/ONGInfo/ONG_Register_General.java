@@ -7,6 +7,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -42,15 +45,19 @@ public class ONG_Register_General extends AppCompatActivity {
 
     // FIREBASE
     FirebaseAuth mAuth;
-    StorageReference storageReference;
-    FirebaseStorage storage;
     FirebaseUser firebaseUser;
 
     // WIDGETS
     TextInputEditText edtNomeOng, edtDescOng, edtCidadeOng, edtBairroOng, edtLograOng;
-    String nomeOng, descOng, cidadeOng, bairroOng, logradouroOng;
+    String nomeOng, descOng, ufOng, cidadeOng, bairroOng, logradouroOng, imgOngStr;
     AppCompatImageButton btnCttOng, btnBack;
     ImageView imgOng;
+
+        // WIDGETS DROPDOWN MENU
+    String[] itensUf = {"AC", "AL", "AP", "AM", "BA", "CE", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB",
+                        "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO", "DF"};
+    AutoCompleteTextView autoCompleteTextView;
+    ArrayAdapter<String> adapterItens;
 
     Uri uriImage;
 
@@ -61,8 +68,6 @@ public class ONG_Register_General extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();
-        storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReference();
 
         edtNomeOng = findViewById(R.id.edtNomeONG);
         edtDescOng = findViewById(R.id.edtDescONG);
@@ -71,21 +76,18 @@ public class ONG_Register_General extends AppCompatActivity {
         edtLograOng = findViewById(R.id.edtOngLogradouro);
         imgOng = findViewById(R.id.addFotoOng);
 
+        autoCompleteTextView = findViewById(R.id.dadosOng_ufAutoComplete);
+        adapterItens = new ArrayAdapter<String>(this, R.layout.list_item, itensUf);
+        autoCompleteTextView.setAdapter(adapterItens);
+
         btnCttOng = findViewById(R.id.fab_nextCtt_confirmar);
         btnBack = findViewById(R.id.btnOngGeneralBack);
         AppCompatButton btnAddFotoOng = findViewById(R.id.btnAddFotoOng);
 
-        btnAddFotoOng.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                uploadFoto();
-            }
-        });
-
         btnCttOng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intentDataOng();
+                saveDataOng();
             }
         });
 
@@ -93,43 +95,63 @@ public class ONG_Register_General extends AppCompatActivity {
             finish();
         });
 
-    }
-
-    private void uploadFoto() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, 1);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            uriImage = data.getData();
-            imgOng.setImageURI(uriImage);
-            enviarImagem();
-        }
-    }
-
-    private void enviarImagem() {
-        final String randomKey = UUID.randomUUID().toString();
-        StorageReference stoRef = storageReference.child("images/" + randomKey);
-
-        stoRef.putFile(uriImage).addOnFailureListener(new OnFailureListener() {
+        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle unsuccessful uploads
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(ONG_Register_General.this, "Funfou", Toast.LENGTH_SHORT).show();
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ufOng = parent.getItemAtPosition(position).toString();
             }
         });
+
+        ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult o) {
+                        if(o.getResultCode() == Activity.RESULT_OK) {
+                            Intent data = o.getData();
+                            uriImage = data.getData();
+                            imgOng.setImageURI(uriImage);
+                        } else {
+                            Toast.makeText(ONG_Register_General.this, "Nenhuma imagem selecionada.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+        btnAddFotoOng.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent photoPicker = new Intent(Intent.ACTION_PICK);
+                photoPicker.setType("image/*");
+                activityResultLauncher.launch(photoPicker);
+            }
+        });
+
+    }
+
+    private void saveDataOng() {
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("ImagensOng")
+                .child(uriImage.getLastPathSegment());
+
+        storageReference.putFile(uriImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                while(!uriTask.isComplete());
+                Uri urlImage = uriTask.getResult();
+                imgOngStr = urlImage.toString();
+                intentDataOng();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(ONG_Register_General.this, "Falha ao adicionar a imagem", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     private void intentDataOng() {
+
         nomeOng = edtNomeOng.getText().toString();
         descOng = edtDescOng.getText().toString();
         cidadeOng = edtCidadeOng.getText().toString();
@@ -137,8 +159,10 @@ public class ONG_Register_General extends AppCompatActivity {
         logradouroOng = edtLograOng.getText().toString();
 
         Intent i = new Intent(ONG_Register_General.this, ONG_Register_Contact.class);
+        i.putExtra("imgOngE", imgOngStr);
         i.putExtra("nomeOngE", nomeOng);
         i.putExtra("descOngE", descOng);
+        i.putExtra("ufOngE", ufOng);
         i.putExtra("cidadeOngE", cidadeOng);
         i.putExtra("bairroOngE", bairroOng);
         i.putExtra("logradouroOngE", logradouroOng);

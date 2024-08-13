@@ -27,7 +27,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:src="@color/black"
-                android:contentDescription="@string/imagem_de_um_animal" />
+                android:contentDescription="@string/img_animal_adocao" />
 
             <!-- Linear Layout da Cidade + UF -->
             <LinearLayout
@@ -68,7 +68,8 @@
                 android:layout_height="18dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="2dp"
-                android:text="@string/nome_animal"
+                android:text="@string/nome_do_animal"
+                android:textAllCaps="true"
                 android:gravity="center"
                 android:textColor="@color/marrom06"
                 android:textSize="16sp"/>
@@ -88,7 +89,7 @@
             android:background="@drawable/btn_design"
             android:text="@string/saiba_mais"
             android:textSize="9sp"
-            android:textColor="@color/laranja05"/>
+            android:textColor="@color/white"/>
 
     </androidx.cardview.widget.CardView>
 

@@ -16,7 +16,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class Map_Animals_Fragment extends Fragment {
 
-    FloatingActionButton fabAddAnimalPerdido, fabVerAnimalInfo;
+    FloatingActionButton fabAddAnimalPerdido;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -24,20 +24,11 @@ public class Map_Animals_Fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_map__animals, container, false);
 
         fabAddAnimalPerdido = view.findViewById(R.id.fabAddAnimalPerdido);
-        fabVerAnimalInfo = view.findViewById(R.id.btnTesteInfo);
 
         fabAddAnimalPerdido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), ADD_MissingPet_Page.class);
-                startActivity(intent);
-            }
-        });
-
-        fabVerAnimalInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MissingPet_Info.class);
                 startActivity(intent);
             }
         });

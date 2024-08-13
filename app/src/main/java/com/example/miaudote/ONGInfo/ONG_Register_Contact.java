@@ -32,7 +32,7 @@ import java.util.HashMap;
 public class ONG_Register_Contact extends AppCompatActivity {
 
     TextInputEditText edtTelOng, edtInstaOng, edtEmailOng, edtTwitterOng, edtFaceOng;
-    String nomeOng, descOng, cidadeOng, bairroOng, logradouroOng;
+    String imgOng, nomeOng, descOng, ufOng, cidadeOng, bairroOng, logradouroOng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +47,10 @@ public class ONG_Register_Contact extends AppCompatActivity {
 
         // Pega informações da página anterior
         Bundle extras = getIntent().getExtras();
+        imgOng = extras.getString("imgOngE");
         nomeOng = extras.getString("nomeOngE");
         descOng = extras.getString("descOngE");
+        ufOng = extras.getString("ufOngE");
         cidadeOng = extras.getString("cidadeOngE");
         bairroOng = extras.getString("bairroOngE");
         logradouroOng = extras.getString("logradouroOngE");
@@ -60,8 +62,10 @@ public class ONG_Register_Contact extends AppCompatActivity {
     public void saveDataContato() {
 
         HashMap<String, String> map = new HashMap<>();
+        map.put("imgOng", imgOng);
         map.put("nomeOng", nomeOng);
         map.put("descOng", descOng);
+        map.put("ufOng", ufOng);
         map.put("cidadeOng", cidadeOng);
         map.put("bairroOng", bairroOng);
         map.put("lograOng", logradouroOng);

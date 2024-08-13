@@ -37,7 +37,7 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/btnAnimal_back"
+                    android:id="@+id/btnAddAnimal_back"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_marginStart="24dp"
@@ -64,7 +64,7 @@
                     android:layout_marginEnd="40dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/btnAnimal_back"
+                    app:layout_constraintStart_toEndOf="@+id/btnAddAnimal_back"
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -293,11 +293,11 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="20dp"
-                android:maxLength="140"
                 android:background="@drawable/edt_txt_design"
-                android:inputType="textLongMessage"
-                android:gravity="start"
 
+                android:maxLength="240"
+                android:inputType="textMultiLine"
+                android:gravity="start"
                 android:hint="@string/escreva_um_pouco_sobre_o_bichinho"
                 android:textAllCaps="true"
                 android:textSize="12sp"

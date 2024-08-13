@@ -1,92 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="160dp"
+    android:layout_height="wrap_content"
+    app:cardElevation="7dp"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="10dp"
+    android:id="@+id/cardView_ong">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_ong"
-        android:layout_width="160dp"
-        android:layout_height="235dp"
-        app:cardElevation="7dp"
-        app:cardCornerRadius="8dp">
-        
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Imagem da ONG / Símbolo deles -->
+        <ImageView
+            android:id="@+id/imgOngCard_logo"
+            android:layout_width="140dp"
+            android:layout_height="95dp"
+            android:src="@color/black"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/ong_logo_img" />
+
+        <!-- Linear Layout da Cidade + UF -->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal">
 
-            <!-- Imagem da ONG / Símbolo deles -->
-            <ImageView
-                android:id="@+id/imgOngCard_logo"
-                android:layout_width="140dp"
-                android:layout_height="95dp"
-                android:src="@color/black"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:contentDescription="@string/imagem_da_logo_de_uma_ong" />
-
-            <!-- Linear Layout da Cidade + UF -->
-            <LinearLayout
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center_horizontal">
-
-                <!-- Cidade -->
-                <TextView
-                    android:id="@+id/txtOngCard_CdOng"
-                    android:layout_width="60dp"
-                    android:layout_height="12dp"
-                    android:layout_marginTop="2dp"
-                    android:text="@string/cidade"
-                    android:textColor="@color/laranja01"
-                    android:textSize="10sp" />
-                <!-- android:fontFamily="" -->
-
-                <!-- UF -->
-                <TextView
-                    android:id="@+id/txtOngCard_UfOng"
-                    android:layout_width="20dp"
-                    android:layout_height="12dp"
-                    android:layout_marginTop="2dp"
-                    android:text="@string/uf"
-                    android:textColor="@color/laranja01"
-                    android:textSize="10sp"
-                    android:textStyle="italic" />
-                <!-- android:fontFamily="" -->
-
-            </LinearLayout>
-
+            <!-- Cidade -->
             <TextView
-                android:id="@+id/txtOngCard_nome"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:text="@string/nome_da_ong"
-                android:textSize="16sp"
-                android:textColor="@color/laranja07" />
-            <!-- android:fontFamily="" -->
+                android:id="@+id/txtOngCard_CddOng"
+                android:layout_width="70dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="2dp"
 
-            <!-- Categoria da ONG -->
 
-            <!-- Botão para mais informações da ONG -->
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnOngCard_info"
-                android:layout_width="140dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="45dp"
-                android:background="@drawable/btn_design"
-                android:text="@string/saiba_mais"
-                android:textSize="16sp"
-                android:textColor="@color/laranja05" />
-            <!-- android:fontFamily="" -->
-            
+                android:text="@string/cidade"
+                android:textAllCaps="true"
+                android:textColor="@color/laranja01"
+                android:textSize="10sp"
+                android:fontFamily="@font/arimo_variable_font_wght" />
+
+            <!-- UF -->
+            <TextView
+                android:id="@+id/txtOngCard_UfOng"
+                android:layout_width="20dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="2dp"
+
+                android:text="@string/uf"
+                android:textColor="@color/laranja01"
+                android:textSize="10sp"
+                android:textStyle="italic"
+                android:textAllCaps="true"
+                android:fontFamily="@font/arimo_variable_font_wght" />
+
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/txtOngCard_nome"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
 
-</LinearLayout>
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+
+            android:text="@string/nome_ong"
+            android:textSize="16sp"
+            android:textAllCaps="true"
+            android:textColor="@color/laranja07"
+            android:textStyle="bold"
+            android:fontFamily="@font/arimo_variable_font_wght"/>
+
+        <!-- Categoria da ONG -->
+
+        <!-- Botão para mais informações da ONG -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnOngCard_info"
+            android:layout_width="132dp"
+            android:layout_height="30dp"
+
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="16dp"
+
+            android:background="@drawable/btn_design"
+
+            android:text="@string/saiba_mais"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/arimo_variable_font_wght" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -46,9 +48,7 @@
             android:exported="false" />
         <activity
             android:name=".ONGInfo.ONG_Page"
-            android:exported="false"
-            android:label="@string/title_activity_ong_page"
-            android:theme="@style/Theme.MiAudote.NoActionBar" />
+            android:exported="false" />
         <activity
             android:name=".UserData.Confirmar_Login"
             android:exported="false" />

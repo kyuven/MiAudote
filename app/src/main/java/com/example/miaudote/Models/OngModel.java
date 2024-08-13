@@ -6,19 +6,12 @@ public class OngModel {
 
     }
 
-    public OngModel(String nomeOng, String descOng, String cidadeOng,
-                    String bairroOng, String lograOng, String telOng, String instaOng,
-                    String emailOng, String twitterOng, String faceOng) {
-        this.nomeOng = nomeOng;
-        this.descOng = descOng;
-        this.cidadeOng = cidadeOng;
-        this.bairroOng = bairroOng;
-        this.lograOng = lograOng;
-        this.telOng = telOng;
-        this.instaOng = instaOng;
-        this.emailOng = emailOng;
-        this.twitterOng = twitterOng;
-        this.faceOng = faceOng;
+    public String getImgOng() {
+        return imgOng;
+    }
+
+    public void setImgOng(String imgOng) {
+        this.imgOng = imgOng;
     }
 
     public String getNomeOng() {
@@ -35,6 +28,14 @@ public class OngModel {
 
     public void setDescOng(String descOng) {
         this.descOng = descOng;
+    }
+
+    public String getUfOng() {
+        return ufOng;
+    }
+
+    public void setUfOng(String ufOng) {
+        this.ufOng = ufOng;
     }
 
     public String getCidadeOng() {
@@ -101,7 +102,23 @@ public class OngModel {
         this.faceOng = faceOng;
     }
 
-    String nomeOng, descOng, cidadeOng, bairroOng, lograOng,
-        telOng, instaOng, emailOng, twitterOng, faceOng; // add imagem
+    public OngModel(String imgOng, String nomeOng, String descOng, String ufOng, String cidadeOng, String bairroOng,
+                    String lograOng, String telOng, String instaOng, String emailOng, String twitterOng, String faceOng) {
+        this.imgOng = imgOng;
+        this.nomeOng = nomeOng;
+        this.descOng = descOng;
+        this.ufOng = ufOng;
+        this.cidadeOng = cidadeOng;
+        this.bairroOng = bairroOng;
+        this.lograOng = lograOng;
+        this.telOng = telOng;
+        this.instaOng = instaOng;
+        this.emailOng = emailOng;
+        this.twitterOng = twitterOng;
+        this.faceOng = faceOng;
+    }
+
+    String imgOng, nomeOng, descOng, ufOng, cidadeOng, bairroOng, lograOng,
+        telOng, instaOng, emailOng, twitterOng, faceOng;
 
 }
