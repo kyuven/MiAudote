@@ -75,7 +75,7 @@ public class ONG_Register_Contact extends AppCompatActivity {
         map.put("twitterOng", edtTwitterOng.getText().toString());
         map.put("faceOng", edtFaceOng.getText().toString());
 
-        FirebaseDatabase.getInstance().getReference().child("ONG para adicionar").push()
+        FirebaseDatabase.getInstance().getReference().child("ong para adicionar").push()
                 .setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

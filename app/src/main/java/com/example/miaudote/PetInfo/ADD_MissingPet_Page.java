@@ -15,6 +15,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
@@ -46,7 +48,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 
 public class ADD_MissingPet_Page extends AppCompatActivity {
 
@@ -67,7 +71,7 @@ public class ADD_MissingPet_Page extends AppCompatActivity {
     ImageView imgAddAnimal;
     FloatingActionButton fabAddFotoAnimal;
 
-    String radioButtonStr, imgAnimalStr, nomeAnimal, descAnimal, ufAnimal, cepAnimal, cidadeAnimal, bairroAnimal, logradouroAnimal;
+    String radioButtonStr, imgAnimalStr, nomeAnimal, descAnimal, ufAnimal, cidadeAnimal, bairroAnimal, logradouroAnimal, endConcat;
     String[] itemsUFAnimal = {"AC", "AL", "AP", "AM", "BA", "CE", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB",
                         "PR", "PE", "PI", "RJ", "RN", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO", "DF"};
     ArrayAdapter<String> adapterUF;
@@ -84,8 +88,6 @@ public class ADD_MissingPet_Page extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         // MAPA
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        getLastLocation();
 
         // WIDGETS
         edtNomeAnimal = findViewById(R.id.edtAddAnimal_nome);
@@ -145,32 +147,6 @@ public class ADD_MissingPet_Page extends AppCompatActivity {
         activityResultLauncher.launch(photoPicker);
     }
 
-    private void getLastLocation() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, FINE_PERMISSION_CODE);
-            return;
-        }
-
-        Task<Location> task = fusedLocationProviderClient.getLastLocation();
-        task.addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-
-            }
-        });
-    }
-
-    public void convertPlace(Context context, String string) {
-
-    }
-
     public void uploadFoto() {
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Imagens Animal")
                 .child(uriImageAnimal.getLastPathSegment());
@@ -201,36 +177,53 @@ public class ADD_MissingPet_Page extends AppCompatActivity {
         radioButtonStr = radioButton.getText().toString();
         nomeAnimal = edtNomeAnimal.getText().toString();
         descAnimal = edtDescAnimal.getText().toString();
-        // cidadeAnimal = edtCidade.getText().toString();
-        // bairroAnimal = edtBairro.getText().toString();
-        // logradouroAnimal = edtLogradouro.getText().toString();
+        cidadeAnimal = edtCidade.getText().toString();
+        bairroAnimal = edtBairro.getText().toString();
+        logradouroAnimal = edtLogradouro.getText().toString();
 
-        // chamar método de conversão de local para longitude e latitude
+        endConcat = logradouroAnimal + ", " + bairroAnimal + ", " + cidadeAnimal + ", " + ufAnimal;
 
-        HashMap<String, String> map = new HashMap<>();
-        map.put("imgAnimal", imgAnimalStr);
-        map.put("classAnimal", radioButtonStr);
-        map.put("nomeAnimal", nomeAnimal);
-        map.put("descAnimal", descAnimal);
-        map.put("ufAnimal", ufAnimal);
+        Geocoder geocoder = new Geocoder(ADD_MissingPet_Page.this);
+        try {
+            List<Address> addressList = geocoder.getFromLocationName(endConcat, 1);
+            if(addressList != null && addressList.size() > 0) {
+                Address address = addressList.get(0);
+                double lat = address.getLatitude();
+                double lng = address.getLongitude();
 
-        // BLOCO DE CÓDIGO QUE ADICIONA O ANIMAL NA TABELA "ANIMAIS"
-        // CRIA UMA RAMIFICAÇÃO DEPENDENDO DA CLASSIFICAÇÃO DO ANIMAL (PERDIDO, ADOÇÃO OU ENCONTRADO)
-        // CADA RAMIFICAÇÃO RECEBE O ID DO USUÁRIO QUE ESTÁ CADASTRANDO O ANIMAL
-        // O ANIMAL É CADASTRADO COM O NOME
-        FirebaseDatabase.getInstance().getReference("Animais").child(radioButtonStr).child(mAuth.getUid()).child(nomeAnimal).setValue(map)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                Toast.makeText(ADD_MissingPet_Page.this, "O animal foi cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
-                finish();
+                HashMap<String, String> map = new HashMap<>();
+                map.put("imgAnimal", imgAnimalStr);
+                map.put("classAnimal", radioButtonStr);
+                map.put("nomeAnimal", nomeAnimal);
+                map.put("descAnimal", descAnimal);
+                map.put("ufAnimal", ufAnimal);
+                map.put("cidadeAnimal", cidadeAnimal);
+                map.put("bairroAnimal", bairroAnimal);
+                map.put("logradouroAnimal", logradouroAnimal);
+                map.put("latitude", String.valueOf(lat));
+                map.put("longitude", String.valueOf(lng));
+
+                // BLOCO DE CÓDIGO QUE ADICIONA O ANIMAL NA TABELA "ANIMAIS"
+                // CRIA UMA RAMIFICAÇÃO DEPENDENDO DA CLASSIFICAÇÃO DO ANIMAL (PERDIDO, ADOÇÃO OU ENCONTRADO)
+                // CADA RAMIFICAÇÃO RECEBE O ID DO USUÁRIO QUE ESTÁ CADASTRANDO O ANIMAL
+                // O ANIMAL É CADASTRADO COM O NOME
+                FirebaseDatabase.getInstance().getReference("animais").child(radioButtonStr).child(mAuth.getUid()).child(nomeAnimal).setValue(map)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Toast.makeText(ADD_MissingPet_Page.this, "Animal adicionado com sucesso!", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(ADD_MissingPet_Page.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(ADD_MissingPet_Page.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        } catch (IOException e) {
+            Toast.makeText(this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+        }
 
     }
 }

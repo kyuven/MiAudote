@@ -1,12 +1,22 @@
 package com.example.miaudote.Fragments;
 
+import static android.app.PendingIntent.getActivity;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.preference.PreferenceManager;
 
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
 
 import com.example.miaudote.UserData.LoginIn_Activity;
 import com.example.miaudote.R;
@@ -17,11 +27,19 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Main_Page extends AppCompatActivity {
 
+    AppCompatImageButton btnClose;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_bar);
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        if(sharedPreferences.getBoolean("IS_FIRST_TIME", true)) {
+            popUp();
+            sharedPreferences.edit().putBoolean("IS_FIRST_TIME", false).apply();
+        }
 
         bottomNavigationView.setOnItemSelectedListener((NavigationBarView.OnItemSelectedListener) item -> {
 
@@ -60,6 +78,20 @@ public class Main_Page extends AppCompatActivity {
             finish();
         }
 
+    }
+
+    private void popUp() {
+        View alertCustomDialog = LayoutInflater.from(Main_Page.this).inflate(R.layout.pop_up, null);
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(Main_Page.this);
+
+        alertDialog.setView(alertCustomDialog);
+        btnClose = alertCustomDialog.findViewById(R.id.btnCloseAd);
+
+        final AlertDialog dialog = alertDialog.create();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+
+        btnClose.setOnClickListener(v1 -> dialog.cancel());
     }
 
     // Método criado para diminuir código entre os if, pois será a mesma função a todos os itens
