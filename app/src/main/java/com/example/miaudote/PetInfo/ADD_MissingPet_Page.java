@@ -213,6 +213,7 @@ public class ADD_MissingPet_Page extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Void> task) {
                                 Toast.makeText(ADD_MissingPet_Page.this, "Animal adicionado com sucesso!", Toast.LENGTH_SHORT).show();
                                 finish();
+                                // BOTAR PROGRESS BAR
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override

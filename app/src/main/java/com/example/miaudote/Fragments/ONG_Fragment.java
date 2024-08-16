@@ -48,7 +48,7 @@ public class ONG_Fragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_ong, container, false);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("ONG para adicionar");
+        databaseReference = FirebaseDatabase.getInstance().getReference("ong aprovadas");
 
         rvOng = view.findViewById(R.id.rvOng);
         GridLayoutManager gridLayout = new GridLayoutManager(getActivity(), 2);

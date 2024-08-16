@@ -3,6 +3,7 @@ package com.example.miaudote.ONGInfo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -32,7 +33,8 @@ import java.util.HashMap;
 public class ONG_Register_Contact extends AppCompatActivity {
 
     TextInputEditText edtTelOng, edtInstaOng, edtEmailOng, edtTwitterOng, edtFaceOng;
-    String imgOng, nomeOng, descOng, ufOng, cidadeOng, bairroOng, logradouroOng;
+    String imgOng, nomeOng, descOng, ufOng, cidadeOng, bairroOng, logradouroOng, teleOng, instaOng, emailong, twitterOng, faceOng;
+    ProgressBar progressBarOng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,9 @@ public class ONG_Register_Contact extends AppCompatActivity {
         edtEmailOng = findViewById(R.id.edtOngEmail);
         edtTwitterOng = findViewById(R.id.edtOngTwitter);
         edtFaceOng = findViewById(R.id.edtOngFacebook);
+
+        progressBarOng = findViewById(R.id.progressBarOng);
+        progressBarOng.setVisibility(View.INVISIBLE);
 
         // Pega informações da página anterior
         Bundle extras = getIntent().getExtras();
@@ -61,24 +66,22 @@ public class ONG_Register_Contact extends AppCompatActivity {
 
     public void saveDataContato() {
 
-        HashMap<String, String> map = new HashMap<>();
-        map.put("imgOng", imgOng);
-        map.put("nomeOng", nomeOng);
-        map.put("descOng", descOng);
-        map.put("ufOng", ufOng);
-        map.put("cidadeOng", cidadeOng);
-        map.put("bairroOng", bairroOng);
-        map.put("lograOng", logradouroOng);
-        map.put("telOng", edtTelOng.getText().toString());
-        map.put("instaOng", edtInstaOng.getText().toString());
-        map.put("emailOng", edtEmailOng.getText().toString());
-        map.put("twitterOng", edtTwitterOng.getText().toString());
-        map.put("faceOng", edtFaceOng.getText().toString());
+        progressBarOng.setVisibility(View.VISIBLE);
 
-        FirebaseDatabase.getInstance().getReference().child("ong para adicionar").push()
-                .setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+        teleOng = edtTelOng.getText().toString();
+        instaOng = edtInstaOng.getText().toString();
+        emailong = edtEmailOng.getText().toString();
+        twitterOng = edtTwitterOng.getText().toString();
+        faceOng = edtFaceOng.getText().toString();
+
+        OngModel modelOng = new OngModel(imgOng, nomeOng, descOng, ufOng, bairroOng, cidadeOng, logradouroOng,
+                                        teleOng, instaOng, emailong, twitterOng, faceOng);
+
+        FirebaseDatabase.getInstance().getReference().child("ong aprovadas").child(nomeOng)
+                .setValue(modelOng).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
+                        // TROCAR PARA UM AVISO DE QUE FOI ADICIONADO E DEMORARÁ 72 HORAS PRA SER APROVADO
                         Toast.makeText(ONG_Register_Contact.this, "Adicionado com sucesso", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(ONG_Register_Contact.this, Main_Page.class);
                         startActivity(i);

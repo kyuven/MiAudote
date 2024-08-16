@@ -111,5 +111,6 @@ public class Actv_EdtDados extends AppCompatActivity {
         String userID = firebaseUser.getUid();
         reference.child(userID).child("nome").setValue(nomeUser);
         finish();
+        // BOTAR PROGRESS BAR
     }
 }

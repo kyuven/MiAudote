@@ -129,7 +129,7 @@ public class ONG_Register_General extends AppCompatActivity {
     }
 
     private void saveDataOng() {
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("ImagensOng")
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("imagens Ong")
                 .child(uriImage.getLastPathSegment());
 
         storageReference.putFile(uriImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

@@ -41,7 +41,7 @@ public class OngAdapter extends RecyclerView.Adapter<OngAdapter.MyViewHolder> {
 
         OngModel ongModel = ongModelList.get(position);
 
-        Glide.with(context).load(ongModel.getImgOng());
+        Glide.with(context).load(ongModel.getImgOng()).into(holder.imgOngLogo);
         holder.txtCidadeOng.setText(ongModel.getCidadeOng());
         holder.txtUfOng.setText(ongModel.getUfOng());
         holder.txtNomeOng.setText(ongModel.getNomeOng());
