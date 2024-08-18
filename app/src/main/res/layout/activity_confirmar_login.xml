@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,50 +10,70 @@
     tools:context=".UserData.Confirmar_Login"
     android:fillViewport="true">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/imageView4"
             android:layout_width="250dp"
             android:layout_height="200dp"
             android:layout_gravity="center"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginStart="18dp"
+
             android:contentDescription="@string/carta_confirmacao"
-            android:src="@drawable/codigo_de_verifica__o" />
+            android:src="@drawable/codigo_de_verifica__o"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/textView13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="12dp"
 
+            android:layout_gravity="center"
             android:text="@string/confirmar_cadastro"
             android:textColor="@color/marrom07"
+            android:textSize="24sp"
+
             android:textStyle="bold"
-            android:textSize="24sp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginTop="5dp"
-
-            android:text="@string/codigo_6dig"
-            android:textColor="#C97E7E7E"
-            android:textAlignment="center"
-            android:textSize="14sp"/>
-
-        <LinearLayout
+            android:id="@+id/textView11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+
+            android:text="@string/codigo_6dig"
+            android:textAlignment="center"
+            android:textColor="#C97E7E7E"
+            android:textSize="14sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="32dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView11">
 
             <EditText
                 android:id="@+id/inputCodigo01"
@@ -152,54 +173,40 @@
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="30dp"
-
-            android:textAlignment="center"
-            android:textColor="@android:color/transparent"
-            android:textSize="14sp" />
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_reenviar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
-            android:background="@android:color/transparent"
 
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+
+            android:background="@android:color/transparent"
             android:text="@string/btn_reenviar"
             android:textColor="@color/blue_link"
-            android:textSize="12sp" />
+            android:textSize="12sp"
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="30dp"
-
-            android:textAlignment="center"
-            android:textColor="@android:color/transparent"
-            android:textSize="14sp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <ImageButton
             android:id="@+id/btn_final_cad"
             android:layout_width="56dp"
             android:layout_height="56dp"
-            android:layout_marginEnd="30dp"
             android:layout_gravity="end"
-            android:layout_marginBottom="30dp"
+            android:layout_margin="30dp"
 
             android:background="@drawable/btn_next_page"
+            android:contentDescription="botão que leverá você a próxima página"
             android:src="@drawable/baseline_keyboard_arrow_right_24"
-            android:contentDescription="botão que leverá você a próxima página" />
 
-    </LinearLayout>
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

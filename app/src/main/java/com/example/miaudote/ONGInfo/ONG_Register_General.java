@@ -1,16 +1,14 @@
 package com.example.miaudote.ONGInfo;
 
 import android.app.Activity;
-import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -19,27 +17,21 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.example.miaudote.R;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import com.squareup.picasso.Picasso;
 
 public class ONG_Register_General extends AppCompatActivity {
 
@@ -60,6 +52,7 @@ public class ONG_Register_General extends AppCompatActivity {
     ArrayAdapter<String> adapterItens;
 
     Uri uriImage;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,7 +103,7 @@ public class ONG_Register_General extends AppCompatActivity {
                         if(o.getResultCode() == Activity.RESULT_OK) {
                             Intent data = o.getData();
                             uriImage = data.getData();
-                            imgOng.setImageURI(uriImage);
+                            picasso();
                         } else {
                             Toast.makeText(ONG_Register_General.this, "Nenhuma imagem selecionada.", Toast.LENGTH_SHORT).show();
                         }
@@ -126,6 +119,10 @@ public class ONG_Register_General extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void picasso() {
+        Picasso.with(this).load(uriImage).resize(48, 48).into(imgOng);
     }
 
     private void saveDataOng() {

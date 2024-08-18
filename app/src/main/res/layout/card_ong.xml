@@ -18,7 +18,7 @@
         <ImageView
             android:id="@+id/imgOngCard_logo"
             android:layout_width="140dp"
-            android:layout_height="95dp"
+            android:layout_height="94dp"
             android:src="@color/black"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"

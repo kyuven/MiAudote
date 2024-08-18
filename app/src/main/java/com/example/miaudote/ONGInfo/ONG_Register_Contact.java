@@ -6,14 +6,9 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
 import com.example.miaudote.Fragments.Main_Page;
 import com.example.miaudote.Models.OngModel;
 import com.example.miaudote.R;
@@ -21,19 +16,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.HashMap;
 
 public class ONG_Register_Contact extends AppCompatActivity {
 
-    TextInputEditText edtTelOng, edtInstaOng, edtEmailOng, edtTwitterOng, edtFaceOng;
-    String imgOng, nomeOng, descOng, ufOng, cidadeOng, bairroOng, logradouroOng, teleOng, instaOng, emailong, twitterOng, faceOng;
+    TextInputEditText edtTelOng, edtInstaOng, edtEmailOng, edtTwitterOng, edtWebsiteOng;
+    String imgOng, nomeOng, descOng, ufOng, cidadeOng, bairroOng, logradouroOng,
+            teleOng, instaOng, emailong, twitterOng, websiteOng;
     ProgressBar progressBarOng;
 
     @Override
@@ -45,7 +34,7 @@ public class ONG_Register_Contact extends AppCompatActivity {
         edtInstaOng = findViewById(R.id.edtOngInstagram);
         edtEmailOng = findViewById(R.id.edtOngEmail);
         edtTwitterOng = findViewById(R.id.edtOngTwitter);
-        edtFaceOng = findViewById(R.id.edtOngFacebook);
+        edtWebsiteOng = findViewById(R.id.edtOngWebsite);
 
         progressBarOng = findViewById(R.id.progressBarOng);
         progressBarOng.setVisibility(View.INVISIBLE);
@@ -72,10 +61,10 @@ public class ONG_Register_Contact extends AppCompatActivity {
         instaOng = edtInstaOng.getText().toString();
         emailong = edtEmailOng.getText().toString();
         twitterOng = edtTwitterOng.getText().toString();
-        faceOng = edtFaceOng.getText().toString();
+        websiteOng = edtWebsiteOng.getText().toString();
 
         OngModel modelOng = new OngModel(imgOng, nomeOng, descOng, ufOng, bairroOng, cidadeOng, logradouroOng,
-                                        teleOng, instaOng, emailong, twitterOng, faceOng);
+                                        teleOng, instaOng, emailong, twitterOng, websiteOng);
 
         FirebaseDatabase.getInstance().getReference().child("ong aprovadas").child(nomeOng)
                 .setValue(modelOng).addOnCompleteListener(new OnCompleteListener<Void>() {

@@ -1,17 +1,19 @@
 package com.example.miaudote.ONGInfo;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatImageView;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.miaudote.R;
 
 public class ONG_Page extends AppCompatActivity {
 
-    AppCompatImageView imgHeaderONG, imgLogoONG;
+    ImageView imgHeaderONG, imgLogoONG;
     TextView txtCidadeONG, txtUFONG, txtNomeONG, txtDescricaoONG, txtLocalizaoONG, txtWebsiteONG, txtTelefoneONG, txtInstagramONG, txtEmailONG, txtTwitterONG;
+    String bairroOngStr, lograOngStr, concatEndOng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,24 @@ public class ONG_Page extends AppCompatActivity {
         txtInstagramONG = findViewById(R.id.txtOngPage_instagram);
         txtEmailONG = findViewById(R.id.txtOngPage_gmail);
         txtTwitterONG = findViewById(R.id.txtOngPage_twitter);
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null) {
+            Glide.with(this).load(bundle.getString("Imagem ONG")).override(94, 94).into(imgLogoONG);
+
+            txtNomeONG.setText(bundle.getString("Nome ONG"));
+            txtDescricaoONG.setText(bundle.getString("Descrição ONG"));
+            bairroOngStr = bundle.getString("Bairro ONG");
+            lograOngStr = bundle.getString("Logradouro ONG");
+            concatEndOng = bairroOngStr + ' ' + lograOngStr;
+            txtLocalizaoONG.setText(concatEndOng);
+            txtWebsiteONG.setText(bundle.getString("Website ONG"));
+            txtTelefoneONG.setText(bundle.getString("Telefone ONG"));
+            txtInstagramONG.setText(bundle.getString("Instagram ONG"));
+            txtEmailONG.setText(bundle.getString("Email ONG"));
+            txtTwitterONG.setText(bundle.getString("Twitter ONG"));
+
+        }
 
     }
 }

@@ -94,16 +94,16 @@ public class OngModel {
         this.twitterOng = twitterOng;
     }
 
-    public String getFaceOng() {
-        return faceOng;
+    public String getWebsiteOng() {
+        return websiteOng;
     }
 
-    public void setFaceOng(String faceOng) {
-        this.faceOng = faceOng;
+    public void setWebsiteOng(String faceOng) {
+        this.websiteOng = faceOng;
     }
 
     public OngModel(String imgOng, String nomeOng, String descOng, String ufOng, String cidadeOng, String bairroOng,
-                    String lograOng, String telOng, String instaOng, String emailOng, String twitterOng, String faceOng) {
+                    String lograOng, String telOng, String instaOng, String emailOng, String twitterOng, String websiteOng) {
         this.imgOng = imgOng;
         this.nomeOng = nomeOng;
         this.descOng = descOng;
@@ -115,10 +115,10 @@ public class OngModel {
         this.instaOng = instaOng;
         this.emailOng = emailOng;
         this.twitterOng = twitterOng;
-        this.faceOng = faceOng;
+        this.websiteOng = websiteOng;
     }
 
     String imgOng, nomeOng, descOng, ufOng, cidadeOng, bairroOng, lograOng,
-        telOng, instaOng, emailOng, twitterOng, faceOng;
+        telOng, instaOng, emailOng, twitterOng, websiteOng;
 
 }

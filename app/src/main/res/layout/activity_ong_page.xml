@@ -13,7 +13,7 @@
     
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <!-- Define a header e a logo da ONG -->
@@ -27,12 +27,12 @@
                 android:layout_height="200dp"
                 android:src="@color/black"
                 app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="imagem da header de uma ONG" />
+                android:contentDescription="@string/header_ong" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imgOngPage_icon"
-                android:layout_width="95dp"
-                android:layout_height="95dp"
+                android:layout_width="94dp"
+                android:layout_height="94dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginStart="10dp"
@@ -85,8 +85,9 @@
             android:layout_marginTop="5dp"
 
             android:text="NOME COMPLETO DA ONG QUE PODE SER GIGANTE TIPO GIGANTE MESMO TIPO MUITO MESMO"
-            android:textSize="24dp"
+            android:textSize="24sp"
             android:textStyle="bold"
+            android:textAllCaps="true"
             android:textColor="@color/black" />
 
         <!-- TextView descrição da ONG -->
@@ -99,7 +100,7 @@
             android:layout_marginTop="5dp"
 
             android:text="@string/lorem_ipsum"
-            android:textSize="14dp"
+            android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="#515151"
             android:lineSpacingExtra="4dp"/>
@@ -154,7 +155,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_gravity="center"
 
-                android:text="www.websiteong.com.br"
+                android:text="@string/website"
                 android:textSize="14sp"
                 android:textColor="@color/black" />
 
