@@ -6,6 +6,8 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +19,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,15 +40,17 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class Perfil_Fragment extends Fragment {
 
     private FirebaseAuth auth;
     TextView txtDeleteAcc, txtPerfil_nomeUser, txtPerfil_emailUser;
+    ImageView imgPerfil_user;
     LinearLayout linearlyt_mausTratos, linearlyt_dados, linearlyt_email, linearlyt_senha, linearlyt_delete;
     AppCompatButton btnMudarPerfil, btnTxtLogOut, btnCancelLogout, btnConfirmLogout;
     AppCompatImageButton btnTermos, btnMausTratos, btnIconLogOut, btn_backEdtDados, btnCancel;
-    String nome, email;
+    String nome, email, fotoUrl;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,6 +63,7 @@ public class Perfil_Fragment extends Fragment {
 
         txtPerfil_nomeUser = view.findViewById(R.id.txtPerfil_nomeUser);
         txtPerfil_emailUser = view.findViewById(R.id.txtPerfil_emailUser);
+        imgPerfil_user = view.findViewById(R.id.imgPerfil_user);
 
         btnTermos = view.findViewById(R.id.btnPerfil_termos);
         btnMausTratos = view.findViewById(R.id.btnMausTratos);
@@ -204,6 +210,10 @@ public class Perfil_Fragment extends Fragment {
                 if(model != null) {
                     txtPerfil_nomeUser.setText(model.getNome());
                     txtPerfil_emailUser.setText(model.getEmail());
+
+                    fotoUrl = model.getImgperfil(); // Certifique-se de que você tem um getter para isso
+                    Picasso.with(getActivity()).load(fotoUrl).into(imgPerfil_user);
+
                 }
             }
 

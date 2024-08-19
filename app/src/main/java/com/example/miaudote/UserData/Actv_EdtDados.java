@@ -27,6 +27,8 @@ import com.example.miaudote.Models.UserModel;
 import com.example.miaudote.ONGInfo.ONG_Register_Contact;
 import com.example.miaudote.ONGInfo.ONG_Register_General;
 import com.example.miaudote.R;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,17 +37,20 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 public class Actv_EdtDados extends AppCompatActivity {
 
     FirebaseAuth mAuth;
     FirebaseUser firebaseUser;
     DatabaseReference reference;
-    StorageReference storageReference;
+
+
     AppCompatButton btnUploadFoto, btnAtualizarDados;
     TextInputEditText edtNovoNome;
     Uri uriImage;
     String imgUserStr, nomeUser;
+    ImageView fotoPerfil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,18 +60,15 @@ public class Actv_EdtDados extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("usuarios");
-        // storageReference = FirebaseStorage.getInstance().getReference("Imagens Usuarios");
 
         edtNovoNome = findViewById(R.id.edt_novoNome);
-        ImageView fotoPerfil = findViewById(R.id.edt_fotoPerfil);
+        fotoPerfil = findViewById(R.id.edt_fotoPerfil);
 
         btnUploadFoto = findViewById(R.id.btnAttFotoPerfil);
         btnAtualizarDados = findViewById(R.id.btnAttDadosUser);
 
         AppCompatImageButton btnBack = findViewById(R.id.btnEdtUser_back);
         btnBack.setOnClickListener(v -> {
-            Intent i = new Intent(Actv_EdtDados.this, Perfil_Fragment.class);
-            startActivity(i);
             finish();
         });
 
@@ -76,15 +78,16 @@ public class Actv_EdtDados extends AppCompatActivity {
                 new ActivityResultCallback<ActivityResult>() {
                     @Override
                     public void onActivityResult(ActivityResult o) {
-                        if(o.getResultCode() == Activity.RESULT_OK) {
+                        if (o.getResultCode() == Activity.RESULT_OK) {
                             Intent data = o.getData();
                             uriImage = data.getData();
-                            fotoPerfil.setImageURI(uriImage);
+                            picasso();
                         } else {
                             Toast.makeText(Actv_EdtDados.this, "Nenhuma imagem selecionada.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
+
 
         btnUploadFoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,18 +102,38 @@ public class Actv_EdtDados extends AppCompatActivity {
         btnAtualizarDados.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateData(firebaseUser);
+                updateData();
             }
         });
     }
 
+    private void picasso() {
+        Picasso.with(this).load(uriImage).resize(140, 140).centerCrop().into(fotoPerfil);
+    }
 
+    public void updateData(){
 
-    private void updateData(FirebaseUser firebaseUser){
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Imagens Usuarios")
+                .child(uriImage.getLastPathSegment());
+
+        storageReference.putFile(uriImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                while (!uriTask.isComplete());
+                Uri urlImage = uriTask.getResult();
+                imgUserStr = urlImage.toString();
+                saveData();
+            }
+        });
+    }
+
+    public void saveData() {
+
         nomeUser = edtNovoNome.getText().toString().trim();
         String userID = firebaseUser.getUid();
         reference.child(userID).child("nome").setValue(nomeUser);
+        reference.child(userID).child("fotoUrl").setValue(imgUserStr);
         finish();
-        // BOTAR PROGRESS BAR
     }
 }
