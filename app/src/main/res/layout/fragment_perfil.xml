@@ -37,7 +37,7 @@
             android:layout_marginTop="30dp"
             android:contentDescription="@string/imagem_enviada_pelo_usu_rio"
 
-            android:background="@drawable/icon_person_base" />
+            android:background="@drawable/baseline_person_24" />
 
         <TextView
             android:id="@+id/txtPerfil_nomeUser"
@@ -129,9 +129,9 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- Botão de logout -->
+        <!-- Maus tratos -->
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linearLyPerfil_sobreNos"
+            android:id="@+id/linearLyMausTratos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
@@ -148,7 +148,7 @@
                 android:layout_gravity="center"
                 android:contentDescription="@string/vetor_da_silhueta_de_uma_pessoa"
 
-                android:src="@drawable/baseline_person_24"
+                android:src="@drawable/baseline_report_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -159,7 +159,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_gravity="center"
-                android:text="@string/sobre_n_s"
+                android:text="DENUNCIE MAUS-TRATOS"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -170,7 +170,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/btnPerfil_sobreNos"
+                android:id="@+id/btnMausTratos"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"

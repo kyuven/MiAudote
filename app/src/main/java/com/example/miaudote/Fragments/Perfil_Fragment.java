@@ -42,9 +42,9 @@ public class Perfil_Fragment extends Fragment {
 
     private FirebaseAuth auth;
     TextView txtDeleteAcc, txtPerfil_nomeUser, txtPerfil_emailUser;
-    LinearLayout linearlyt_dados, linearlyt_email, linearlyt_senha, linearlyt_delete;
+    LinearLayout linearlyt_mausTratos, linearlyt_dados, linearlyt_email, linearlyt_senha, linearlyt_delete;
     AppCompatButton btnMudarPerfil, btnTxtLogOut, btnCancelLogout, btnConfirmLogout;
-    AppCompatImageButton btnTermos, btnSobreNos, btnIconLogOut, btn_backEdtDados;
+    AppCompatImageButton btnTermos, btnMausTratos, btnIconLogOut, btn_backEdtDados, btnCancel;
     String nome, email;
 
     @Override
@@ -60,7 +60,7 @@ public class Perfil_Fragment extends Fragment {
         txtPerfil_emailUser = view.findViewById(R.id.txtPerfil_emailUser);
 
         btnTermos = view.findViewById(R.id.btnPerfil_termos);
-        btnSobreNos = view.findViewById(R.id.btnPerfil_sobreNos);
+        btnMausTratos = view.findViewById(R.id.btnMausTratos);
         btnIconLogOut = view.findViewById(R.id.btnPerfil_iconLogOut);
 
         btnMudarPerfil = view.findViewById(R.id.btnPerfil_mudarPerfil);
@@ -73,45 +73,28 @@ public class Perfil_Fragment extends Fragment {
         }
 
         btnTxtLogOut.setOnClickListener(v -> {
-
-            // CRIAR UM MÉTODO?
-            View alertCustomDialog = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_custom, null);
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
-
-            alertDialog.setView(alertCustomDialog);
-            btnCancelLogout = alertCustomDialog.findViewById(R.id.btnDialogCustom_nao);
-            btnConfirmLogout = alertCustomDialog.findViewById(R.id.btnDialogCustom_sim);
-
-            final AlertDialog dialog = alertDialog.create();
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            dialog.show();
-
-            btnCancelLogout.setOnClickListener(v1 -> dialog.cancel());
-            btnConfirmLogout.setOnClickListener(v12 -> {
-                auth.signOut();
-                Intent intent = new Intent(getActivity(), LoginIn_Activity.class);
-                startActivity(intent);
-            });
+            logOut();
         });
 
         btnIconLogOut.setOnClickListener(v -> {
+            logOut();
+        });
 
-            View alertCustomDialog = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_custom, null);
+        btnMausTratos.setOnClickListener(v -> {
+            View alertCustomDialog = LayoutInflater.from(getActivity()).inflate(R.layout.pop_up, null);
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
 
             alertDialog.setView(alertCustomDialog);
-            btnCancelLogout = alertCustomDialog.findViewById(R.id.btnDialogCustom_nao);
-            btnConfirmLogout = alertCustomDialog.findViewById(R.id.btnDialogCustom_sim);
+            btnCancel = alertCustomDialog.findViewById(R.id.btnCloseAd);
 
             final AlertDialog dialog = alertDialog.create();
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
             dialog.show();
-
-            btnCancelLogout.setOnClickListener(v1 -> dialog.cancel());
-            btnConfirmLogout.setOnClickListener(v12 -> {
-                auth.signOut();
-                Intent intent = new Intent(getActivity(), LoginIn_Activity.class);
-                startActivity(intent);
+            btnCancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.cancel();
+                }
             });
         });
 
@@ -132,10 +115,6 @@ public class Perfil_Fragment extends Fragment {
 
             btn_backEdtDados.setOnClickListener(v13 -> dialog.cancel());
             linearlyt_dados.setOnClickListener(v14 -> {
-
-                // CRIAR MÉTODO COM PARAMETRO DA ACTIVITY
-                // TALVEZ MUDAR PRA SWITCH ?
-
                 Intent intent = new Intent(getActivity(), Actv_EdtDados.class);
                 startActivity(intent);
                 dialog.dismiss();
@@ -191,6 +170,26 @@ public class Perfil_Fragment extends Fragment {
             });
         });
         return view;
+    }
+
+    public void logOut() {
+        View alertCustomDialog = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_custom, null);
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+
+        alertDialog.setView(alertCustomDialog);
+        btnCancelLogout = alertCustomDialog.findViewById(R.id.btnDialogCustom_nao);
+        btnConfirmLogout = alertCustomDialog.findViewById(R.id.btnDialogCustom_sim);
+
+        final AlertDialog dialog = alertDialog.create();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+
+        btnCancelLogout.setOnClickListener(v1 -> dialog.cancel());
+        btnConfirmLogout.setOnClickListener(v12 -> {
+            auth.signOut();
+            Intent intent = new Intent(getActivity(), LoginIn_Activity.class);
+            startActivity(intent);
+        });
     }
 
     private void showUserPerfil(FirebaseUser firebaseUser) {

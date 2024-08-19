@@ -61,6 +61,7 @@
     <string name="filtrar_por">FILTRAR POR...</string>
 
     <string name="web_client_id">478798480234-sbnca72agsmnbmreef6om26vkhfo14hf.apps.googleusercontent.com</string>
+    <string name="map_key">AIzaSyBWLHQ4nOsk_ijsAvOeHjG7ngA1rmRik2c</string>
 
     <string name="atualizar">atualizar</string>
     <string name="e_mail_novo">E-MAIL NOVO</string>
@@ -117,4 +118,5 @@
     <string name="nome_ong">NOME ONG</string>
     <string name="header_ong">imagem da header de uma ONG</string>
     <string name="website">www.websiteong.com.br</string>
+    <string name="para_adotar">PARA ADOTAR</string>
 </resources>

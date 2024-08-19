@@ -36,7 +36,7 @@ public class ONG_Page extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         if(bundle != null) {
-            Glide.with(this).load(bundle.getString("Imagem ONG")).override(94, 94).into(imgLogoONG);
+            Glide.with(this).load(bundle.getString("Imagem ONG")).override(132, 132).into(imgLogoONG);
 
             txtNomeONG.setText(bundle.getString("Nome ONG"));
             txtDescricaoONG.setText(bundle.getString("Descrição ONG"));

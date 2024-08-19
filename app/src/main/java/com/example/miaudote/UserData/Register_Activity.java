@@ -55,7 +55,6 @@ public class Register_Activity extends AppCompatActivity {
         // Envia para a página de login (volta a página)
         btnBackLogin = findViewById(R.id.fab_back);
         btnBackLogin.setOnClickListener(v -> {
-            onBackPressed();
             finish();
         });
 
@@ -106,10 +105,5 @@ public class Register_Activity extends AppCompatActivity {
             }
         });
 
-    }
-
-    public void onBackPressed(){
-        super.onBackPressed();
-        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
 }
