@@ -6,17 +6,18 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class UserModel {
 
-    private String id, nome, email, senha, imgperfil;
+    private String id, nome, email, senha, imgperfil, telefone;
 
     public UserModel() {
     }
 
-    public UserModel(String senha, String email, String nome, String id, String imgperfil) {
+    public UserModel(String senha, String email, String nome, String id, String imgperfil, String telefone) {
         this.senha = senha;
         this.email = email;
         this.nome = nome;
         this.id = id;
         this.imgperfil = imgperfil;
+        this.telefone = telefone;
     }
     @Exclude
     public String getId() {
@@ -58,6 +59,14 @@ public class UserModel {
 
     public void setImgperfil(String imgperfil) {
         this.imgperfil = imgperfil;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
 

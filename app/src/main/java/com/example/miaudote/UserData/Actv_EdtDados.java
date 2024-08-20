@@ -44,8 +44,6 @@ public class Actv_EdtDados extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseUser firebaseUser;
     DatabaseReference reference;
-
-
     AppCompatButton btnUploadFoto, btnAtualizarDados;
     TextInputEditText edtNovoNome;
     Uri uriImage;
@@ -133,7 +131,7 @@ public class Actv_EdtDados extends AppCompatActivity {
         nomeUser = edtNovoNome.getText().toString().trim();
         String userID = firebaseUser.getUid();
         reference.child(userID).child("nome").setValue(nomeUser);
-        reference.child(userID).child("fotoUrl").setValue(imgUserStr);
+        reference.child(userID).child("imgperfil").setValue(imgUserStr);
         finish();
     }
 }

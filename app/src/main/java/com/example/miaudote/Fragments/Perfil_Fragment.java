@@ -211,9 +211,8 @@ public class Perfil_Fragment extends Fragment {
                     txtPerfil_nomeUser.setText(model.getNome());
                     txtPerfil_emailUser.setText(model.getEmail());
 
-                    fotoUrl = model.getImgperfil(); // Certifique-se de que você tem um getter para isso
-                    Picasso.with(getActivity()).load(fotoUrl).into(imgPerfil_user);
-
+                    Uri uri = firebaseUser.getPhotoUrl();
+                    Picasso.with(getActivity()).load(uri).into(imgPerfil_user);
                 }
             }
 
