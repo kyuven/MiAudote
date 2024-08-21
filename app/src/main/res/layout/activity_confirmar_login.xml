@@ -63,115 +63,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <EditText
+            android:id="@+id/inputCodigo"
+            android:layout_width="380dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/edt_txt_design"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_marginTop="32dp"
+
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:maxLength="6"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView11">
-
-            <EditText
-                android:id="@+id/inputCodigo01"
-                android:layout_width="40dp"
-                android:layout_height="45dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/edt_txt_design"
-                android:gravity="center"
-                android:imeOptions="actionNext"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:maxLength="1"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                tools:ignore="LabelFor" />
-
-            <EditText
-                android:id="@+id/inputCodigo02"
-                android:layout_width="40dp"
-                android:layout_height="45dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/edt_txt_design"
-                android:gravity="center"
-                android:imeOptions="actionNext"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:maxLength="1"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                tools:ignore="LabelFor" />
-
-            <EditText
-                android:id="@+id/inputCodigo03"
-                android:layout_width="40dp"
-                android:layout_height="45dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/edt_txt_design"
-                android:gravity="center"
-                android:imeOptions="actionNext"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:maxLength="1"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                tools:ignore="LabelFor" />
-
-            <EditText
-                android:id="@+id/inputCodigo04"
-                android:layout_width="40dp"
-                android:layout_height="45dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/edt_txt_design"
-                android:gravity="center"
-                android:imeOptions="actionNext"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:maxLength="1"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                tools:ignore="LabelFor" />
-
-            <EditText
-                android:id="@+id/inputCodigo05"
-                android:layout_width="40dp"
-                android:layout_height="45dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/edt_txt_design"
-                android:gravity="center"
-                android:imeOptions="actionNext"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:maxLength="1"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                tools:ignore="LabelFor" />
-
-            <EditText
-                android:id="@+id/inputCodigo06"
-                android:layout_width="40dp"
-                android:layout_height="45dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/edt_txt_design"
-                android:gravity="center"
-                android:imeOptions="actionDone"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:maxLength="1"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                tools:ignore="LabelFor" />
-
-        </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@+id/textView11"
+            tools:ignore="LabelFor" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_reenviar"
@@ -179,7 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
 
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="12dp"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
 
@@ -190,7 +102,7 @@
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/inputCodigo" />
 
         <ImageButton
             android:id="@+id/btn_final_cad"
@@ -198,12 +110,9 @@
             android:layout_height="56dp"
             android:layout_gravity="end"
             android:layout_margin="30dp"
-
             android:background="@drawable/btn_next_page"
             android:contentDescription="botão que leverá você a próxima página"
             android:src="@drawable/baseline_keyboard_arrow_right_24"
-
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
