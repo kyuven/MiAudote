@@ -121,7 +121,7 @@
             android:background="@drawable/edt_txt_design"
             android:gravity="start"
             android:hint="@string/hint_descOng"
-            android:inputType="text"
+            android:inputType="textMultiLine"
             android:maxLength="240"
             android:padding="12dp"
             android:textColor="#D86A6A6A"

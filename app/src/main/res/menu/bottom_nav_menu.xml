@@ -2,17 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/navAche"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/baseline_location_on_24"
+        android:title="@string/mapa" />
+
+    <item
         android:id="@+id/navAdote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:icon="@drawable/paw"
         android:title="@string/adote" />
-    <item
-        android:id="@+id/navAche"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:icon="@drawable/baseline_location_on_24"
-        android:title="@string/ache" />
+
     <item
         android:id="@+id/navOng"
         android:layout_width="wrap_content"

@@ -80,10 +80,6 @@ public class Map_Animals_Fragment extends Fragment implements OnMapReadyCallback
         getLastLocation();
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("animais");
-        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapPage);
-        if (mapFragment != null) {
-            mapFragment.getMapAsync(this);
-        }
     }
 
     private void getLastLocation() {
@@ -100,6 +96,10 @@ public class Map_Animals_Fragment extends Fragment implements OnMapReadyCallback
             public void onSuccess(Location location) {
                 if(location != null) {
                     currentLocation = location;
+                    SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapPage);
+                    if (mapFragment != null) {
+                        mapFragment.getMapAsync(Map_Animals_Fragment.this);
+                    }
                 }
             }
         });

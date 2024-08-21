@@ -45,6 +45,7 @@ import com.squareup.picasso.Picasso;
 public class Perfil_Fragment extends Fragment {
 
     private FirebaseAuth auth;
+    FirebaseUser firebaseUser;
     TextView txtDeleteAcc, txtPerfil_nomeUser, txtPerfil_emailUser;
     ImageView imgPerfil_user;
     LinearLayout linearlyt_mausTratos, linearlyt_dados, linearlyt_email, linearlyt_senha, linearlyt_delete;
@@ -59,7 +60,7 @@ public class Perfil_Fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_perfil, container, false);
 
         auth = FirebaseAuth.getInstance();
-        FirebaseUser firebaseUser = auth.getCurrentUser();
+        firebaseUser = auth.getCurrentUser();
 
         txtPerfil_nomeUser = view.findViewById(R.id.txtPerfil_nomeUser);
         txtPerfil_emailUser = view.findViewById(R.id.txtPerfil_emailUser);
@@ -75,7 +76,7 @@ public class Perfil_Fragment extends Fragment {
         if (firebaseUser == null){
             Toast.makeText(getActivity(), "Alguma coisa deu errado!", Toast.LENGTH_SHORT).show();
         } else {
-            showUserPerfil(firebaseUser);
+            showUserPerfil();
         }
 
         btnTxtLogOut.setOnClickListener(v -> {
@@ -198,7 +199,7 @@ public class Perfil_Fragment extends Fragment {
         });
     }
 
-    private void showUserPerfil(FirebaseUser firebaseUser) {
+    private void showUserPerfil() {
 
         String userID = firebaseUser.getUid();
 
@@ -208,18 +209,13 @@ public class Perfil_Fragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserModel model = snapshot.getValue(UserModel.class);
                 if(model != null) {
-                    txtPerfil_nomeUser.setText(model.getNome());
-                    txtPerfil_emailUser.setText(model.getEmail());
+                    nome = model.getNome();
+                    email = model.getEmail();
+                    txtPerfil_nomeUser.setText(nome);
+                    txtPerfil_emailUser.setText(email);
 
                     Uri uri = firebaseUser.getPhotoUrl();
-                    if (uri != null) {
-                        // Tenta carregar a imagem com Picasso
-                        Picasso.get()
-                                .load(uri)
-                                .into(imgPerfil_user);
-                    } else {
-                        Log.e(TAG, "A URL da foto do perfil é nula.");
-                    }
+                    Picasso.get().load(uri).resize(130, 130).into(imgPerfil_user);
                 }
             }
             @Override

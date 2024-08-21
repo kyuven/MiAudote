@@ -39,7 +39,6 @@
             android:layout_gravity="center_horizontal"
             android:layout_margin="12dp"
 
-            android:background="@drawable/baseline_person_24"
             android:contentDescription="@string/imagem_enviada_pelo_usu_rio"
 
             app:layout_constraintEnd_toEndOf="parent"

@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.miaudote.R;
+import com.squareup.picasso.Picasso;
 
 public class ONG_Page extends AppCompatActivity {
 
@@ -36,15 +37,22 @@ public class ONG_Page extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         if(bundle != null) {
-            //TROCAR PRA PICASSO
-            Glide.with(this).load(bundle.getString("Imagem ONG")).override(132, 132).into(imgLogoONG);
+            Picasso.get()
+                    .load(bundle.getString("Imagem ONG"))
+                    .resize(132, 132)
+                    .centerCrop()
+                    .into(imgLogoONG);
 
             txtNomeONG.setText(bundle.getString("Nome ONG"));
             txtDescricaoONG.setText(bundle.getString("Descrição ONG"));
+
+            txtCidadeONG.setText(bundle.getString("Cidade ONG"));
+            txtUFONG.setText(bundle.getString("UF ONG"));
             bairroOngStr = bundle.getString("Bairro ONG");
             lograOngStr = bundle.getString("Logradouro ONG");
-            concatEndOng = bairroOngStr + ' ' + lograOngStr;
+            concatEndOng = lograOngStr + ", " + bairroOngStr;
             txtLocalizaoONG.setText(concatEndOng);
+
             txtWebsiteONG.setText(bundle.getString("Website ONG"));
             txtTelefoneONG.setText(bundle.getString("Telefone ONG"));
             txtInstagramONG.setText(bundle.getString("Instagram ONG"));
