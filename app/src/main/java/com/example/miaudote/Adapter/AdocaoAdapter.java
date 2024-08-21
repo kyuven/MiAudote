@@ -39,7 +39,7 @@ public class AdocaoAdapter extends RecyclerView.Adapter<MyViewHolderAdocao> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolderAdocao holder, int position) {
         AnimalModel animalModel = animalModelList.get(position);
-        Picasso.with(context).load(animalModel.getImgAnimal()).resize(110, 90).into(holder.imgAnimal);
+        Picasso.get().load(animalModel.getImgAnimal()).resize(110, 90).into(holder.imgAnimal);
         holder.txtCidadeAnimal.setText(animalModel.getCidadeAnimal());
         holder.txtUfAnimal.setText(animalModel.getUfAnimal());
         holder.txtNomeAnimal.setText(animalModel.getNomeAnimal());

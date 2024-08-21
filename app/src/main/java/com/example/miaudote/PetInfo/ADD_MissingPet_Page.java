@@ -137,16 +137,13 @@ public class ADD_MissingPet_Page extends AppCompatActivity {
                     if(o.getResultCode() == Activity.RESULT_OK) {
                         Intent data = o.getData();
                         uriImageAnimal = data.getData();
-                        picassoFoto();
+                        Picasso.get().load(uriImageAnimal).resize(130, 130).centerCrop().into(imgAddAnimal);
                     } else {
                         Toast.makeText(ADD_MissingPet_Page.this, "Nenhuma imagem selecionada.", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
 
-    private void picassoFoto() {
-        Picasso.with(this).load(uriImageAnimal).resize(130, 130).into(imgAddAnimal);
-    }
 
     public void escolherFoto() {
         Intent photoPicker = new Intent(Intent.ACTION_PICK);

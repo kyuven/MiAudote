@@ -36,6 +36,7 @@ public class ONG_Page extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         if(bundle != null) {
+            //TROCAR PRA PICASSO
             Glide.with(this).load(bundle.getString("Imagem ONG")).override(132, 132).into(imgLogoONG);
 
             txtNomeONG.setText(bundle.getString("Nome ONG"));

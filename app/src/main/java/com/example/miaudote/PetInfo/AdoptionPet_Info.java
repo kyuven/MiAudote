@@ -65,7 +65,7 @@ public class AdoptionPet_Info extends AppCompatActivity implements OnMapReadyCal
 
         Bundle bundle = getIntent().getExtras();
         if(bundle != null) {
-            Picasso.with(this).load(bundle.getString("Imagem Animal Adoção")).resize(130, 130).into(imgAnimalInfo);
+            Picasso.get().load(bundle.getString("Imagem Animal Adoção")).resize(130, 130).into(imgAnimalInfo);
 
             txtNomeAnimal.setText(bundle.getString("Nome Animal Adoção"));
             txtDescAnimal.setText(bundle.getString("Descrição Animal Adoção"));
@@ -107,7 +107,7 @@ public class AdoptionPet_Info extends AppCompatActivity implements OnMapReadyCal
         myMap = googleMap;
         LatLng endereco = new LatLng(lat, lng);
         myMap.addMarker(new MarkerOptions().position(endereco));
-        myMap.moveCamera(CameraUpdateFactory.newLatLng(endereco));
+        myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(endereco, 16f));
         myMap.getUiSettings().setZoomControlsEnabled(true);
         myMap.getUiSettings().setScrollGesturesEnabled(true);
     }

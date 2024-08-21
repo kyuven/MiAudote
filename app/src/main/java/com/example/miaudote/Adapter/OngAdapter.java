@@ -43,7 +43,7 @@ public class OngAdapter extends RecyclerView.Adapter<MyViewHolder> {
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         OngModel ongModel = ongModelList.get(position);
-        Picasso.with(context).load(ongModel.getImgOng()).resize(140, 94).into(holder.imgOngLogo);
+        Picasso.get().load(ongModel.getImgOng()).resize(140, 94).into(holder.imgOngLogo);
         holder.txtCidadeOng.setText(ongModel.getCidadeOng());
         holder.txtUfOng.setText(ongModel.getUfOng());
         holder.txtNomeOng.setText(ongModel.getNomeOng());

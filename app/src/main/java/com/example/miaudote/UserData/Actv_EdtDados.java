@@ -27,6 +27,7 @@ import com.example.miaudote.Models.UserModel;
 import com.example.miaudote.ONGInfo.ONG_Register_Contact;
 import com.example.miaudote.ONGInfo.ONG_Register_General;
 import com.example.miaudote.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -44,6 +45,8 @@ public class Actv_EdtDados extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseUser firebaseUser;
     DatabaseReference reference;
+
+
     AppCompatButton btnUploadFoto, btnAtualizarDados;
     TextInputEditText edtNovoNome;
     Uri uriImage;
@@ -79,7 +82,7 @@ public class Actv_EdtDados extends AppCompatActivity {
                         if (o.getResultCode() == Activity.RESULT_OK) {
                             Intent data = o.getData();
                             uriImage = data.getData();
-                            picasso();
+                            Picasso.get().load(uriImage).resize(140, 140).centerCrop().into(fotoPerfil);
                         } else {
                             Toast.makeText(Actv_EdtDados.this, "Nenhuma imagem selecionada.", Toast.LENGTH_SHORT).show();
                         }
@@ -105,33 +108,40 @@ public class Actv_EdtDados extends AppCompatActivity {
         });
     }
 
-    private void picasso() {
-        Picasso.with(this).load(uriImage).resize(140, 140).centerCrop().into(fotoPerfil);
-    }
-
     public void updateData(){
 
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Imagens Usuarios")
                 .child(uriImage.getLastPathSegment());
 
-        storageReference.putFile(uriImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
-                while (!uriTask.isComplete());
-                Uri urlImage = uriTask.getResult();
-                imgUserStr = urlImage.toString();
-                saveData();
-            }
+        storageReference.putFile(uriImage).addOnSuccessListener(taskSnapshot -> {
+            storageReference.getDownloadUrl().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    imgUserStr = task.getResult().toString();
+                    saveData();
+                } else {
+                    Toast.makeText(Actv_EdtDados.this, "Falha ao obter URL da imagem.", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }).addOnFailureListener(e -> {
+            Toast.makeText(Actv_EdtDados.this, "Falha ao fazer upload da imagem.", Toast.LENGTH_SHORT).show();
         });
     }
 
     public void saveData() {
+        // TRATAMENTO DE ERRO
 
         nomeUser = edtNovoNome.getText().toString().trim();
         String userID = firebaseUser.getUid();
         reference.child(userID).child("nome").setValue(nomeUser);
-        reference.child(userID).child("imgperfil").setValue(imgUserStr);
-        finish();
+        reference.child(userID).child("fotoUrl").setValue(imgUserStr).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    finish();
+                } else {
+                    Toast.makeText(Actv_EdtDados.this, "Erro ao salvar dados.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }

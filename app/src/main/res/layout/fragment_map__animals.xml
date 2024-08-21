@@ -68,21 +68,15 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Imagem meramente ilustrativa -->
-                <!-- AQUI EM BAIXO VAI O MAPA PEDRAO PRESTA ATENÇÃO -->
-                <ImageView
-                    android:id="@+id/imageView6"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="32dp"
-                    android:layout_marginBottom="110dp"
-
-                    android:background="@color/black" />
-                <!-- AQUI EM CIMA VAI O MAPA PEDRAO PRESTA ATENÇÃO -->
+                <fragment
+                android:id="@+id/mapPage"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="24dp"
+                android:layout_marginTop="10dp" />
 
             </LinearLayout>
 

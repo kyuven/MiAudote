@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="280dp"
+    android:layout_height="240dp"
+    android:background="#F5F5F5">
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnCloseDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/baseline_close_24"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgDialogCustom"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="12dp"
+
+        android:src="@drawable/cat_waiting"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtDialogCustom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+
+        android:text="A ONG entrará para a revisão da equipe. Aguarde 72 horas para aprovação."
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:fontFamily="@font/arimo_variable_font_wght"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgDialogCustom" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

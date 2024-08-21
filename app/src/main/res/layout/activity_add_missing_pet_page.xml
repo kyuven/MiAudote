@@ -157,28 +157,28 @@
                             android:layout_width="wrap_content"
                             android:layout_height="28dp"
 
+                            android:text="@string/animal_encontrado"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+
+                            android:id="@+id/animalResgatado" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="28dp"
+
                             android:text="@string/animal_para_adocao"
                             android:textColor="@color/black"
                             android:textSize="12sp"
 
                             android:id="@+id/animalAdocao" />
 
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="28dp"
-
-                            android:text="@string/animal_encontrado_resgatado"
-                            android:textColor="@color/black"
-                            android:textSize="12sp"
-
-                            android:id="@+id/animalResgatado" />
-
                     </RadioGroup>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="6dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginStart="10dp"
 

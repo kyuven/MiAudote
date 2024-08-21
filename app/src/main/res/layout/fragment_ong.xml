@@ -50,7 +50,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="160dp"
                     android:layout_height="40dp"
-                    android:layout_marginStart="25dp"
+                    android:layout_marginStart="16dp"
                     android:hint="@string/filtrar_por">
 
                     <AutoCompleteTextView
@@ -66,7 +66,9 @@
                     android:id="@+id/rvOng"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="25dp" />
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="24dp"/>
 
             </LinearLayout>
 

@@ -103,7 +103,7 @@ public class ONG_Register_General extends AppCompatActivity {
                         if(o.getResultCode() == Activity.RESULT_OK) {
                             Intent data = o.getData();
                             uriImage = data.getData();
-                            picasso();
+                            Picasso.get().load(uriImage).resize(48, 48).centerCrop().into(imgOng);
                         } else {
                             Toast.makeText(ONG_Register_General.this, "Nenhuma imagem selecionada.", Toast.LENGTH_SHORT).show();
                         }
@@ -119,10 +119,6 @@ public class ONG_Register_General extends AppCompatActivity {
             }
         });
 
-    }
-
-    private void picasso() {
-        Picasso.with(this).load(uriImage).resize(48, 48).into(imgOng);
     }
 
     private void saveDataOng() {

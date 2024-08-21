@@ -212,13 +212,19 @@ public class Perfil_Fragment extends Fragment {
                     txtPerfil_emailUser.setText(model.getEmail());
 
                     Uri uri = firebaseUser.getPhotoUrl();
-                    Picasso.with(getActivity()).load(uri).into(imgPerfil_user);
+                    if (uri != null) {
+                        // Tenta carregar a imagem com Picasso
+                        Picasso.get()
+                                .load(uri)
+                                .into(imgPerfil_user);
+                    } else {
+                        Log.e(TAG, "A URL da foto do perfil é nula.");
+                    }
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getActivity(), "Alguma coisa deu errado!", Toast.LENGTH_SHORT).show();
+
             }
         });
 
