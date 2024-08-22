@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,7 +52,6 @@ public class Perfil_Fragment extends Fragment {
     LinearLayout linearlyt_mausTratos, linearlyt_dados, linearlyt_email, linearlyt_senha, linearlyt_delete;
     AppCompatButton btnMudarPerfil, btnTxtLogOut, btnCancelLogout, btnConfirmLogout;
     AppCompatImageButton btnTermos, btnMausTratos, btnIconLogOut, btn_backEdtDados, btnCancel;
-    String nome, email, fotoUrl;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -209,10 +209,8 @@ public class Perfil_Fragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserModel model = snapshot.getValue(UserModel.class);
                 if(model != null) {
-                    nome = model.getNome();
-                    email = model.getEmail();
-                    txtPerfil_nomeUser.setText(nome);
-                    txtPerfil_emailUser.setText(email);
+                    txtPerfil_nomeUser.setText(model.getNome());
+                    txtPerfil_emailUser.setText(model.getEmail());
 
                     Uri uri = firebaseUser.getPhotoUrl();
                     Picasso.get().load(uri).resize(130, 130).into(imgPerfil_user);

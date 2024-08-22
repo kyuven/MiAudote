@@ -52,7 +52,6 @@ public class ONG_Register_General extends AppCompatActivity {
     ArrayAdapter<String> adapterItens;
 
     Uri uriImage;
-    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

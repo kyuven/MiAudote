@@ -2,17 +2,19 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="160dp"
+    android:layout_width="180dp"
     android:layout_height="250dp"
-    app:cardElevation="7dp"
-    app:cardCornerRadius="8dp"
     android:layout_marginStart="16dp"
     android:layout_marginTop="12dp"
-    android:layout_marginBottom="8dp"
+    android:layout_marginBottom="18dp"
+
+    app:cardElevation="7dp"
+    app:cardCornerRadius="8dp"
+
     android:id="@+id/cardView_ong">
 
     <!-- MUDAR PRA CONSTRAINT -->
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -21,18 +23,25 @@
         <ImageView
             android:id="@+id/imgOngCard_logo"
             android:layout_width="140dp"
-            android:layout_height="94dp"
-            android:src="@color/black"
+            android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:contentDescription="@string/ong_logo_img" />
+            android:layout_marginTop="14dp"
+            android:contentDescription="@string/ong_logo_img"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Linear Layout da Cidade + UF -->
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:orientation="horizontal"
-            android:layout_gravity="center_horizontal">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgOngCard_logo">
 
             <!-- Cidade -->
             <TextView
@@ -42,11 +51,11 @@
                 android:layout_marginTop="2dp"
 
 
+                android:fontFamily="@font/arimo_variable_font_wght"
                 android:text="@string/cidade"
                 android:textAllCaps="true"
                 android:textColor="@color/laranja01"
-                android:textSize="10sp"
-                android:fontFamily="@font/arimo_variable_font_wght" />
+                android:textSize="10sp" />
 
             <!-- UF -->
             <TextView
@@ -55,12 +64,12 @@
                 android:layout_height="12dp"
                 android:layout_marginTop="2dp"
 
+                android:fontFamily="@font/arimo_variable_font_wght"
                 android:text="@string/uf"
+                android:textAllCaps="true"
                 android:textColor="@color/laranja01"
                 android:textSize="10sp"
-                android:textStyle="italic"
-                android:textAllCaps="true"
-                android:fontFamily="@font/arimo_variable_font_wght" />
+                android:textStyle="italic" />
 
         </LinearLayout>
 
@@ -68,38 +77,43 @@
             android:id="@+id/txtOngCard_nome"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="12dp"
-            android:layout_marginBottom="4dp"
-            android:gravity="center"
 
+            android:fontFamily="@font/arimo_variable_font_wght"
+            android:gravity="center"
             android:text="@string/nome_ong"
-            android:textSize="16sp"
             android:textAllCaps="true"
             android:textColor="@color/laranja07"
+            android:textSize="16sp"
             android:textStyle="bold"
-            android:fontFamily="@font/arimo_variable_font_wght"/>
+            android:maxHeight="50dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <!-- Categoria da ONG -->
 
         <!-- Botão para mais informações da ONG -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnOngCard_info"
-            android:layout_width="132dp"
-            android:layout_height="30dp"
-
+            android:layout_width="148dp"
+            android:layout_height="36dp"
+            android:layout_marginBottom="14dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="14dp"
-            android:layout_marginBottom="16dp"
 
             android:background="@drawable/btn_design"
 
+            android:fontFamily="@font/arimo_variable_font_wght"
             android:text="@string/saiba_mais"
-            android:textSize="16sp"
             android:textColor="@color/white"
-            android:fontFamily="@font/arimo_variable_font_wght" />
+            android:textSize="16sp"
 
-    </LinearLayout>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

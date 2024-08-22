@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,23 +13,31 @@
         android:id="@+id/logo_alternativa"
         android:layout_width="56dp"
         android:layout_height="32dp"
-        android:layout_marginTop="5dp"
         android:layout_gravity="center_horizontal"
+
+        android:contentDescription="@string/logo_alternativa_do_miaudote"
         android:src="@drawable/logo_alternativa"
-        android:contentDescription="@string/logo_alternativa_do_miaudote" />
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:overScrollMode="never"
-        android:scrollbars="none">
+        android:scrollbars="none"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo_alternativa">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_gravity="start"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -42,8 +50,8 @@
                     android:layout_height="32dp"
                     android:layout_marginStart="24dp"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/baseline_chevron_left_24"
                     android:contentDescription="@string/botao_voltar"
+                    android:src="@drawable/baseline_chevron_left_24"
 
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -54,14 +62,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
-                    android:gravity="center"
+                    android:layout_marginEnd="40dp"
 
+                    android:gravity="center"
                     android:text="@string/adicione_o_pet"
                     android:textColor="@color/black"
                     android:textSize="20sp"
-                    android:textStyle="bold"
 
-                    android:layout_marginEnd="40dp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/btnAddAnimal_back"
@@ -76,10 +84,10 @@
                 android:layout_marginTop="24dp"
 
                 android:text="@string/adicione_a_foto_do_animal"
-                android:textSize="14sp"
+                android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textAlignment="center"/>
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -95,8 +103,8 @@
                         android:id="@+id/addImgAnimal"
                         android:layout_width="130dp"
                         android:layout_height="130dp"
-                        android:src="@color/black"
                         android:contentDescription="@string/imagem_do_animal"
+                        android:src="@color/black"
 
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -109,10 +117,10 @@
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:backgroundTint="@color/amarelo03_"
+                        android:contentDescription="@string/icone_cam"
                         android:elevation="1dp"
                         android:src="@drawable/baseline_photo_camera_24"
                         app:fabCustomSize="50dp"
-                        android:contentDescription="@string/icone_cam"
 
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent" />
@@ -128,13 +136,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
 
                         android:text="@string/situation_do_animal"
                         android:textAllCaps="true"
-                        android:textSize="14sp"
                         android:textColor="@color/black"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <RadioGroup
@@ -144,48 +152,48 @@
                         android:layout_marginStart="6dp">
 
                         <RadioButton
+                            android:id="@+id/animalPerdido"
                             android:layout_width="wrap_content"
-                            android:layout_height="28dp"
 
+                            android:layout_height="28dp"
                             android:text="@string/animal_perdido"
                             android:textColor="@color/black"
-                            android:textSize="12sp"
 
-                            android:id="@+id/animalPerdido" />
+                            android:textSize="12sp" />
 
                         <RadioButton
+                            android:id="@+id/animalResgatado"
                             android:layout_width="wrap_content"
-                            android:layout_height="28dp"
 
+                            android:layout_height="28dp"
                             android:text="@string/animal_encontrado"
                             android:textColor="@color/black"
-                            android:textSize="12sp"
 
-                            android:id="@+id/animalResgatado" />
+                            android:textSize="12sp" />
 
                         <RadioButton
+                            android:id="@+id/animalAdocao"
                             android:layout_width="wrap_content"
-                            android:layout_height="28dp"
 
+                            android:layout_height="28dp"
                             android:text="@string/animal_para_adocao"
                             android:textColor="@color/black"
-                            android:textSize="12sp"
 
-                            android:id="@+id/animalAdocao" />
+                            android:textSize="12sp" />
 
                     </RadioGroup>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
                         android:layout_marginTop="6dp"
                         android:layout_marginEnd="15dp"
-                        android:layout_marginStart="10dp"
 
                         android:text="@string/foto_em_branco"
                         android:textAllCaps="true"
-                        android:textSize="11sp"
                         android:textColor="@color/vermelho01"
+                        android:textSize="11sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -207,9 +215,9 @@
                 android:layout_marginTop="15dp"
 
                 android:text="@string/informa_es"
+                android:textColor="@color/black"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/black" />
+                android:textStyle="bold" />
 
 
             <!-- NOME ANIMAL -->
@@ -221,9 +229,9 @@
                 android:layout_marginBottom="8dp"
 
                 android:text="@string/nome"
-                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtAddAnimal_nome"
@@ -233,15 +241,16 @@
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/edt_txt_design"
-                android:inputType="textPersonName"
-
                 android:hint="@string/insira_o_nome_do_animal"
-                android:textSize="12sp"
+
+                android:inputType="textPersonName"
+                android:padding="12dp"
                 android:textColor="#D86A6A6A"
-                android:padding="12dp" />
+                android:textSize="12sp" />
             <!-- NOME ANIMAL -->
 
             <!-- DESCRIÇÃO ANIMAL -->
+
             <TextView
                 android:id="@+id/txtAddAnimalDesc"
                 android:layout_width="wrap_content"
@@ -250,10 +259,10 @@
                 android:layout_marginBottom="8dp"
 
                 android:text="@string/descricao"
-                android:textStyle="bold"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtAddAnimal_desc"
@@ -264,14 +273,14 @@
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/edt_txt_design"
 
-                android:maxLength="240"
-                android:inputType="textMultiLine"
                 android:gravity="start"
                 android:hint="@string/escreva_um_pouco_sobre_o_bichinho"
+                android:inputType="textMultiLine"
+                android:maxLength="240"
+                android:padding="10dp"
                 android:textAllCaps="true"
-                android:textSize="12sp"
                 android:textColor="#D86A6A6A"
-                android:padding="10dp" />
+                android:textSize="12sp" />
             <!-- DESCRIÇÃO ANIMAL -->
 
             <!-- ENDEREÇO -->
@@ -280,25 +289,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginBottom="8dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="8dp"
 
                 android:text="@string/endereco"
                 android:textAllCaps="true"
-                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/ckbEndAtual"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="23dp"
+                android:layout_marginStart="24dp"
+                android:checked="true"
 
                 android:text="@string/usar_endere_o_atual"
                 android:textAllCaps="true"
                 android:textColor="@color/marrom07"
                 android:textStyle="bold" />
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/mapAddAnimal"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="360dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp" />
 
             <!-- UF -->
             <TextView
@@ -306,28 +325,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginBottom="3dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="3dp"
 
                 android:text="@string/uf"
-                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtInptUf"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="164dp"
-                android:hint="@string/selecione"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+                android:hint="@string/selecione">
 
                 <AutoCompleteTextView
                     android:id="@+id/edtAddAnimalUfAutoComplete"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:inputType="none" />
+                    android:inputType="none"
+                    android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
             <!-- UF -->
 
@@ -337,14 +357,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginBottom="8dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="8dp"
 
                 android:text="@string/cidade"
-                android:textStyle="bold"
+                android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="12sp"
-                android:textAllCaps="true" />
+                android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtAddAnimal_cidade"
@@ -353,13 +373,13 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="20dp"
+                android:background="@drawable/edt_txt_design"
+
+                android:inputType="text"
                 android:padding="12dp"
 
-                android:textSize="12sp"
                 android:textColor="#D86A6A6A"
-
-                android:background="@drawable/edt_txt_design"
-                android:inputType="text" />
+                android:textSize="12sp" />
             <!-- Cidade -->
 
             <!-- Bairro -->
@@ -371,10 +391,10 @@
                 android:layout_marginBottom="8dp"
 
                 android:text="@string/bairro"
-                android:textStyle="bold"
+                android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="12sp"
-                android:textAllCaps="true" />
+                android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtAddAnimal_bairro"
@@ -383,13 +403,13 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="20dp"
+                android:background="@drawable/edt_txt_design"
+
+                android:inputType="text"
                 android:padding="12dp"
 
                 android:textColor="#D86A6A6A"
-                android:textSize="12sp"
-
-                android:background="@drawable/edt_txt_design"
-                android:inputType="text" />
+                android:textSize="12sp" />
             <!-- Bairro -->
 
             <!-- Logradouro -->
@@ -401,10 +421,10 @@
                 android:layout_marginBottom="8dp"
 
                 android:text="@string/logradouro"
-                android:textStyle="bold"
+                android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="12sp"
-                android:textAllCaps="true" />
+                android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtAddAnimal_logradouro"
@@ -413,13 +433,13 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="20dp"
+                android:background="@drawable/edt_txt_design"
+
+                android:inputType="text"
                 android:padding="12dp"
 
                 android:textColor="#D86A6A6A"
-                android:textSize="12sp"
-
-                android:background="@drawable/edt_txt_design"
-                android:inputType="text" />
+                android:textSize="12sp" />
             <!-- Logradouro -->
 
             <androidx.appcompat.widget.AppCompatButton
@@ -427,20 +447,31 @@
                 android:layout_width="164dp"
                 android:layout_height="40dp"
                 android:layout_gravity="end"
-                android:background="@drawable/btn_perfil"
+                android:layout_marginTop="32dp"
 
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="56dp"
+                android:background="@drawable/btn_perfil"
                 android:text="@string/adicionar"
                 android:textAllCaps="true"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
 
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="56dp"
-                android:layout_marginEnd="32dp"/>
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
     </ScrollView>
 
-</LinearLayout>
+    <ProgressBar
+        android:id="@+id/progressBarAddAnimal"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

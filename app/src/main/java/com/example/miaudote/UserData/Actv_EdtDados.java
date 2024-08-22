@@ -9,6 +9,7 @@ import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -56,8 +57,9 @@ public class Actv_EdtDados extends AppCompatActivity {
     TextInputEditText edtNovoNome;
     Uri uriImage;
     private static final int PICK_IMAGE_REQUEST = 1;
-    String imgUserStr, nomeUser;
+    String nomeUser;
     ImageView fotoPerfil;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +76,9 @@ public class Actv_EdtDados extends AppCompatActivity {
 
         btnUploadFoto = findViewById(R.id.btnAttFotoPerfil);
         btnAtualizarDados = findViewById(R.id.btnAttDadosUser);
+
+        progressBar = findViewById(R.id.progressBarEdtUser);
+        progressBar.setVisibility(View.INVISIBLE);
 
         AppCompatImageButton btnBack = findViewById(R.id.btnEdtUser_back);
         btnBack.setOnClickListener(v -> {
@@ -94,13 +99,10 @@ public class Actv_EdtDados extends AppCompatActivity {
         btnAtualizarDados.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (edtNovoNome.getText().equals(null)) {
+                if (edtNovoNome.getText() != null || uriImage != null) {
                     updateData();
-                } else if (uriImage == null) {
-                    saveData();
                 } else {
                     saveData();
-                    updateData();
                 }
             }
         });
@@ -126,11 +128,36 @@ public class Actv_EdtDados extends AppCompatActivity {
                     fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            Uri downloadUri = uri;
-                            firebaseUser = mAuth.getCurrentUser();
-                            UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
-                                    .setPhotoUri(downloadUri).build();
-                            firebaseUser.updateProfile(profileChangeRequest);
+                            nomeUser = edtNovoNome.getText().toString().trim();
+                            if (!nomeUser.isEmpty()) {
+
+                                Uri downloadUri = uri;
+                                firebaseUser = mAuth.getCurrentUser();
+                                UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
+                                        .setPhotoUri(downloadUri).build();
+                                firebaseUser.updateProfile(profileChangeRequest);
+
+                                String userID = firebaseUser.getUid();
+                                reference.child(userID).child("nome").setValue(nomeUser).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            progressBar.setVisibility(View.VISIBLE);
+                                            Toast.makeText(Actv_EdtDados.this, "Nome atualizado com sucesso", Toast.LENGTH_SHORT).show();
+                                            finish();
+                                        } else {
+                                            Toast.makeText(Actv_EdtDados.this, "Falha ao atualizar nome", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                            } else {
+                                progressBar.setVisibility(View.VISIBLE);
+                                Uri downloadUri = uri;
+                                firebaseUser = mAuth.getCurrentUser();
+                                UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
+                                        .setPhotoUri(downloadUri).build();
+                                firebaseUser.updateProfile(profileChangeRequest);
+                            }
                         }
                     });
                     finish();
@@ -142,7 +169,7 @@ public class Actv_EdtDados extends AppCompatActivity {
                 }
             });
         } else {
-            Toast.makeText(this, "Por favor, selecione uma imagem.", Toast.LENGTH_SHORT).show();
+            saveData();
         }
     }
 
@@ -153,10 +180,21 @@ public class Actv_EdtDados extends AppCompatActivity {
     }
 
     public void saveData() {
-        // TRATAMENTO DE ERRO
         nomeUser = edtNovoNome.getText().toString().trim();
-        String userID = firebaseUser.getUid();
-        reference.child(userID).child("nome").setValue(nomeUser);
-
+        if (!nomeUser.isEmpty()) {
+            progressBar.setVisibility(View.VISIBLE);
+            String userID = firebaseUser.getUid();
+            reference.child(userID).child("nome").setValue(nomeUser).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(Actv_EdtDados.this, "Nome atualizado com sucesso", Toast.LENGTH_SHORT).show();
+                        finish();
+                    } else {
+                        Toast.makeText(Actv_EdtDados.this, "Falha ao atualizar nome", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
     }
 }

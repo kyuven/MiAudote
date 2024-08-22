@@ -124,7 +124,7 @@ public class Map_Animals_Fragment extends Fragment implements OnMapReadyCallback
                         posicao = new LatLng(latitude, longitude);
                         mMap.addMarker(new MarkerOptions().position(posicao));
                         userLatLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 16));
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 13)); // FAZ O L
                     }
 
                 }

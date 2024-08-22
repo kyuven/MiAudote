@@ -193,62 +193,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginBottom="8dp"
-
-                android:text="@string/idade"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtDadosAnimal_idade"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/edt_txt_design"
-                android:inputType="number"
-                android:maxLength="2"
-
-                android:hint="@string/insira_a_idade_do_animal"
-                android:textSize="12sp"
-                android:textColor="#D86A6A6A"
-                android:padding="12dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginBottom="3dp"
-
-                android:text="@string/esp_cie"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtInptLytEspecie"
-                android:layout_width="160dp"
-                android:layout_height="42dp"
-                android:layout_marginStart="30dp"
-                android:hint="@string/selecione"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
-
-                <AutoCompleteTextView
-                    android:id="@+id/edtDadosAnimal_especieAutoComplete"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:inputType="none"
-                    android:hint="@string/selecione_especie_animal"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginBottom="8dp"
                 android:layout_marginTop="20dp"
 
                 android:text="@string/descricao"
@@ -275,30 +219,6 @@
                 android:textSize="12sp"
                 android:textColor="#D86A6A6A"
                 android:padding="12dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="10dp"
-
-                android:text="@string/endereco"
-                android:textAllCaps="true"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/ckbDadosAnimal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="23dp"
-
-                android:text="@string/usar_endere_o_atual"
-                android:textAllCaps="true"
-                android:textColor="@color/marrom07"
-                android:textStyle="bold" />
 
             <!-- UF -->
             <TextView
