@@ -310,7 +310,7 @@
                 android:textColor="@color/marrom07"
                 android:textStyle="bold" />
 
-            <androidx.fragment.app.FragmentContainerView
+            <fragment
                 android:id="@+id/mapAddAnimal"
                 android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"

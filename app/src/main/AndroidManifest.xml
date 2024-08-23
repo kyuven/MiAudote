@@ -48,7 +48,8 @@
             android:exported="false" />
         <activity
             android:name=".PetInfo.ADD_MissingPet_Page"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".ONGInfo.ONG_Page"
             android:exported="false" />

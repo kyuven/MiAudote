@@ -49,7 +49,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/imgAdptInfo_fotoAnimal"
+                    android:id="@+id/imgMissingInfo_fotoAnimal"
                     android:layout_width="130dp"
                     android:layout_height="130dp"
 
@@ -65,7 +65,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/txtAdptInfo_nomeAnimal"
+                android:id="@+id/txtMissingInfo_nomeAnimal"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
                 android:gravity="center"
@@ -78,76 +78,6 @@
                 android:textColor="#2B2B2B"
                 android:textSize="14sp"
                 android:textStyle="bold" />
-
-            <!-- Espécie do animal -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:gravity="center"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginStart="30dp"
-
-                    android:text="@string/especie_doispontos"
-                    android:textAlignment="center"
-                    android:textAllCaps="true"
-                    android:textColor="#2B2B2B"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txtAdptInfo_especie"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="10dp"
-
-                    android:textAlignment="textStart"
-                    android:textAllCaps="true"
-                    android:textColor="#000000"
-                    android:textSize="12sp"/>
-
-            </LinearLayout>
-
-            <!-- Idade do animal -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:gravity="center"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginStart="30dp"
-
-                    android:text="@string/idadedoispontos"
-                    android:textAlignment="center"
-                    android:textAllCaps="true"
-                    android:textColor="#2B2B2B"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txtAdptInfo_idade"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:gravity="center"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginStart="10dp"
-
-                    android:textAlignment="center"
-                    android:textAllCaps="true"
-                    android:textColor="#000000"
-                    android:textSize="12sp"/>
-
-            </LinearLayout>
 
             <!-- Descrição do animal -->
             <LinearLayout
@@ -170,7 +100,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/txtAdptInfo_desc"
+                    android:id="@+id/txtMissingInfo_desc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -204,7 +134,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/txtAdptInfo_email"
+                    android:id="@+id/txtMissingInfo_email"
                     android:layout_width="wrap_content"
                     android:layout_height="25dp"
                     android:layout_marginStart="10dp"
@@ -239,7 +169,7 @@
                     android:maxLength="140" />
 
                 <TextView
-                    android:id="@+id/txtAdptInfo_telefone"
+                    android:id="@+id/txtMissingInfo_telefone"
                     android:layout_width="wrap_content"
                     android:layout_height="25dp"
                     android:layout_marginStart="10dp"
@@ -255,31 +185,45 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="52dp">
+                android:layout_marginBottom="12dp">
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
+                    android:layout_height="match_parent"
                     android:gravity="center"
                     android:layout_marginStart="30dp"
 
-                    android:text="@string/descricao"
+                    android:text="@string/endereco"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textColor="#2B2B2B"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/imgMapaUltimoLocal"
-                    android:layout_width="340dp"
-                    android:layout_height="340dp"
-                    android:layout_marginStart="30dp"
-                    android:src="@color/black" />
+                <TextView
+                    android:id="@+id/txtMissingInfo_end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+
+                    android:textAlignment="textStart"
+                    android:textAllCaps="true"
+                    android:textColor="#000000"
+                    android:textSize="12sp"/>
 
             </LinearLayout>
+
+            <fragment
+                android:id="@+id/mapMissingPet"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="360dp"
+                android:layout_gravity="start"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="62dp" />
 
         </LinearLayout>
 

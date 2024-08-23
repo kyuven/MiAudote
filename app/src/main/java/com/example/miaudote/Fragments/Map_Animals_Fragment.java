@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import com.example.miaudote.Models.AnimalModel;
 import com.example.miaudote.PetInfo.ADD_MissingPet_Page;
+import com.example.miaudote.PetInfo.AdoptionPet_Info;
+import com.example.miaudote.PetInfo.MissingPet_Info;
 import com.example.miaudote.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -28,6 +30,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -48,13 +51,14 @@ public class Map_Animals_Fragment extends Fragment implements OnMapReadyCallback
     // WIDGETS
     FloatingActionButton fabAddAnimalPerdido;
     double latitude, longitude;
-    String lat, lng;
+    String userID, imgAnimal, nomeAnimal, descAnimal, ufAnimal, cidadeAnimal, bairroAnimal, lograAnimal, lat, lng, endConcat, teste;
 
     // LOCALIZAÇÃO
     private final int FINE_PERMISSION_CODE = 1;
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
     GoogleMap mMap;
+    Marker marker1;
     LatLng posicao, userLatLng;
 
     @Override
@@ -108,6 +112,44 @@ public class Map_Animals_Fragment extends Fragment implements OnMapReadyCallback
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
+
+        // Define o listener para o clique do marcador
+        mMap.setOnMarkerClickListener(marker -> {
+            // Recupera o userID a partir do tag do marcador
+            String userID = (String) marker.getTag();
+
+            if (userID != null) {
+                // Obtém as informações do marcador
+                String imgAnimal = marker.getSnippet();
+                String nomeAnimal = marker.getTitle();
+
+                // Verifica se os dados estão válidos
+                if (imgAnimal != null && nomeAnimal != null) {
+                    Toast.makeText(getActivity(), teste, Toast.LENGTH_SHORT).show();
+                    //Intent i = new Intent(getContext(), MissingPet_Info.class);
+                    //i.putExtra("userIDE", userID);
+                    //i.putExtra("imgAnimalE", imgAnimal);
+                    //i.putExtra("nomeAnimalE", nomeAnimal);
+                    //i.putExtra("enderecoE", endConcat);
+                    //i.putExtra("latitude", lat);
+                    //i.putExtra("longitude", lng); // Corrigido o nome da chave para "longitude"
+                    //startActivity(i);
+                    return true; // Indica que o clique foi tratado
+                } else {
+                    Log.e("Map_Animals_Fragment", "Invalid marker data");
+                }
+            } else {
+                Log.e("Map_Animals_Fragment", "Marker tag is null");
+            }
+
+            return false; // Indica que o clique não foi tratado
+        });
+
+        // Load animal data from Firebase
+        loadAnimalData();
+    }
+
+    private void loadAnimalData() {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -115,24 +157,52 @@ public class Map_Animals_Fragment extends Fragment implements OnMapReadyCallback
                     Log.d(TAG, "No data available.");
                     return;
                 }
+                mMap.clear();
                 for(DataSnapshot itemSnapshot: snapshot.getChildren()) {
                     for (DataSnapshot animalSnapshot : itemSnapshot.getChildren()) {
-                        lat = animalSnapshot.child("latAnimal").getValue(String.class);
-                        lng = animalSnapshot.child("lngAnimal").getValue(String.class);
-                        latitude = Double.parseDouble(lat);
-                        longitude = Double.parseDouble(lng);
-                        posicao = new LatLng(latitude, longitude);
-                        mMap.addMarker(new MarkerOptions().position(posicao));
-                        userLatLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 13)); // FAZ O L
-                    }
+                        try {
+                            // Retrieve animal information
+                            userID = animalSnapshot.child("userId").getValue(String.class);
+                            imgAnimal = animalSnapshot.child("imgAnimal").getValue(String.class);
+                            nomeAnimal = animalSnapshot.child("nomeAnimal").getValue(String.class);
+                            descAnimal = animalSnapshot.child("descAnimal").getValue(String.class);
+                            ufAnimal = animalSnapshot.child("ufAnimal").getValue(String.class);
+                            cidadeAnimal = animalSnapshot.child("cidadeAnimal").getValue(String.class);
+                            bairroAnimal = animalSnapshot.child("bairroAnimal").getValue(String.class);
+                            lograAnimal = animalSnapshot.child("lograAnimal").getValue(String.class);
+                            lat = animalSnapshot.child("latAnimal").getValue(String.class);
+                            lng = animalSnapshot.child("lngAnimal").getValue(String.class);
 
+                            endConcat = ufAnimal + " - " + cidadeAnimal + ", " + lograAnimal + ", " + bairroAnimal;
+                            teste = nomeAnimal + ", " + descAnimal + " " + cidadeAnimal;
+
+                            latitude = Double.parseDouble(lat);
+                            longitude = Double.parseDouble(lng);
+                            LatLng position = new LatLng(latitude, longitude);
+
+                            // Add marker to map
+                            Marker marker = mMap.addMarker(new MarkerOptions()
+                                    .position(position)
+                                    .title(nomeAnimal)
+                                    .snippet(imgAnimal));
+                            marker.setTag(userID);
+
+                        } catch (Exception e) {
+                            Log.e("Map_Animals_Fragment", "Error adding marker", e);
+                        }
+                    }
+                }
+                if (currentLocation != null) {
+                    LatLng userLatLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 14));
+                } else {
+                    Log.e("Map_Animals_Fragment", "Current location is null");
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Log.e(TAG, "Error: " + error.getMessage());
+
             }
         });
     }
