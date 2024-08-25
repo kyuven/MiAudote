@@ -215,15 +215,7 @@
 
             </LinearLayout>
 
-            <fragment
-                android:id="@+id/mapMissingPet"
-                android:name="com.google.android.gms.maps.SupportMapFragment"
-                android:layout_width="match_parent"
-                android:layout_height="360dp"
-                android:layout_gravity="start"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="62dp" />
+
 
         </LinearLayout>
 

@@ -4,10 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.miaudote.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -24,15 +27,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-public class MissingPet_Info extends AppCompatActivity implements OnMapReadyCallback {
+public class MissingPet_Info extends AppCompatActivity {
 
     // FIREBASE
     FirebaseAuth mAuth;
-    DatabaseReference usuarioRef;
+    private DatabaseReference databaseReference;
 
     // GOOGLE MAP
     private GoogleMap myMap;
-
 
     // WIDGETS
     TextView txtNomeAnimal, txtDescAnimal, txtEmail, txtTelefone, txtEnd;
@@ -48,8 +50,8 @@ public class MissingPet_Info extends AppCompatActivity implements OnMapReadyCall
 
         mAuth = FirebaseAuth.getInstance();
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapMissingPet);
-        mapFragment.getMapAsync(this);
+        //SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapMissingPet);
+        //mapFragment.getMapAsync(this);
 
         txtNomeAnimal = findViewById(R.id.txtMissingInfo_nomeAnimal);
         txtDescAnimal = findViewById(R.id.txtMissingInfo_desc);
@@ -60,43 +62,50 @@ public class MissingPet_Info extends AppCompatActivity implements OnMapReadyCall
 
         btnBack.setOnClickListener(v -> finish());
 
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            Picasso.get().load(bundle.getString("imgAnimalE")).resize(130, 130).into(imgAnimal);
-            txtNomeAnimal.setText(bundle.getString("nomeAnimalE"));
-            txtDescAnimal.setText(bundle.getString("descAnimalE"));
-            txtEnd.setText(bundle.getString("enderecoE"));
-            latitude = bundle.getString("latitude");
-            longitude = bundle.getString("longitute");
+        Intent intent = getIntent();
+        String animalId = intent.getStringExtra("animalId");
 
-            lat = Double.parseDouble(latitude);
-            lng = Double.parseDouble(longitude);
-
-            userID = bundle.getString("User ID");
-            usuarioRef = FirebaseDatabase.getInstance().getReference("usuarios").child(userID);
-            usuarioRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String email = snapshot.child("email").getValue().toString();
-                    txtEmail.setText(email);
-                    // String telefone = usuarioSnapshot.child("telefone").getValue(String.class);
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
+        if (animalId != null) {
+            Log.d("MissingPet_Info", "Received Animal ID: " + animalId);
+        } else {
+            Log.e("MissingPet_Info", "Animal ID is null");
         }
+
     }
 
-    @Override
-    public void onMapReady(@NonNull GoogleMap googleMap) {
-        myMap = googleMap;
-        LatLng endereco = new LatLng(lat, lng);
-        myMap.addMarker(new MarkerOptions().position(endereco));
-        myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(endereco, 16f));
-        myMap.getUiSettings().setZoomControlsEnabled(true);
-        myMap.getUiSettings().setScrollGesturesEnabled(true);
+    private void loadAnimalData(String animalId) {
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    String nomeAnimal = snapshot.child("nomeAnimal").getValue(String.class);
+                    String descAnimal = snapshot.child("descAnimal").getValue(String.class);
+                    String latAnimal = snapshot.child("latAnimal").getValue(String.class);
+                    String lngAnimal = snapshot.child("lngAnimal").getValue(String.class);
+
+                    lat = Double.parseDouble(latAnimal);
+                    lng = Double.parseDouble(lngAnimal);
+                    txtNomeAnimal.setText(nomeAnimal);
+                    txtDescAnimal.setText(descAnimal);
+                } else {
+                    Toast.makeText(MissingPet_Info.this, "No data found for the selected animal", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(MissingPet_Info.this, "Failed to load data", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
+    //@Override
+    //public void onMapReady(@NonNull GoogleMap googleMap) {
+        //myMap = googleMap;
+        //LatLng endereco = new LatLng(lat, lng);
+        //myMap.addMarker(new MarkerOptions().position(endereco));
+        //myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(endereco, 16f));
+        //myMap.getUiSettings().setZoomControlsEnabled(true);
+        //myMap.getUiSettings().setScrollGesturesEnabled(true);
+    //}
 }

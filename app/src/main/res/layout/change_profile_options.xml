@@ -80,7 +80,7 @@
             android:gravity="end">
 
             <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/btnEdtDados"
+                android:id="@+id/btnNextDados"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:background="@android:color/transparent"
@@ -135,7 +135,7 @@
             android:gravity="end">
 
             <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/btnEdtEmail"
+                android:id="@+id/btnNextEmail"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:background="@android:color/transparent"
@@ -190,7 +190,7 @@
             android:gravity="end">
 
             <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/btnEdtSenha"
+                android:id="@+id/btnNextSenha"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:background="@android:color/transparent"

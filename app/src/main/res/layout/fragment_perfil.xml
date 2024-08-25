@@ -39,6 +39,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_margin="12dp"
 
+            android:src="@drawable/baseline_person_24"
             android:contentDescription="@string/imagem_enviada_pelo_usu_rio"
 
             app:layout_constraintEnd_toEndOf="parent"
@@ -212,7 +213,7 @@
 
         <!-- Animais Usuário -->
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linearLyUserAnimais"
+            android:id="@+id/linearLytUserAnimais"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"

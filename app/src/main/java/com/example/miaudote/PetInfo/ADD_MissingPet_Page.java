@@ -192,20 +192,18 @@ public class ADD_MissingPet_Page extends AppCompatActivity implements OnMapReady
 
         AppCompatButton btnSalvar = findViewById(R.id.btnAddAnimal);
         btnSalvar.setOnClickListener(v -> {
-            progressBar.setVisibility(View.VISIBLE);
-            ckbEnd.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                if (isChecked) {
+            if (edtNomeAnimal.getText().toString().isEmpty()) {
+                Toast.makeText(this, "O nome não pode ser nulo.", Toast.LENGTH_SHORT).show();
+            } else if (edtDescAnimal.getText().toString().isEmpty()) {
+                Toast.makeText(this, "A descrição não pode ser nula.", Toast.LENGTH_SHORT).show();
+            } else {
+                if(ckbEnd.isChecked()) {
                     reverseGeocoding();
                 } else {
-                    nomeAnimal = edtNomeAnimal.getText().toString();
-                    descAnimal = edtDescAnimal.getText().toString();
-                    cidadeAnimal = edtCidade.getText().toString();
-                    bairroAnimal = edtBairro.getText().toString();
-                    logradouroAnimal = edtLogradouro.getText().toString();
-                    endConcat = logradouroAnimal + ", " + bairroAnimal + ", " + cidadeAnimal + ", " + ufAnimal;
                     uploadFoto();
                 }
-            });
+            }
+            progressBar.setVisibility(View.VISIBLE);
         });
 
         fabAddFotoAnimal.setOnClickListener(v -> escolherFoto());
@@ -310,6 +308,21 @@ public class ADD_MissingPet_Page extends AppCompatActivity implements OnMapReady
 
     public void uploadData() {
 
+        nomeAnimal = edtNomeAnimal.getText().toString();
+        descAnimal = edtDescAnimal.getText().toString();
+
+        if (ckbEnd.isChecked()) {
+            cidadeAnimal = cidadeAnimal != null ? cidadeAnimal : "";
+            bairroAnimal = bairroAnimal != null ? bairroAnimal : "";
+            logradouroAnimal = logradouroAnimal != null ? logradouroAnimal : "";
+            ufAnimal = ufAnimal != null ? ufAnimal : "";
+        } else {
+            cidadeAnimal = edtCidade.getText().toString();
+            bairroAnimal = edtBairro.getText().toString();
+            logradouroAnimal = edtLogradouro.getText().toString();
+        }
+        endConcat = logradouroAnimal + ", " + bairroAnimal + ", " + cidadeAnimal + ", " + ufAnimal;
+
         // PEGA O VALOR DO RADIO BUTTON
         radioGroup = findViewById(R.id.radioGroup);
         int i = radioGroup.getCheckedRadioButtonId();
@@ -367,11 +380,10 @@ public class ADD_MissingPet_Page extends AppCompatActivity implements OnMapReady
                     Address address = addressList.get(0);
 
                     // Extraí as partes do endereço
-                    logradouroAnimal = address.getThoroughfare();
+                    logradouroAnimal = address.getAdminArea();
                     bairroAnimal = address.getSubLocality();
                     cidadeAnimal = address.getLocality();
                     ufAnimal = address.getAdminArea();
-                    endConcat = logradouroAnimal + ", " + bairroAnimal + ", " + cidadeAnimal + ", " + ufAnimal;
                     uploadFoto();
                 }
             }

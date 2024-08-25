@@ -276,7 +276,7 @@
                 android:gravity="start"
                 android:hint="@string/escreva_um_pouco_sobre_o_bichinho"
                 android:inputType="textMultiLine"
-                android:maxLength="240"
+                android:maxLength="160"
                 android:padding="10dp"
                 android:textAllCaps="true"
                 android:textColor="#D86A6A6A"
@@ -448,9 +448,9 @@
                 android:layout_height="40dp"
                 android:layout_gravity="end"
                 android:layout_marginTop="32dp"
-
                 android:layout_marginEnd="32dp"
-                android:layout_marginBottom="56dp"
+                android:layout_marginBottom="120dp"
+
                 android:background="@drawable/btn_perfil"
                 android:text="@string/adicionar"
                 android:textAllCaps="true"

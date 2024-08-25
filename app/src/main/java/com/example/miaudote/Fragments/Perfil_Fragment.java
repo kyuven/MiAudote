@@ -13,6 +13,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -26,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.miaudote.Models.UserModel;
+import com.example.miaudote.PetInfo.UserAnimals;
 import com.example.miaudote.UserData.Actv_EdtDados;
 import com.example.miaudote.UserData.Actv_EdtEmail;
 import com.example.miaudote.UserData.Actv_EdtSenha;
@@ -50,9 +52,11 @@ public class Perfil_Fragment extends Fragment {
     FirebaseUser firebaseUser;
     TextView txtDeleteAcc, txtPerfil_nomeUser, txtPerfil_emailUser;
     ImageView imgPerfil_user;
-    LinearLayout linearlyt_mausTratos, linearlyt_dados, linearlyt_email, linearlyt_senha, linearlyt_delete;
-    AppCompatButton btnMudarPerfil, btnTxtLogOut, btnCancelLogout, btnConfirmLogout;
-    AppCompatImageButton btnTermos, btnMausTratos, btnIconLogOut, btn_backEdtDados, btnCancel;
+    LinearLayout linearlyt_dados, linearlyt_email, linearlyt_senha;
+    AppCompatButton btnMudarPerfil, btnTxtLogOut, btnCancelLogout, btnConfirmLogout, btnDeleteUser;
+    AppCompatImageButton btnTermos, btnMausTratos, btnIconLogOut, btn_backEdtDados, btnCancel,
+                        btnNextDados, btnNextEmail, btnNextSenha, btnDelete, btnAnimaisUser;
+    ConstraintLayout linearlyt_mausTratos, linearlyt_userAnimals;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,20 +74,22 @@ public class Perfil_Fragment extends Fragment {
         btnTermos = view.findViewById(R.id.btnPerfil_termos);
         btnMausTratos = view.findViewById(R.id.btnMausTratos);
         btnIconLogOut = view.findViewById(R.id.btnPerfil_iconLogOut);
+        btnAnimaisUser = view.findViewById(R.id.btnAnimaisUser);
+
+        linearlyt_userAnimals = view.findViewById(R.id.linearLytUserAnimais);
+        linearlyt_mausTratos = view.findViewById(R.id.linearLyMausTratos);
 
         btnMudarPerfil = view.findViewById(R.id.btnPerfil_mudarPerfil);
         btnTxtLogOut = view.findViewById(R.id.btnPerfil_txtLogOut);
 
-        if (firebaseUser == null){
-            Toast.makeText(getActivity(), "Alguma coisa deu errado!", Toast.LENGTH_SHORT).show();
-        } else {
+        if (firebaseUser != null){
             showUserPerfil();
         }
 
+        // CHAMA A LÓGICA DE LOG OUT
         btnTxtLogOut.setOnClickListener(v -> {
             logOut();
         });
-
         btnIconLogOut.setOnClickListener(v -> {
             logOut();
         });
@@ -93,22 +99,20 @@ public class Perfil_Fragment extends Fragment {
             startActivity(intent);
         });
 
+        // CHAMA O BANNER DE MAUS TRATOS AOS ANIMAIS
+        linearlyt_mausTratos.setOnClickListener(v -> bannerMausTratos());
         btnMausTratos.setOnClickListener(v -> {
-            View alertCustomDialog = LayoutInflater.from(getActivity()).inflate(R.layout.pop_up, null);
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+            bannerMausTratos();
+        });
 
-            alertDialog.setView(alertCustomDialog);
-            btnCancel = alertCustomDialog.findViewById(R.id.btnCloseAd);
-
-            final AlertDialog dialog = alertDialog.create();
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
-            dialog.show();
-            btnCancel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.cancel();
-                }
-            });
+        // ENVIA PARA A PÁGINA DE ANIMAIS CADASTRADOS PELO USUÁRIO
+        //btnAnimaisUser.setOnClickListener(v -> {
+            //Intent i = new Intent(requireActivity(), UserAnimals.class);
+            //startActivity(i);
+        //});
+        linearlyt_userAnimals.setOnClickListener(v -> {
+            Intent i = new Intent(requireActivity(), UserAnimals.class);
+            startActivity(i);
         });
 
         btnMudarPerfil.setOnClickListener(v -> {
@@ -119,70 +123,85 @@ public class Perfil_Fragment extends Fragment {
             linearlyt_dados = alertCustomDialog.findViewById(R.id.linearlyt_dados);
             linearlyt_email = alertCustomDialog.findViewById(R.id.linearlyt_email);
             linearlyt_senha = alertCustomDialog.findViewById(R.id.linearlyt_senha);
-            linearlyt_delete = alertCustomDialog.findViewById(R.id.linearlyt_delete);
+
             btn_backEdtDados = alertCustomDialog.findViewById(R.id.fab_backEdtDados);
+            btnDeleteUser = alertCustomDialog.findViewById(R.id.btnDeleteUser);
+            btnDelete = alertCustomDialog.findViewById(R.id.btnDeleteUserIcon);
+            btnNextDados = alertCustomDialog.findViewById(R.id.btnNextDados);
+            btnNextEmail = alertCustomDialog.findViewById(R.id.btnNextEmail);
+            btnNextSenha = alertCustomDialog.findViewById(R.id.btnNextSenha);
 
             final AlertDialog dialog = alertDialog.create();
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
             dialog.show();
 
             btn_backEdtDados.setOnClickListener(v13 -> dialog.cancel());
+            // IR PARA A PÁGINA DE ALTERAÇÃO DE DADOS DO USUÁRIO
             linearlyt_dados.setOnClickListener(v14 -> {
                 Intent intent = new Intent(getActivity(), Actv_EdtDados.class);
                 startActivity(intent);
                 dialog.dismiss();
             });
+            btnNextDados.setOnClickListener(v14 -> {
+                Intent intent = new Intent(getActivity(), Actv_EdtDados.class);
+                startActivity(intent);
+                dialog.dismiss();
+            });
 
+            // IR PARA A PÁGINA DE ALTERAÇÃO DE SENHA
             linearlyt_email.setOnClickListener(v14 -> {
                 Intent i = new Intent(getActivity(), Actv_EdtEmail.class);
                 startActivity(i);
                 dialog.dismiss();
             });
+            btnNextEmail.setOnClickListener(v14 -> {
+                Intent i = new Intent(getActivity(), Actv_EdtEmail.class);
+                startActivity(i);
+                dialog.dismiss();
+            });
 
+            // IR PARA A PÁGINA DE ALTERAÇÃO DE SENHA
             linearlyt_senha.setOnClickListener(v14 -> {
                 Intent intenT = new Intent(getActivity(), Actv_EdtSenha.class);
                 startActivity(intenT);
                 dialog.dismiss();
             });
+            btnNextSenha.setOnClickListener(v14 -> {
+                Intent intenT = new Intent(getActivity(), Actv_EdtSenha.class);
+                startActivity(intenT);
+                dialog.dismiss();
+            });
 
-            linearlyt_delete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
-                    View alertCustomDialog = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_custom, null);
-                    AlertDialog.Builder deletarUser = new AlertDialog.Builder(getActivity());
-
-                    deletarUser.setView(alertCustomDialog);
-                    txtDeleteAcc = alertCustomDialog.findViewById(R.id.txtDialogCustom_sair);
-                    btnCancelLogout = alertCustomDialog.findViewById(R.id.btnDialogCustom_nao);
-                    btnConfirmLogout = alertCustomDialog.findViewById(R.id.btnDialogCustom_sim);
-
-                    final AlertDialog dialogDel = deletarUser.create();
-                    dialogDel.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
-                    dialogDel.show();
-
-                    txtDeleteAcc.setText("DELETAR SUA CONTA?");
-                    btnCancelLogout.setOnClickListener(v15 -> dialogDel.cancel());
-                    btnConfirmLogout.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                            user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        Log.d(TAG, "Usuário deleta com sucesso");
-                                        Intent i = new Intent(getActivity(), LoginIn_Activity.class);
-                                        startActivity(i);
-                                    }
-                                }
-                            });
-                        }
-                    });
-                }
+            // DELETAR CONTA
+            btnDelete.setOnClickListener(v1 -> {
+                dialog.dismiss();
+                deleteAccount();
+            });
+            btnDeleteUser.setOnClickListener(v12 -> {
+                dialog.dismiss();
+                deleteAccount();
             });
         });
+
         return view;
+    }
+
+    private void bannerMausTratos() {
+        View alertCustomDialog = LayoutInflater.from(getActivity()).inflate(R.layout.pop_up, null);
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+
+        alertDialog.setView(alertCustomDialog);
+        btnCancel = alertCustomDialog.findViewById(R.id.btnCloseAd);
+
+        final AlertDialog dialog = alertDialog.create();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+        dialog.show();
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        });
     }
 
     public void logOut() {
@@ -228,6 +247,39 @@ public class Perfil_Fragment extends Fragment {
             }
         });
 
+    }
+
+    public void deleteAccount() {
+        View alertCustomDialog = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_custom, null);
+        AlertDialog.Builder deletarUser = new AlertDialog.Builder(getActivity());
+
+        deletarUser.setView(alertCustomDialog);
+        txtDeleteAcc = alertCustomDialog.findViewById(R.id.txtDialogCustom_sair);
+        btnCancelLogout = alertCustomDialog.findViewById(R.id.btnDialogCustom_nao);
+        btnConfirmLogout = alertCustomDialog.findViewById(R.id.btnDialogCustom_sim);
+
+        final AlertDialog dialogDel = deletarUser.create();
+        dialogDel.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+        dialogDel.show();
+
+        txtDeleteAcc.setText("DELETAR SUA CONTA?");
+        btnCancelLogout.setOnClickListener(v15 -> dialogDel.cancel());
+        btnConfirmLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "Usuário deleta com sucesso");
+                            Intent i = new Intent(getActivity(), LoginIn_Activity.class);
+                            startActivity(i);
+                        }
+                    }
+                });
+            }
+        });
     }
 
 }
