@@ -48,9 +48,7 @@ public class Register_Activity extends AppCompatActivity {
         edtConfirmarSenha = findViewById(R.id.cadastro_confirmarSenha);
 
         ckbMostrarSenha = findViewById(R.id.ckbCad_mostrarSenha);
-
-        // CheckBox dos termos de utilização
-        // ? Separar em três telas o registro ?
+        ckbTermos = findViewById(R.id.ckbTermos);
 
         // Envia para a página de login (volta a página)
         btnBackLogin = findViewById(R.id.fab_back);
@@ -89,6 +87,14 @@ public class Register_Activity extends AppCompatActivity {
                 });
             }
 
+        });
+
+        ckbTermos.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Intent intent = new Intent(Register_Activity.this, Termos_Activity.class);
+                startActivity(intent);
+            }
         });
 
         // Mostrar Senha - Checkbox

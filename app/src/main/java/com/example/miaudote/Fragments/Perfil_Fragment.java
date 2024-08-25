@@ -31,6 +31,7 @@ import com.example.miaudote.UserData.Actv_EdtEmail;
 import com.example.miaudote.UserData.Actv_EdtSenha;
 import com.example.miaudote.UserData.LoginIn_Activity;
 import com.example.miaudote.R;
+import com.example.miaudote.UserData.Termos_Activity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Firebase;
@@ -85,6 +86,11 @@ public class Perfil_Fragment extends Fragment {
 
         btnIconLogOut.setOnClickListener(v -> {
             logOut();
+        });
+
+        btnTermos.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), Termos_Activity.class);
+            startActivity(intent);
         });
 
         btnMausTratos.setOnClickListener(v -> {

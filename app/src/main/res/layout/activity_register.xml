@@ -184,7 +184,6 @@
                     android:layout_height="32dp"
                     android:layout_gravity="center_horizontal"
                     android:background="@android:color/transparent"
-
                     android:text="concordar com os termos de uso"
                     android:textColor="@color/blue_link"
                     android:textSize="12sp" />

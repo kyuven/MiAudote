@@ -47,8 +47,7 @@ public class Cellphone_Activity extends AppCompatActivity {
         firebaseUser = mAuth.getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("usuarios");
 
-        // Telefone
-        String userID = firebaseUser.getUid();
+        //Telefone
         edtTefone = findViewById(R.id.edtTelefone);
 
         // Envia para a página de confirmação de cadastro (código OTP)
@@ -61,6 +60,8 @@ public class Cellphone_Activity extends AppCompatActivity {
                 }
 
                 strTelefone = edtTefone.getText().toString();
+                String userID = firebaseUser.getUid();
+                reference.child(userID).child("telefone").setValue(strTelefone);
                 Intent intent = new Intent(Cellphone_Activity.this, Confirmar_Login.class);
                 intent.putExtra("telefone", strTelefone);
                 startActivity(intent);
