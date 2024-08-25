@@ -93,16 +93,8 @@ public class LoginIn_Activity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         FirebaseApp.initializeApp(this);
 
-        GoogleSignInOptions options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.web_client_id))
-                .requestEmail().build();
-        googleSignInClient = GoogleSignIn.getClient(LoginIn_Activity.this, options);
-
         edtEmailLogin = findViewById(R.id.LogIn_email);
         edtSenhaLogin = findViewById(R.id.LogIn_senha);
-
-        btnGoogle = findViewById(R.id.btnLogin_google);
-        btnFacebook = findViewById(R.id.btnLogin_facebook);
 
         CheckBox ckbLoginMostrarSenha = (CheckBox) findViewById(R.id.ckbLogin_mostrarSenha);
 
@@ -113,14 +105,6 @@ public class LoginIn_Activity extends AppCompatActivity {
             startActivity(i);
             finish();
 
-        });
-
-        btnGoogle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = googleSignInClient.getSignInIntent();
-                activityResultLauncher.launch(i);
-            }
         });
 
         // Entrada de usuário já cadastrado

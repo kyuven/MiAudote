@@ -91,7 +91,7 @@ public class Confirmar_Login extends AppCompatActivity {
 
                             @Override
                             public void onVerificationFailed(@NonNull FirebaseException e) {
-                                Toast.makeText(Confirmar_Login.this, "Verificação OTP falhou!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Confirmar_Login.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
@@ -115,6 +115,7 @@ public class Confirmar_Login extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     Intent intent = new Intent(Confirmar_Login.this, Main_Page.class);
+                    intent.putExtra("telefone", telefone);
                     startActivity(intent);
                 } else {
                     Toast.makeText(Confirmar_Login.this, "Verificação OTP falhou!", Toast.LENGTH_SHORT).show();
