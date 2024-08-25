@@ -37,7 +37,7 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/btnAdpt_infoAnimal"
+                    android:id="@+id/btnMissing_infoAnimal"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
 
@@ -215,6 +215,15 @@
 
             </LinearLayout>
 
+            <fragment
+                android:id="@+id/mapMissingPet"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="24dp" />
 
 
         </LinearLayout>

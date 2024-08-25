@@ -203,16 +203,18 @@ public class Actv_EdtDadosAnimal extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot animalSnapshot) {
                             if (animalSnapshot.exists()) {
-                                branchRef.child(animalId).child("nome").setValue(txtNovoNomeAnimal);
-                                branchRef.child(animalId).child("descricao").setValue(txtNovaDescAnimal);
-                                branchRef.child(animalId).child("cidade").setValue(txtNovaCidadeAnimal);
-                                branchRef.child(animalId).child("bairro").setValue(txtNovoBairroAnimal);
-                                branchRef.child(animalId).child("logradouro").setValue(txtNovoLograAnimal);
+                                branchRef.child(animalId).child("nomeAnimal").setValue(txtNovoNomeAnimal);
+                                branchRef.child(animalId).child("descAnimal").setValue(txtNovaDescAnimal);
+                                branchRef.child(animalId).child("cidadeAnimal").setValue(txtNovaCidadeAnimal);
+                                branchRef.child(animalId).child("bairroAnimal").setValue(txtNovoBairroAnimal);
+                                branchRef.child(animalId).child("lograAnimal").setValue(txtNovoLograAnimal);
+                                branchRef.child(animalId).child("ufAnimal").setValue(ufAnimal);
 
                                 // Se uma nova imagem foi escolhida, atualiza também
                                 if (newImgAnimalStr != null) {
                                     branchRef.child(animalId).child("imgAnimal").setValue(newImgAnimalStr);
                                 }
+                                finish();
                                 found = true;
                             }
 

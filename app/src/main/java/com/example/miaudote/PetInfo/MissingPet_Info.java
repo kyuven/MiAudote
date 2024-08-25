@@ -27,7 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-public class MissingPet_Info extends AppCompatActivity {
+public class MissingPet_Info extends AppCompatActivity implements OnMapReadyCallback {
 
     // FIREBASE
     FirebaseAuth mAuth;
@@ -40,7 +40,7 @@ public class MissingPet_Info extends AppCompatActivity {
     TextView txtNomeAnimal, txtDescAnimal, txtEmail, txtTelefone, txtEnd;
     ImageView imgAnimal;
     AppCompatImageButton btnBack;
-    String userID, latitude, longitude;
+    String userId, fotoAnimal, nomeAnimal, descAnimal, ufAnimal, cidadeAnimal, bairroAnimal, lograAnimal, latitude, longitute, concatEnd;
     double lat, lng;
 
     @Override
@@ -50,8 +50,8 @@ public class MissingPet_Info extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        //SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapMissingPet);
-        //mapFragment.getMapAsync(this);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapMissingPet);
+        mapFragment.getMapAsync(this);
 
         txtNomeAnimal = findViewById(R.id.txtMissingInfo_nomeAnimal);
         txtDescAnimal = findViewById(R.id.txtMissingInfo_desc);
@@ -59,53 +59,52 @@ public class MissingPet_Info extends AppCompatActivity {
         txtTelefone = findViewById(R.id.txtMissingInfo_telefone);
         imgAnimal = findViewById(R.id.imgMissingInfo_fotoAnimal);
         txtEnd = findViewById(R.id.txtMissingInfo_end);
-
+        btnBack = findViewById(R.id.btnMissing_infoAnimal);
         btnBack.setOnClickListener(v -> finish());
 
-        Intent intent = getIntent();
-        String animalId = intent.getStringExtra("animalId");
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null) {
+            Picasso.get().load(bundle.getString("imgAnimalM")).resize(130, 130).into(imgAnimal);
 
-        if (animalId != null) {
-            Log.d("MissingPet_Info", "Received Animal ID: " + animalId);
-        } else {
-            Log.e("MissingPet_Info", "Animal ID is null");
+            txtNomeAnimal.setText(bundle.getString("nomeAnimalM"));
+            txtDescAnimal.setText(bundle.getString("descAnimalM"));
+            ufAnimal = bundle.getString("ufAnimalM");
+            cidadeAnimal = bundle.getString("cidadeAnimalM");
+            bairroAnimal = bundle.getString("bairroAnimalM");
+            lograAnimal = bundle.getString("lograAnimalM");
+            concatEnd = ufAnimal + ", " + cidadeAnimal + ", " + lograAnimal + ", " + bairroAnimal;
+            txtEnd.setText(concatEnd);
+            latitude = bundle.getString("latAnimalM");
+            longitute = bundle.getString("lngAnimalM");
+            lat = Double.parseDouble(latitude);
+            lng = Double.parseDouble(longitute);
+
+            userId = bundle.getString("userIdAnimalM");
+            databaseReference = FirebaseDatabase.getInstance().getReference("usuarios").child(userId);
+            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    String email = snapshot.child("email").getValue().toString();
+                    txtEmail.setText(email);
+                    // String telefone = usuarioSnapshot.child("telefone").getValue(String.class);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
         }
 
     }
 
-    private void loadAnimalData(String animalId) {
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    String nomeAnimal = snapshot.child("nomeAnimal").getValue(String.class);
-                    String descAnimal = snapshot.child("descAnimal").getValue(String.class);
-                    String latAnimal = snapshot.child("latAnimal").getValue(String.class);
-                    String lngAnimal = snapshot.child("lngAnimal").getValue(String.class);
-
-                    lat = Double.parseDouble(latAnimal);
-                    lng = Double.parseDouble(lngAnimal);
-                    txtNomeAnimal.setText(nomeAnimal);
-                    txtDescAnimal.setText(descAnimal);
-                } else {
-                    Toast.makeText(MissingPet_Info.this, "No data found for the selected animal", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(MissingPet_Info.this, "Failed to load data", Toast.LENGTH_SHORT).show();
-            }
-        });
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        myMap = googleMap;
+        LatLng endereco = new LatLng(lat, lng);
+        myMap.addMarker(new MarkerOptions().position(endereco));
+        myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(endereco, 16f));
+        myMap.getUiSettings().setZoomControlsEnabled(true);
+        myMap.getUiSettings().setScrollGesturesEnabled(true);
     }
-
-    //@Override
-    //public void onMapReady(@NonNull GoogleMap googleMap) {
-        //myMap = googleMap;
-        //LatLng endereco = new LatLng(lat, lng);
-        //myMap.addMarker(new MarkerOptions().position(endereco));
-        //myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(endereco, 16f));
-        //myMap.getUiSettings().setZoomControlsEnabled(true);
-        //myMap.getUiSettings().setScrollGesturesEnabled(true);
-    //}
 }

@@ -30,6 +30,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -43,9 +44,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class Map_Animals_Fragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+public class Map_Animals_Fragment extends Fragment implements OnMapReadyCallback {
 
     // DATABASE
     DatabaseReference databaseReference;
@@ -54,7 +57,7 @@ public class Map_Animals_Fragment extends Fragment implements OnMapReadyCallback
     FloatingActionButton fabAddAnimalPerdido;
     double latitude, longitude;
     ChildEventListener mChildEventListener;
-    String animalId, nomeAnimal, lat, lng;
+    String userID, nomeAnimal, descAnimal, fotoAnimal, cidadeAnimal, lograAnimal, bairroAnimal, ufAnimal, animalId, lat, lng;
 
     // LOCALIZAÇÃO
     private final int FINE_PERMISSION_CODE = 1;
@@ -121,19 +124,44 @@ public class Map_Animals_Fragment extends Fragment implements OnMapReadyCallback
         } else {
             Log.e("Map_Animals_Fragment", "Current location is null");
         }
-        mMap.setOnMarkerClickListener(this);
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(@NonNull Marker marker) {
+                Intent i = new Intent(getContext(), MissingPet_Info.class);
+                i.putExtra("userIdAnimalM", userID);
+                i.putExtra("imgAnimalM", fotoAnimal);
+                i.putExtra("nomeAnimalM", nomeAnimal);
+                i.putExtra("descAnimalM", descAnimal);
+                i.putExtra("ufAnimalM", ufAnimal);
+                i.putExtra("cidadeAnimalM", cidadeAnimal);
+                i.putExtra("lograAnimalM", lograAnimal);
+                i.putExtra("bairroAnimalM", bairroAnimal);
+                i.putExtra("latAnimalM", lat);
+                i.putExtra("lngAnimalM", lng);
+                startActivity(i);
+                return true;
+            }
+        });
         addMarkersToMap();
     }
 
     public void addMarkersToMap() {
+        Map<String, String> mMarkerMap = new HashMap<>();
        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot itemSnapshot: snapshot.getChildren()) {
+                    String branch = itemSnapshot.getKey();
                     for (DataSnapshot animalSnapshot : itemSnapshot.getChildren()) {
                         try {
-                            animalId = animalSnapshot.child("animalId").getValue(String.class);
+                            userID = animalSnapshot.child("userId").getValue(String.class);
+                            fotoAnimal = animalSnapshot.child("imgAnimal").getValue(String.class);
                             nomeAnimal = animalSnapshot.child("nomeAnimal").getValue(String.class);
+                            descAnimal = animalSnapshot.child("descAnimal").getValue(String.class);
+                            ufAnimal = animalSnapshot.child("ufAnimal").getValue(String.class);
+                            cidadeAnimal = animalSnapshot.child("cidadeAnimal").getValue(String.class);
+                            lograAnimal = animalSnapshot.child("lograAnimal").getValue(String.class);
+                            bairroAnimal = animalSnapshot.child("bairroAnimal").getValue(String.class);
                             lat = animalSnapshot.child("latAnimal").getValue(String.class);
                             lng = animalSnapshot.child("lngAnimal").getValue(String.class);
 
@@ -141,11 +169,12 @@ public class Map_Animals_Fragment extends Fragment implements OnMapReadyCallback
                             longitude = Double.parseDouble(lng);
                             posicao = new LatLng(latitude, longitude);
 
+                            float color = getBranchColor(branch);
+
                             myMarker = mMap.addMarker(new MarkerOptions()
                                     .position(posicao)
-                                    .title(nomeAnimal));
+                                    .icon(BitmapDescriptorFactory.defaultMarker(color)));
 
-                            myMarker.setTag(animalId);
                         } catch (Exception e) {
                             Log.e("Map_Animals_Fragment", "Error adding marker", e);
                         }
@@ -160,17 +189,17 @@ public class Map_Animals_Fragment extends Fragment implements OnMapReadyCallback
         });
     }
 
-    @Override
-    public boolean onMarkerClick(@NonNull Marker marker) {
-        String animalId = (String) marker.getTag();
-        if (animalId != null) {
-            Intent intent = new Intent(getActivity(), MissingPet_Info.class);
-            intent.putExtra("animalId", animalId);
-            startActivity(intent);
-        } else {
-            Log.w("Map_Animals_Fragment", "Animal ID is null");
+    private float getBranchColor(String branch) {
+        switch (branch) {
+            case "Animal para adoção":
+                return BitmapDescriptorFactory.HUE_RED;
+            case "Animal perdido":
+                return BitmapDescriptorFactory.HUE_GREEN;
+            case "Animal encontrado":
+                return BitmapDescriptorFactory.HUE_BLUE;
+            default:
+                return BitmapDescriptorFactory.HUE_ORANGE;
         }
-        return false;
     }
 
     @Override
