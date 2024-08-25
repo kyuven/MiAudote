@@ -4,6 +4,7 @@ import static android.app.PendingIntent.getActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -33,6 +34,7 @@ public class Main_Page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_bar);
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -42,30 +44,20 @@ public class Main_Page extends AppCompatActivity {
         }
 
         bottomNavigationView.setOnItemSelectedListener((NavigationBarView.OnItemSelectedListener) item -> {
-
             int itemId = item.getItemId();
 
             if(itemId == R.id.navAdote) {
-                // chama o método e substitui a variável fragment pelo fragment correspondente
                 loadFragment(new Adotar_Fragment(), false);
-
             } else if (itemId == R.id.navAche) {
-                // chama o método e substitui a variável fragment pelo fragment correspondente
                 loadFragment(new Map_Animals_Fragment(), false);
-
             } else if(itemId == R.id.navOng) {
-                // chama o método e substitui a variável fragment pelo fragment correspondente
                 loadFragment(new ONG_Fragment(), false);
-
             } else if(itemId == R.id.navPerfil) {
-                // chama o método e substitui a variável fragment pelo fragment correspondente
                 loadFragment(new Perfil_Fragment(), false);
             }
 
             return true;
         });
-
-        // Inicializa o app no Fragmento do mapa dos animais
         loadFragment(new Map_Animals_Fragment(), true);
     }
 

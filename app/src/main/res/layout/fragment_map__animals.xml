@@ -46,28 +46,6 @@
 
                     android:textStyle="bold" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputLayout"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-
-                    android:layout_marginStart="32dp"
-                    android:layout_marginEnd="164dp"
-                    android:layout_marginTop="32dp"
-
-                    android:hint="@string/filtrar_por">
-
-                    <AutoCompleteTextView
-                        android:id="@+id/edtAnimalPerdido_filtrarAnimal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="none"
-                        android:textSize="14sp" />
-
-
-                </com.google.android.material.textfield.TextInputLayout>
-
                 <fragment
                 android:id="@+id/mapPage"
                 android:name="com.google.android.gms.maps.SupportMapFragment"
