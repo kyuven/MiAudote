@@ -80,7 +80,7 @@ public class ONG_Register_Contact extends AppCompatActivity {
         OngModel modelOng = new OngModel(imgOng, nomeOng, descOng, ufOng, cidadeOng, bairroOng, logradouroOng,
                                         teleOng, instaOng, emailong, twitterOng, websiteOng);
 
-        FirebaseDatabase.getInstance().getReference().child("ong aprovadas").child(nomeOng)
+        FirebaseDatabase.getInstance().getReference().child("ong em análise").child(nomeOng)
                 .setValue(modelOng).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
