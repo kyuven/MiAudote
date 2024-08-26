@@ -281,7 +281,7 @@ public class ADD_MissingPet_Page extends AppCompatActivity implements OnMapReady
     }
 
     public void uploadFoto() {
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Imagens Animal")
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("imagens animais")
                 .child(uriImageAnimal.getLastPathSegment());
 
         storageReference.putFile(uriImageAnimal).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

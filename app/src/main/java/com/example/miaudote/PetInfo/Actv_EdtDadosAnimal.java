@@ -157,7 +157,7 @@ public class Actv_EdtDadosAnimal extends AppCompatActivity {
     }
 
     public void uploadFoto() {
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Imagens Animal")
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("imagens animais")
                 .child(uriImageAnimal.getLastPathSegment());
 
         storageReference.putFile(uriImageAnimal).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
