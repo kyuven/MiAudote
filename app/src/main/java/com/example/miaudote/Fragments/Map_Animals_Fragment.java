@@ -1,15 +1,14 @@
 package com.example.miaudote.Fragments;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.location.Location;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
@@ -21,7 +20,6 @@ import android.widget.Toast;
 
 import com.example.miaudote.Models.AnimalModel;
 import com.example.miaudote.PetInfo.ADD_MissingPet_Page;
-import com.example.miaudote.PetInfo.AdoptionPet_Info;
 import com.example.miaudote.PetInfo.MissingPet_Info;
 import com.example.miaudote.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -35,7 +33,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -43,10 +40,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class Map_Animals_Fragment extends Fragment implements OnMapReadyCallback {
 
@@ -120,25 +113,33 @@ public class Map_Animals_Fragment extends Fragment implements OnMapReadyCallback
         mMap = googleMap;
         if (currentLocation != null) {
             userLatLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 14));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 16f));
         } else {
             Log.e("Map_Animals_Fragment", "Current location is null");
         }
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(@NonNull Marker marker) {
-                Intent i = new Intent(getContext(), MissingPet_Info.class);
-                i.putExtra("userIdAnimalM", userID);
-                i.putExtra("imgAnimalM", fotoAnimal);
-                i.putExtra("nomeAnimalM", nomeAnimal);
-                i.putExtra("descAnimalM", descAnimal);
-                i.putExtra("ufAnimalM", ufAnimal);
-                i.putExtra("cidadeAnimalM", cidadeAnimal);
-                i.putExtra("lograAnimalM", lograAnimal);
-                i.putExtra("bairroAnimalM", bairroAnimal);
-                i.putExtra("latAnimalM", lat);
-                i.putExtra("lngAnimalM", lng);
-                startActivity(i);
+                // Obtém a informação do marcaor
+                AnimalModel animal = (AnimalModel) marker.getTag();
+
+                if (animal != null) {
+                    Intent i = new Intent(getContext(), MissingPet_Info.class);
+                    i.putExtra("userIdAnimalM", animal.getUserId());
+                    i.putExtra("imgAnimalM", animal.getImgAnimal());
+                    i.putExtra("nomeAnimalM", animal.getNomeAnimal());
+                    i.putExtra("descAnimalM", animal.getDescAnimal());
+                    i.putExtra("ufAnimalM", animal.getUfAnimal());
+                    i.putExtra("cidadeAnimalM", animal.getCidadeAnimal());
+                    i.putExtra("lograAnimalM", animal.getLograAnimal());
+                    i.putExtra("bairroAnimalM", animal.getBairroAnimal());
+                    i.putExtra("latAnimalM", animal.getLatAnimal());
+                    i.putExtra("lngAnimalM", animal.getLngAnimal());
+                    startActivity(i);
+                } else {
+                    Toast.makeText(getContext(), "Informação do marcador não encontrada.", Toast.LENGTH_SHORT).show();
+                }
+
                 return true;
             }
         });
@@ -146,7 +147,6 @@ public class Map_Animals_Fragment extends Fragment implements OnMapReadyCallback
     }
 
     public void addMarkersToMap() {
-        Map<String, String> mMarkerMap = new HashMap<>();
        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -169,11 +169,17 @@ public class Map_Animals_Fragment extends Fragment implements OnMapReadyCallback
                             longitude = Double.parseDouble(lng);
                             posicao = new LatLng(latitude, longitude);
 
-                            float color = getBranchColor(branch);
+                            int iconResource = getBranchIcon(branch);
+                            BitmapDrawable bitmapDrawable = (BitmapDrawable) getResources().getDrawable(iconResource);
+                            Bitmap bitmap = bitmapDrawable.getBitmap();
+                            Bitmap resizedBitmap = resizeBitmap(bitmap, 180, 180);
 
                             myMarker = mMap.addMarker(new MarkerOptions()
                                     .position(posicao)
-                                    .icon(BitmapDescriptorFactory.defaultMarker(color)));
+                                    .icon(BitmapDescriptorFactory.fromBitmap(resizedBitmap)));
+
+                            myMarker.setTag(new AnimalModel(animalSnapshot.getKey(), fotoAnimal, branch, nomeAnimal, descAnimal, ufAnimal, cidadeAnimal, bairroAnimal, lograAnimal, lat, lng, userID));
+
 
                         } catch (Exception e) {
                             Log.e("Map_Animals_Fragment", "Error adding marker", e);
@@ -189,17 +195,21 @@ public class Map_Animals_Fragment extends Fragment implements OnMapReadyCallback
         });
     }
 
-    private float getBranchColor(String branch) {
+    private int getBranchIcon(String branch) {
         switch (branch) {
             case "Animal para adoção":
-                return BitmapDescriptorFactory.HUE_RED;
+                return R.drawable.ic_cat_adopt;
             case "Animal perdido":
-                return BitmapDescriptorFactory.HUE_GREEN;
+                return R.drawable.ic_cat_lost;
             case "Animal encontrado":
-                return BitmapDescriptorFactory.HUE_BLUE;
+                return R.drawable.ic_cat_achado;
             default:
-                return BitmapDescriptorFactory.HUE_ORANGE;
+                return R.drawable.ic_cat_lost;
         }
+    }
+
+    private Bitmap resizeBitmap(Bitmap bitmap, int width, int height) {
+        return Bitmap.createScaledBitmap(bitmap, width, height, false);
     }
 
     @Override

@@ -2,28 +2,18 @@ package com.example.miaudote.UserData;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.telephony.PhoneNumberUtils;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.miaudote.Models.UserModel;
 import com.example.miaudote.R;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthOptions;
-import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
 public class Cellphone_Activity extends AppCompatActivity {
 

@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.miaudote.Models.AnimalModel;
 import com.example.miaudote.PetInfo.Actv_EdtDadosAnimal;
-import com.example.miaudote.PetInfo.AdoptionPet_Info;
 import com.example.miaudote.R;
 import com.squareup.picasso.Picasso;
 

@@ -6,7 +6,6 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -22,9 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.miaudote.Models.UserModel;
 import com.example.miaudote.PetInfo.UserAnimals;
@@ -36,7 +33,6 @@ import com.example.miaudote.R;
 import com.example.miaudote.UserData.Termos_Activity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -268,16 +264,53 @@ public class Perfil_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Log.d(TAG, "Usuário deleta com sucesso");
-                            Intent i = new Intent(getActivity(), LoginIn_Activity.class);
-                            startActivity(i);
+                if (user != null) {
+                    String userId = user.getUid();
+                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+
+                    DatabaseReference userRef = databaseReference.child("usuarios").child(userId);
+                    userRef.removeValue().addOnCompleteListener(userDeleteTask -> {
+                        if (userDeleteTask.isSuccessful()) {
+                            deleteAnimalsInBranch(databaseReference.child("animais").child("Animal encontrado"), userId);
+                            deleteAnimalsInBranch(databaseReference.child("animais").child("Animal para adoção"), userId);
+                            deleteAnimalsInBranch(databaseReference.child("animais").child("Animal perdido"), userId);
+                        } else {
+                            Log.d(TAG, "Erro ao deletar dados do usuário: " + userDeleteTask.getException().getMessage());
                         }
+                    });
+                }
+            }
+        });
+    }
+
+    private void deleteAnimalsInBranch(DatabaseReference branchRef, String userId) {
+        branchRef.orderByChild("userId").equalTo(userId)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            snapshot.getRef().removeValue(); // Remove cada animal
+                        }
+
+                        checkIfAllBranchesProcessed();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Log.d(TAG, "Erro ao buscar animais: " + databaseError.getMessage());
                     }
                 });
+    }
+
+    private void checkIfAllBranchesProcessed() {
+
+        FirebaseAuth.getInstance().getCurrentUser().delete().addOnCompleteListener(authDeleteTask -> {
+            if (authDeleteTask.isSuccessful()) {
+                Log.d(TAG, "Usuário e dados deletados com sucesso");
+                Intent i = new Intent(getActivity(), LoginIn_Activity.class);
+                startActivity(i);
+            } else {
+                Log.d(TAG, "Erro ao deletar usuário: " + authDeleteTask.getException().getMessage());
             }
         });
     }

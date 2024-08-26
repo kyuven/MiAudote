@@ -1,17 +1,14 @@
 package com.example.miaudote.ONGInfo;
 
-import static android.content.ContentValues.TAG;
-
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,13 +19,10 @@ import androidx.appcompat.widget.AppCompatImageButton;
 import com.example.miaudote.Fragments.Main_Page;
 import com.example.miaudote.Models.OngModel;
 import com.example.miaudote.R;
-import com.example.miaudote.UserData.LoginIn_Activity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class ONG_Register_Contact extends AppCompatActivity {
@@ -77,33 +71,42 @@ public class ONG_Register_Contact extends AppCompatActivity {
         twitterOng = edtTwitterOng.getText().toString();
         websiteOng = edtWebsiteOng.getText().toString();
 
-        OngModel modelOng = new OngModel(imgOng, nomeOng, descOng, ufOng, bairroOng, cidadeOng, logradouroOng,
+        if (TextUtils.isEmpty(teleOng) || TextUtils.isEmpty(emailong)) {
+            progressBarOng.setVisibility(View.INVISIBLE);
+            Toast.makeText(this, "Telefone e e-mail são obrigatórios.", Toast.LENGTH_SHORT).show();
+            return; // Não prossegue com a gravação
+        }
+
+        OngModel modelOng = new OngModel(imgOng, nomeOng, descOng, ufOng, cidadeOng, bairroOng, logradouroOng,
                                         teleOng, instaOng, emailong, twitterOng, websiteOng);
 
         FirebaseDatabase.getInstance().getReference().child("ong aprovadas").child(nomeOng)
                 .setValue(modelOng).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        progressBarOng.setVisibility(View.INVISIBLE);
-                        View alertCustomDialog = LayoutInflater.from(ONG_Register_Contact.this).inflate(R.layout.ong_warning, null);
-                        AlertDialog.Builder confirmarOng = new AlertDialog.Builder(ONG_Register_Contact.this);
+                        if (task.isSuccessful()) {
+                            progressBarOng.setVisibility(View.INVISIBLE);
+                            View alertCustomDialog = LayoutInflater.from(ONG_Register_Contact.this).inflate(R.layout.ong_warning, null);
+                            AlertDialog.Builder confirmarOng = new AlertDialog.Builder(ONG_Register_Contact.this);
 
-                        confirmarOng.setView(alertCustomDialog);
-                        closeDialog = findViewById(R.id.btnCloseDialog);
+                            confirmarOng.setView(alertCustomDialog);
+                            closeDialog = alertCustomDialog.findViewById(R.id.btnCloseDialog);
 
-                        final AlertDialog dialogDel = confirmarOng.create();
-                        dialogDel.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                        dialogDel.show();
+                            final AlertDialog dialog = confirmarOng.create();
+                            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                            dialog.show();
 
-                        closeDialog.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                dialogDel.cancel();
-                                Intent i = new Intent(ONG_Register_Contact.this, Main_Page.class);
-                                startActivity(i);
-                                finish();
-                            }
-                        });
+                            closeDialog.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent i = new Intent(ONG_Register_Contact.this, Main_Page.class);
+                                    startActivity(i);
+                                    dialog.dismiss();
+                                }
+                            });
+                        } else {
+                            Toast.makeText(ONG_Register_Contact.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override

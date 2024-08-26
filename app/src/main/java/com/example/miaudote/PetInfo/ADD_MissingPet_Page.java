@@ -13,7 +13,6 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -33,10 +32,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.miaudote.Fragments.Main_Page;
-import com.example.miaudote.Fragments.Map_Animals_Fragment;
 import com.example.miaudote.Models.AnimalModel;
-import com.example.miaudote.ONGInfo.ONG_Register_General;
 import com.example.miaudote.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -63,7 +59,6 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -380,7 +375,7 @@ public class ADD_MissingPet_Page extends AppCompatActivity implements OnMapReady
                     Address address = addressList.get(0);
 
                     // Extraí as partes do endereço
-                    logradouroAnimal = address.getAdminArea();
+                    logradouroAnimal = address.getThoroughfare();
                     bairroAnimal = address.getSubLocality();
                     cidadeAnimal = address.getLocality();
                     ufAnimal = address.getAdminArea();

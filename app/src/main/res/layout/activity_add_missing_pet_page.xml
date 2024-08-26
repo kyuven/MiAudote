@@ -382,36 +382,6 @@
                 android:textSize="12sp" />
             <!-- Cidade -->
 
-            <!-- Bairro -->
-            <TextView
-                android:id="@+id/txtAddAnimalBairro"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginBottom="8dp"
-
-                android:text="@string/bairro"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtAddAnimal_bairro"
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/edt_txt_design"
-
-                android:inputType="text"
-                android:padding="12dp"
-
-                android:textColor="#D86A6A6A"
-                android:textSize="12sp" />
-            <!-- Bairro -->
-
             <!-- Logradouro -->
             <TextView
                 android:id="@+id/txtAddAnimalLogradouro"
@@ -441,6 +411,37 @@
                 android:textColor="#D86A6A6A"
                 android:textSize="12sp" />
             <!-- Logradouro -->
+
+            <!-- Bairro -->
+            <TextView
+                android:id="@+id/txtAddAnimalBairro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="8dp"
+
+                android:text="@string/bairro"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtAddAnimal_bairro"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/edt_txt_design"
+
+                android:inputType="text"
+                android:padding="12dp"
+
+                android:textColor="#D86A6A6A"
+                android:textSize="12sp" />
+            <!-- Bairro -->
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnAddAnimal"

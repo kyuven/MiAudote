@@ -10,11 +10,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.miaudote.Models.OngModel;
 import com.example.miaudote.ONGInfo.ONG_Page;
 import com.example.miaudote.R;

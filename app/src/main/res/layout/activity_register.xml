@@ -148,6 +148,19 @@
                 android:textColor="#D86A6A6A"
                 android:textSize="12sp" />
 
+            <TextView
+                android:id="@+id/txt_aviso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="30dp"
+
+                android:fontFamily="@font/arimo_variable_font_wght"
+                android:text="A senha precisa conter um símbolo e uma letra maiúscula."
+                android:textColor="#515151"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
             <CheckBox
                 android:id="@+id/ckbCad_mostrarSenha"
                 android:layout_width="wrap_content"

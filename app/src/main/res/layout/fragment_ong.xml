@@ -39,8 +39,8 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
-                    android:layout_margin="15dp"
-                    android:src="@drawable/banner" />
+                    android:layout_margin="12dp"
+                    android:src="@drawable/salvador_bahia" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvOng"

@@ -75,7 +75,7 @@
 
             android:hint="@string/telefone_hint"
             android:imeOptions="actionNext"
-            android:inputType="phone"
+            android:inputType="number"
             android:padding="12dp"
             android:textColor="#D86A6A6A"
             android:textSize="12sp"
@@ -156,7 +156,7 @@
 
             android:hint="@string/email_hint"
             android:imeOptions="actionNext"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:padding="12dp"
             android:textColor="#D86A6A6A"
             android:textSize="12sp"

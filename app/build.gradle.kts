@@ -56,8 +56,6 @@ dependencies {
     implementation ("androidx.browser:browser:1.3.0")
 
     implementation("com.squareup.picasso:picasso:2.8")
-    implementation ("com.github.bumptech.glide:glide:4.16.0")
-    implementation ("com.facebook.android:facebook-android-sdk:latest.release")
 
     implementation("androidx.activity:activity:1.9.0")
     implementation("com.android.car.ui:car-ui-lib:2.6.0")

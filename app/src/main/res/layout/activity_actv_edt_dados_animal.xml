@@ -275,31 +275,6 @@
                 android:textSize="12sp"
                 android:padding="12dp" />
 
-            <!-- Bairro -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginBottom="8dp"
-
-                android:text="@string/bairro"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textAllCaps="true" />
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtDadosAnimal_bairro"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/edt_txt_design"
-                android:inputType="textPersonName"
-                android:textSize="12sp"
-                android:padding="12dp" />
-
             <!-- Logradouro -->
             <TextView
                 android:layout_width="wrap_content"
@@ -324,6 +299,33 @@
                 android:inputType="textPersonName"
                 android:textSize="12sp"
                 android:padding="12dp" />
+            <!-- Logradouro -->
+
+            <!-- Bairro -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="8dp"
+
+                android:text="@string/bairro"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textAllCaps="true" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtDadosAnimal_bairro"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/edt_txt_design"
+                android:inputType="textPersonName"
+                android:textSize="12sp"
+                android:padding="12dp" />
+            <!-- Bairro -->
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

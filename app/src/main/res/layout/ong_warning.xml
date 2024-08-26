@@ -2,8 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ongWarning"
     android:layout_width="280dp"
-    android:layout_height="240dp"
+    android:layout_height="260dp"
     android:background="#F5F5F5">
 
     <androidx.appcompat.widget.AppCompatImageButton

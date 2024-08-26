@@ -11,7 +11,6 @@ import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -20,9 +19,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageButton;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.miaudote.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -189,7 +185,7 @@ public class Actv_EdtDadosAnimal extends AppCompatActivity {
         txtNovaDescAnimal = edtNovaDescAnimal.getText().toString();
         txtNovaCidadeAnimal = edtNovoCidade.getText().toString();
         txtNovoBairroAnimal = edtNovoBairro.getText().toString();
-        txtNovoLograAnimal = edtNovoNomeAnimal.getText().toString();
+        txtNovoLograAnimal = edtNovoLogradouro.getText().toString();
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

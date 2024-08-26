@@ -28,15 +28,11 @@ public class Register_Activity extends AppCompatActivity {
     // Firebase
     FirebaseAuth auth;
 
-    // Input que recebe as informações de cadastro do usuário
     TextInputEditText edtNomeCad, edtEmailCad, edtSenhaCad, edtConfirmarSenha;
-
-    // Botão que volta para a página anterior e vai para a próxima página, respectivamente
     ImageButton btnBackLogin, btnConfirmarCad;
-
-    //CheckBox para mostrar senha e dos termos
     CheckBox ckbMostrarSenha, ckbTermos;
     AppCompatButton btnTermos;
+    String strNome, strSenha, strEmail, strConfirmarSenha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,29 +68,36 @@ public class Register_Activity extends AppCompatActivity {
         btnConfirmarCad = findViewById(R.id.fab_next_confirmar);
         btnConfirmarCad.setOnClickListener(v -> {
             if (ckbTermos.isChecked()) {
-                // REGISTRO: NOME, EMAIL, SENHA, CONFIRMAÇÃO DE SENHA
-                UserModel userModel = new UserModel();
-                userModel.setNome(edtNomeCad.getText().toString().trim());
-                userModel.setEmail(edtEmailCad.getText().toString().trim());
-                userModel.setSenha(edtSenhaCad.getText().toString().trim());
+                strNome = edtNomeCad.getText().toString();
+                strEmail = edtEmailCad.getText().toString();
+                strSenha = edtSenhaCad.getText().toString();
+                strConfirmarSenha = edtConfirmarSenha.getText().toString();
+                if(!strSenha.matches(strConfirmarSenha)){
+                    Toast.makeText(this, "As senhas não coincidem.", Toast.LENGTH_SHORT).show();
+                } else if(!isValidPassword(strSenha)) {
+                    Toast.makeText(this, "A senha deve conter ao menos 9 carateres, tendo um símbolo e uma letra maiúscula.", Toast.LENGTH_SHORT).show();
+                } else {
+                    // REGISTRO: NOME, EMAIL, SENHA, CONFIRMAÇÃO DE SENHA
+                    UserModel userModel = new UserModel();
+                    userModel.setNome(strNome);
+                    userModel.setEmail(strEmail);
+                    userModel.setSenha(strSenha);
 
-                if(!TextUtils.isEmpty(userModel.getNome()) || !TextUtils.isEmpty(userModel.getEmail()) || !TextUtils.isEmpty(userModel.getSenha())){
+                    if(!TextUtils.isEmpty(userModel.getNome()) || !TextUtils.isEmpty(userModel.getEmail()) || !TextUtils.isEmpty(userModel.getSenha())){
 
-                    auth.createUserWithEmailAndPassword(userModel.getEmail(), userModel.getSenha())
-                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()){
-                                        userModel.setId(auth.getUid()); // pega o ID de usuário e seta no ID
-                                        userModel.salvar(); // SALVA OS DADOS
-                                        Intent i = new Intent(Register_Activity.this, Cellphone_Activity.class);
-                                        startActivity(i);
-                                    }else {
-                                        String error = task.getException().getMessage();
-                                        Toast.makeText(Register_Activity.this, ""+error, Toast.LENGTH_SHORT).show();
+                        auth.createUserWithEmailAndPassword(userModel.getEmail(), userModel.getSenha())
+                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        if (task.isSuccessful()){
+                                            userModel.setId(auth.getUid()); // pega o ID de usuário e seta no ID
+                                            userModel.salvar(); // SALVA OS DADOS
+                                            Intent i = new Intent(Register_Activity.this, Cellphone_Activity.class);
+                                            startActivity(i);
+                                        }
                                     }
-                                }
-                            });
+                                });
+                    }
                 }
             } else {
                 Toast.makeText(this, "Aceite os termos para prosseguir.", Toast.LENGTH_SHORT).show();
@@ -115,5 +118,26 @@ public class Register_Activity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private boolean isValidPassword(String password) {
+        if (password.length() < 9) {
+            return false;
+        }
+
+        boolean hasUppercase = false;
+        boolean hasSymbol = false;
+        String symbols = "!@#$%^&*()-_=+[{]}|;:'\",.<>?/";
+
+        for (char c : password.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                hasUppercase = true;
+            }
+            if (symbols.indexOf(c) >= 0) {
+                hasSymbol = true;
+            }
+        }
+
+        return hasUppercase && hasSymbol;
     }
 }

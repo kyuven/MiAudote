@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
-import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -19,12 +18,9 @@ import android.widget.Toast;
 
 import com.example.miaudote.Fragments.Main_Page;
 import com.example.miaudote.R;
-import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -43,9 +39,7 @@ public class LoginIn_Activity extends AppCompatActivity {
     GoogleSignInClient googleSignInClient;
     private static final String EMAIL = "email";
     TextInputEditText edtEmailLogin, edtSenhaLogin;
-    LoginButton btnFacebook;
     Button btnCadastrar, btnEntrar;
-    SignInButton btnGoogle;
 
     private final ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
@@ -103,8 +97,6 @@ public class LoginIn_Activity extends AppCompatActivity {
         btnCadastrar.setOnClickListener(v -> {
             Intent i = new Intent(LoginIn_Activity.this, Register_Activity.class);
             startActivity(i);
-            finish();
-
         });
 
         // Entrada de usuário já cadastrado

@@ -214,45 +214,11 @@
             android:inputType="text"
             android:textSize="12sp"
             android:textColor="#D86A6A6A"
+            android:imeOptions="actionNext"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-        <!-- Bairro -->
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="32dp"
-
-            android:text="@string/bairro"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            android:textStyle="bold"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtOngCidade" />
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtOngBairro"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="24dp"
-
-            android:padding="12dp"
-            android:background="@drawable/edt_txt_design"
-            android:inputType="text"
-            android:textSize="12sp"
-            android:textColor="#D86A6A6A"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
         <!-- Logradouro -->
         <!-- Leonardo disse que da a bunda -->
@@ -270,7 +236,7 @@
             android:textStyle="bold"
 
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtOngBairro" />
+            app:layout_constraintTop_toBottomOf="@+id/edtOngCidade" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtOngLogradouro"
@@ -285,10 +251,48 @@
             android:inputType="text"
             android:textSize="12sp"
             android:textColor="#D86A6A6A"
+            android:imeOptions="actionNext"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        <!-- Logradouro -->
+
+        <!-- Bairro -->
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="32dp"
+
+            android:text="@string/bairro"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtOngLogradouro" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtOngBairro"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="24dp"
+
+            android:padding="12dp"
+            android:background="@drawable/edt_txt_design"
+            android:inputType="text"
+            android:textSize="12sp"
+            android:textColor="#D86A6A6A"
+            android:imeOptions="actionNext"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
         <TextView
             android:id="@+id/txtAddFotoOng"
@@ -305,7 +309,7 @@
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtOngLogradouro" />
+            app:layout_constraintTop_toBottomOf="@+id/edtOngBairro" />
 
         <ImageView
             android:id="@+id/addFotoOng"
@@ -323,9 +327,11 @@
 
         <TextView
             android:id="@+id/txt_avisoImg"
-            android:layout_width="220dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="52dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="12dp"
 
             android:fontFamily="@font/arimo_variable_font_wght"
             android:text="@string/info_img_edtUserData"
@@ -335,7 +341,7 @@
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/addFotoOng"
-            app:layout_constraintTop_toBottomOf="@+id/edtOngLogradouro" />
+            app:layout_constraintTop_toBottomOf="@+id/edtOngBairro" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnAddFotoOng"
