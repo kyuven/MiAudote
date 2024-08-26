@@ -236,7 +236,7 @@ public class ADD_MissingPet_Page extends AppCompatActivity implements OnMapReady
                     if (myMap != null) {
                         userAnimalLatLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
                         myMap.addMarker(new MarkerOptions().position(userAnimalLatLng).title("Você está aqui"));
-                        myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userAnimalLatLng, 13));
+                        myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userAnimalLatLng, 18f));
                     }
                 } else {
                     Toast.makeText(ADD_MissingPet_Page.this, "Não foi possível obter sua localização.", Toast.LENGTH_SHORT).show();
@@ -377,7 +377,7 @@ public class ADD_MissingPet_Page extends AppCompatActivity implements OnMapReady
                     // Extraí as partes do endereço
                     logradouroAnimal = address.getThoroughfare();
                     bairroAnimal = address.getSubLocality();
-                    cidadeAnimal = address.getLocality();
+                    cidadeAnimal = address.getAddressLine(2);
                     ufAnimal = address.getAdminArea();
                     uploadFoto();
                 }

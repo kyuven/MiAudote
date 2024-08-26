@@ -81,8 +81,9 @@ public class AdoptionPet_Info extends AppCompatActivity implements OnMapReadyCal
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     String email = snapshot.child("email").getValue().toString();
+                    String telefone = snapshot.child("telefone").getValue(String.class);
                     txtEmailDono.setText(email);
-                    // String telefone = usuarioSnapshot.child("telefone").getValue(String.class);
+                    txtTelefoneDono.setText(telefone);
                 }
 
                @Override

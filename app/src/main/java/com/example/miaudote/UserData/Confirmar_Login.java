@@ -107,7 +107,7 @@ public class Confirmar_Login extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    Intent intent = new Intent(Confirmar_Login.this, Main_Page.class);
+                    Intent intent = new Intent(Confirmar_Login.this, LoginIn_Activity.class);
                     intent.putExtra("telefone", telefone);
                     startActivity(intent);
                 } else {

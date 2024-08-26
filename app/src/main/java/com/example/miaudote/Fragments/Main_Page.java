@@ -92,11 +92,18 @@ public class Main_Page extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        if(isAppInitialize) {
+        // Define animações para a transição
+        fragmentTransaction.setCustomAnimations(
+                R.anim.slide_in,
+                R.anim.slide_out
+        );
+
+        if (isAppInitialize) {
             fragmentTransaction.add(R.id.frameLayout, fragment);
         } else {
             fragmentTransaction.replace(R.id.frameLayout, fragment);
         }
+
         fragmentTransaction.commit();
 
     }

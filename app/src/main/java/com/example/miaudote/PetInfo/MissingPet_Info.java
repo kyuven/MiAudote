@@ -81,8 +81,9 @@ public class MissingPet_Info extends AppCompatActivity implements OnMapReadyCall
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     String email = snapshot.child("email").getValue().toString();
+                    String telefone = snapshot.child("telefone").getValue(String.class);
                     txtEmail.setText(email);
-                    // String telefone = usuarioSnapshot.child("telefone").getValue(String.class);
+                    txtTelefone.setText(telefone);
                 }
 
                 @Override
