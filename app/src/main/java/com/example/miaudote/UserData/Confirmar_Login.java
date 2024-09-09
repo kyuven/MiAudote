@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.miaudote.Fragments.Main_Page;
 import com.example.miaudote.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,8 +27,10 @@ import java.util.concurrent.TimeUnit;
 
 public class Confirmar_Login extends AppCompatActivity {
 
+    // FIREBASE
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
+    // WIDGETS
     EditText inputCodigo;
     Button btn_reenviar;
     ImageButton btn_finalcad;
@@ -43,15 +44,18 @@ public class Confirmar_Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmar_login);
 
+        // REFERENCIA OS WIDGETS
         inputCodigo = findViewById(R.id.inputCodigo);
         btn_finalcad = findViewById(R.id.btn_final_cad);
         btn_reenviar = findViewById(R.id.btn_reenviar);
 
+        // PEGA A STRING TELEFONE E AS INFORMAÇÕES PASSADAS NA ATIVIDADE ANTERIOR (CELLPHONE_ACTIVITY)
         StrTelefone = getIntent().getExtras().getString("telefone");
-        telefone = "+55" + StrTelefone;
+        telefone = "+55" + StrTelefone; // PASSA O DDI DO PAÍS
 
         sendOTP(telefone, false);
 
+        // AO CLICAR NO BOTÃO, CHAMA O MÉTODO DE VERIFICAÇÃO DE OTP
         btn_finalcad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,6 +65,7 @@ public class Confirmar_Login extends AppCompatActivity {
             }
         });
 
+        // REENVIA O CÓDIGO DE OTP
         btn_reenviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,13 +74,14 @@ public class Confirmar_Login extends AppCompatActivity {
         });
     }
 
+    // MÉTODO PARA REENVIAR O CÓDIGO OTP
     void sendOTP(String telefone, boolean isResend){
         startResendTimer();
         PhoneAuthOptions.Builder builder =
-                PhoneAuthOptions.newBuilder(mAuth)
-                        .setPhoneNumber(telefone)
-                        .setTimeout(timeoutSeconds, TimeUnit.SECONDS)
-                        .setActivity(this)
+                PhoneAuthOptions.newBuilder(mAuth) // ACESSA O AUTHENTICATION (TELEFONE) DO FIREBASE
+                        .setPhoneNumber(telefone) // TELEFONE
+                        .setTimeout(timeoutSeconds, TimeUnit.SECONDS) // DEFINE UM TEMPO EM SEGUNDOS
+                        .setActivity(this) // NESSA ATIVIDADE
                         .setCallbacks(new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                             @Override
                             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
@@ -102,11 +108,13 @@ public class Confirmar_Login extends AppCompatActivity {
         }
     }
 
+    // AUTENTICA O TELEFONE DO USUÁRIO
     void signIn(PhoneAuthCredential phoneAuthCredential){
         mAuth.signInWithCredential(phoneAuthCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
+                    // SE BEM SUCEDIDO A ATUENTICAÇÃO, ENVIA PARA A ATIVIDADE DE LOGIN
                     Intent intent = new Intent(Confirmar_Login.this, LoginIn_Activity.class);
                     intent.putExtra("telefone", telefone);
                     startActivity(intent);
@@ -117,6 +125,7 @@ public class Confirmar_Login extends AppCompatActivity {
         });
     }
 
+    // MÉTODO PARA RECOMEÇAR O CONTADOR DE TEMPO PARA REENVIAR O CÓDIGO OTP
     void startResendTimer(){
         btn_reenviar.setEnabled(false);
         Timer timer = new Timer();

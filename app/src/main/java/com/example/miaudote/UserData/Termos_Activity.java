@@ -14,6 +14,7 @@ public class Termos_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_termos);
 
+        // Pega o WebView da página e coloca as informações na página como se fosse WEB
         WebView webView = (WebView) findViewById(R.id.ww_content);
         webView.loadUrl("file:///android_asset/termos.html");
     }

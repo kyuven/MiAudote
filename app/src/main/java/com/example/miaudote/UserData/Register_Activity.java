@@ -25,9 +25,10 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Register_Activity extends AppCompatActivity {
 
-    // Firebase
+    // FIREBASE
     FirebaseAuth auth;
 
+    // WIDGETS
     TextInputEditText edtNomeCad, edtEmailCad, edtSenhaCad, edtConfirmarSenha;
     ImageButton btnBackLogin, btnConfirmarCad;
     CheckBox ckbMostrarSenha, ckbTermos;
@@ -39,8 +40,9 @@ public class Register_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        auth = FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance(); // PEGA A INSTÂNCIA DO FIREBASE
 
+        // REFERENCIA OS WIDGETS DA PÁGIAN DE REGISTRO
         edtNomeCad = findViewById(R.id.cadastro_nome);
         edtEmailCad = findViewById(R.id.cadastro_email);
         edtSenhaCad = findViewById(R.id.cadastro_senha);
@@ -50,12 +52,13 @@ public class Register_Activity extends AppCompatActivity {
         ckbTermos = findViewById(R.id.ckbTermos);
         btnTermos = findViewById(R.id.btnTermos);
 
-        // Envia para a página de login (volta a página)
+        // ENVIA PARA A PÁGINA DE LOGIN (VOLTA A PÁGIAN ANTERIOR)
         btnBackLogin = findViewById(R.id.fab_back);
         btnBackLogin.setOnClickListener(v -> {
             finish();
         });
 
+        // ENVIA PARA A PÁGINA DE TERMOS
         btnTermos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,14 +67,18 @@ public class Register_Activity extends AppCompatActivity {
             }
         });
 
-        // Envia para a página de confirmação de cadastro (código OTP)
+        // ENVIA PARA A PÁGINA DE ADIÇÃO DE TELEFONE
         btnConfirmarCad = findViewById(R.id.fab_next_confirmar);
         btnConfirmarCad.setOnClickListener(v -> {
             if (ckbTermos.isChecked()) {
+
+                // PEGA AS INFORMAÇÕES E TRANSFORMA EM STRING
                 strNome = edtNomeCad.getText().toString();
                 strEmail = edtEmailCad.getText().toString();
                 strSenha = edtSenhaCad.getText().toString();
                 strConfirmarSenha = edtConfirmarSenha.getText().toString();
+
+                // CONFIRMA SE AS SENHAS SÃO IGUAIS
                 if(!strSenha.matches(strConfirmarSenha)){
                     Toast.makeText(this, "As senhas não coincidem.", Toast.LENGTH_SHORT).show();
                 } else if(!isValidPassword(strSenha)) {
@@ -85,13 +92,16 @@ public class Register_Activity extends AppCompatActivity {
 
                     if(!TextUtils.isEmpty(userModel.getNome()) || !TextUtils.isEmpty(userModel.getEmail()) || !TextUtils.isEmpty(userModel.getSenha())){
 
+                        // MÉTODO PARA CRIAÇÃO DO USUÁRIO NO AUTHENTICATION DO FIREBASE
                         auth.createUserWithEmailAndPassword(userModel.getEmail(), userModel.getSenha())
                                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()){
+                                            // SE O CADASTRO FOR BEM SUCEDIDO, SALVA NO BANCO DE DADOS
                                             userModel.setId(auth.getUid()); // pega o ID de usuário e seta no ID
-                                            userModel.salvar(); // SALVA OS DADOS
+                                            userModel.salvar();
+                                            // ENVIA PARA A PÁGINA DE ADIÇÃO DE TELEFONE
                                             Intent i = new Intent(Register_Activity.this, Cellphone_Activity.class);
                                             startActivity(i);
                                         }
@@ -100,11 +110,12 @@ public class Register_Activity extends AppCompatActivity {
                     }
                 }
             } else {
+                // SE O CHECKBOX NÃO ESTIVER MARCADO, O USUÁRIO RECEBE UMA MENSAGEM
                 Toast.makeText(this, "Aceite os termos para prosseguir.", Toast.LENGTH_SHORT).show();
             }
         });
 
-        // Mostrar Senha - Checkbox
+        // CHECKBOX - MOSTRAR SENHA
         ckbMostrarSenha.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -120,6 +131,7 @@ public class Register_Activity extends AppCompatActivity {
 
     }
 
+    // MÉTODO QUE VERIFICA SE A SENHA É MAIOR QUE 9 LETRAS, CONTÊM MAIÚSCULA, MINÚSCULA E SÍMBOLO
     private boolean isValidPassword(String password) {
         if (password.length() < 9) {
             return false;
@@ -129,6 +141,7 @@ public class Register_Activity extends AppCompatActivity {
         boolean hasSymbol = false;
         String symbols = "!@#$%^&*()-_=+[{]}|;:'\",.<>?/";
 
+        // LOOP PARA VERIFICAR SE POSSUI UM CARACTERE MAIÚSCULO E UM SÍMBOLO
         for (char c : password.toCharArray()) {
             if (Character.isUpperCase(c)) {
                 hasUppercase = true;
