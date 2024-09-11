@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
 
         android:layout_marginTop="34dp"
-        android:text="MUDAR PERFIL"
+        android:text="@string/mudar_perfil"
         android:fontFamily="@font/arimo_variable_font_wght"
         android:textAllCaps="true"
         android:textColor="@color/black"

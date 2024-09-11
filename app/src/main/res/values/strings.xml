@@ -37,7 +37,7 @@
     <string name="bot_o_para_saber_sobre_os_criadores_do_projeto">botão para saber sobre os criadores do projeto</string>
     <string name="bot_o_para_saber_sobre_termos_de_seguran_a">botão para saber sobre termos de segurança</string>
     <string name="bot_o_para_mudar_sua_senha">botão para mudar sua senha</string>
-    <string name="mudar_perfil">MUDAR PERFIL</string>
+    <string name="mudar_perfil">EDITAR PERFIL</string>
     <string name="imagem_enviada_pelo_usu_rio">imagem enviada pelo usuário</string>
     <string name="nome_usu_rio">NOME USUÁRIO</string>
     <string name="vetor_de_um_livro">vetor de um livro</string>
@@ -74,7 +74,7 @@
     <string name="senha_nova">senha nova</string>
     <string name="foto_do_animal">foto do animal</string>
     <string name="situation_do_animal">situação do animal</string>
-    <string name="foto_em_branco">*caso não tenha foto, deixar em branco</string>
+    <string name="foto_em_branco">*a foto é obrigatório</string>
     <string name="logradouro">logradouro</string>
     <string name="bairro">bairro</string>
     <string name="imagem_do_animal">imagem do animal</string>

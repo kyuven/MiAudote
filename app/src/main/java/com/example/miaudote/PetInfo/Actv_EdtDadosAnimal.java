@@ -236,9 +236,6 @@ public class Actv_EdtDadosAnimal extends AppCompatActivity {
                         return;
                     }
                 }
-                if (!found) {
-                    Toast.makeText(Actv_EdtDadosAnimal.this, "Animal não encontrado", Toast.LENGTH_SHORT).show();
-                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -265,6 +262,7 @@ public class Actv_EdtDadosAnimal extends AppCompatActivity {
                                 branchRef.child(animalId).removeValue().addOnCompleteListener(task -> {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(Actv_EdtDadosAnimal.this, "Animal excluído com sucesso", Toast.LENGTH_SHORT).show();
+                                        finish();
                                     } else {
                                         Toast.makeText(Actv_EdtDadosAnimal.this, "Falha ao excluir o animal", Toast.LENGTH_SHORT).show();
                                     }
@@ -284,9 +282,6 @@ public class Actv_EdtDadosAnimal extends AppCompatActivity {
                     if (found) {
                         return;
                     }
-                }
-                if (!found) {
-                    Toast.makeText(Actv_EdtDadosAnimal.this, "Animal não encontrado", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override

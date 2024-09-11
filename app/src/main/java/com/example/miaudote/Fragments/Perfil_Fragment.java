@@ -52,7 +52,7 @@ public class Perfil_Fragment extends Fragment {
     TextView txtDeleteAcc, txtPerfil_nomeUser, txtPerfil_emailUser;
     ImageView imgPerfil_user;
     LinearLayout linearlyt_dados, linearlyt_email, linearlyt_senha;
-    AppCompatButton btnMudarPerfil, btnTxtLogOut, btnCancelLogout, btnConfirmLogout, btnDeleteUser;
+    AppCompatButton btnMudarPerfil, btnTxtLogOut, btnCancelLogout, btnConfirmLogout, btnConfirmDelete, btnCancelDelete, btnDeleteUser;
     AppCompatImageButton btnTermos, btnMausTratos, btnIconLogOut, btn_backEdtDados, btnCancel,
                         btnNextDados, btnNextEmail, btnNextSenha, btnDelete, btnAnimaisUser;
     ConstraintLayout linearlyt_mausTratos, linearlyt_userAnimals;
@@ -252,16 +252,16 @@ public class Perfil_Fragment extends Fragment {
 
         deletarUser.setView(alertCustomDialog);
         txtDeleteAcc = alertCustomDialog.findViewById(R.id.txtDialogCustom_sair);
-        btnCancelLogout = alertCustomDialog.findViewById(R.id.btnDialogCustom_nao);
-        btnConfirmLogout = alertCustomDialog.findViewById(R.id.btnDialogCustom_sim);
+        btnCancelDelete = alertCustomDialog.findViewById(R.id.btnDialogCustom_nao);
+        btnConfirmDelete = alertCustomDialog.findViewById(R.id.btnDialogCustom_sim);
 
         final AlertDialog dialogDel = deletarUser.create();
         dialogDel.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
         dialogDel.show();
 
         txtDeleteAcc.setText("DELETAR SUA CONTA?");
-        btnCancelLogout.setOnClickListener(v15 -> dialogDel.cancel());
-        btnConfirmLogout.setOnClickListener(new View.OnClickListener() {
+        btnCancelDelete.setOnClickListener(v15 -> dialogDel.cancel());
+        btnConfirmDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -275,6 +275,8 @@ public class Perfil_Fragment extends Fragment {
                             deleteAnimalsInBranch(databaseReference.child("animais").child("Animal encontrado"), userId);
                             deleteAnimalsInBranch(databaseReference.child("animais").child("Animal para adoção"), userId);
                             deleteAnimalsInBranch(databaseReference.child("animais").child("Animal perdido"), userId);
+                            Intent i = new Intent(getActivity(), LoginIn_Activity.class);
+                            startActivity(i);
                         } else {
                             Log.d(TAG, "Erro ao deletar dados do usuário: " + userDeleteTask.getException().getMessage());
                         }
