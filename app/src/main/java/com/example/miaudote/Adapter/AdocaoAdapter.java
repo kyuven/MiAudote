@@ -29,6 +29,7 @@ public class AdocaoAdapter extends RecyclerView.Adapter<MyViewHolderAdocao> {
         this.animalModelList = animalModelList;
     }
 
+    // SETA O VIEW COM O CARD
     @NonNull
     @Override
     public MyViewHolderAdocao onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -38,6 +39,7 @@ public class AdocaoAdapter extends RecyclerView.Adapter<MyViewHolderAdocao> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolderAdocao holder, int position) {
+        // PEGA AS INFORMAÇÕES DO MODEL E COLOCA NO CARD
         AnimalModel animalModel = animalModelList.get(position);
         Picasso.get().load(animalModel.getImgAnimal()).resize(110, 90).into(holder.imgAnimal);
         holder.txtCidadeAnimal.setText(animalModel.getCidadeAnimal());
@@ -47,6 +49,7 @@ public class AdocaoAdapter extends RecyclerView.Adapter<MyViewHolderAdocao> {
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // ENVIA AS INFORMAÇÕES PRA CASO SEJA SELECIONADO
                 Intent i = new Intent(context, AdoptionPet_Info.class);
                 i.putExtra("Imagem Animal Adoção", animalModelList.get(holder.getBindingAdapterPosition()).getImgAnimal());
                 i.putExtra("Nome Animal Adoção", animalModelList.get(holder.getBindingAdapterPosition()).getNomeAnimal());
@@ -63,6 +66,7 @@ public class AdocaoAdapter extends RecyclerView.Adapter<MyViewHolderAdocao> {
         });
     }
 
+    // PEGA O TAMANHO DA LISTA DE ANIMAIS
     @Override
     public int getItemCount() {
         return animalModelList.size();
@@ -71,6 +75,7 @@ public class AdocaoAdapter extends RecyclerView.Adapter<MyViewHolderAdocao> {
 
 class MyViewHolderAdocao extends RecyclerView.ViewHolder {
 
+    // WIDGETS DO CARD
     ImageView imgAnimal;
     TextView txtCidadeAnimal, txtUfAnimal, txtNomeAnimal;
     CardView cardView;

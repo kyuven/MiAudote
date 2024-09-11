@@ -41,7 +41,7 @@ public class Adotar_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // INFLA O LAYOUT
         View view = inflater.inflate(R.layout.fragment_adotar_, container, false);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("animais").child("Animal para adoção");

@@ -11,6 +11,7 @@ import com.squareup.picasso.Picasso;
 
 public class ONG_Page extends AppCompatActivity {
 
+    // WIDGETS
     ImageView imgHeaderONG, imgLogoONG;
     TextView txtCidadeONG, txtUFONG, txtNomeONG, txtDescricaoONG, txtLocalizaoONG, txtWebsiteONG, txtTelefoneONG, txtInstagramONG, txtEmailONG, txtTwitterONG;
     String bairroOngStr, lograOngStr, concatEndOng;
@@ -20,6 +21,7 @@ public class ONG_Page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ong_page);
 
+        // INICIALIZA OS WIDGETS
         imgHeaderONG = findViewById(R.id.imgOngPage_header);
         imgLogoONG = findViewById(R.id.imgOngPage_icon);
 
@@ -34,6 +36,7 @@ public class ONG_Page extends AppCompatActivity {
         txtEmailONG = findViewById(R.id.txtOngPage_gmail);
         txtTwitterONG = findViewById(R.id.txtOngPage_twitter);
 
+        // PEGA AS INFORMAÇÕES DO CARD E COLOCA NOS RESPECTIVOS CAMPOS
         Bundle bundle = getIntent().getExtras();
         if(bundle != null) {
             Picasso.get()

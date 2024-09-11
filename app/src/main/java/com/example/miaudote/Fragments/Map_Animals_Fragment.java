@@ -63,7 +63,7 @@ public class Map_Animals_Fragment extends Fragment implements OnMapReadyCallback
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_map__animals, container, false);
 
         fabAddAnimalPerdido = view.findViewById(R.id.fabAddAnimalPerdido);
@@ -120,9 +120,10 @@ public class Map_Animals_Fragment extends Fragment implements OnMapReadyCallback
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(@NonNull Marker marker) {
-                // Obtém a informação do marcaor
+                // OBTÉM A INFORMAÇÃO DO ANIMAL DO MARCADOR
                 AnimalModel animal = (AnimalModel) marker.getTag();
 
+                // PEGA OS DADOS DO ANIMAL CADASTRADO
                 if (animal != null) {
                     Intent i = new Intent(getContext(), MissingPet_Info.class);
                     i.putExtra("userIdAnimalM", animal.getUserId());
@@ -146,6 +147,7 @@ public class Map_Animals_Fragment extends Fragment implements OnMapReadyCallback
         addMarkersToMap();
     }
 
+    // ADICIONA OS MARCADORES NO MAPA DE TODOS OS ANIMAIS CADASTRADOS
     public void addMarkersToMap() {
        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -154,6 +156,7 @@ public class Map_Animals_Fragment extends Fragment implements OnMapReadyCallback
                     String branch = itemSnapshot.getKey();
                     for (DataSnapshot animalSnapshot : itemSnapshot.getChildren()) {
                         try {
+                            // PEGA OS VALORES
                             userID = animalSnapshot.child("userId").getValue(String.class);
                             fotoAnimal = animalSnapshot.child("imgAnimal").getValue(String.class);
                             nomeAnimal = animalSnapshot.child("nomeAnimal").getValue(String.class);
@@ -169,6 +172,7 @@ public class Map_Animals_Fragment extends Fragment implements OnMapReadyCallback
                             longitude = Double.parseDouble(lng);
                             posicao = new LatLng(latitude, longitude);
 
+                            // SETA OS ÍCONES PESONALIZADOS PARA CADA TIPO DE ANIMAL
                             int iconResource = getBranchIcon(branch);
                             BitmapDrawable bitmapDrawable = (BitmapDrawable) getResources().getDrawable(iconResource);
                             Bitmap bitmap = bitmapDrawable.getBitmap();
@@ -195,6 +199,7 @@ public class Map_Animals_Fragment extends Fragment implements OnMapReadyCallback
         });
     }
 
+    // ÍCONES PERSONALIZADOS
     private int getBranchIcon(String branch) {
         switch (branch) {
             case "Animal para adoção":

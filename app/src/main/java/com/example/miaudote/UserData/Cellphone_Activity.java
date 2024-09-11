@@ -17,14 +17,14 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Cellphone_Activity extends AppCompatActivity {
 
-    // Firebase
+    // FIREBASE
     FirebaseAuth mAuth;
     FirebaseUser firebaseUser;
     DatabaseReference reference;
+
+    // WIDGETS
     TextInputEditText edtTefone;
     String strTelefone;
-
-    // Botão que para a próxima página, respectivamente
     ImageButton btnConfirmarCad;
 
     @Override
@@ -32,31 +32,31 @@ public class Cellphone_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cellphone);
 
-        // Firebase conexões
+        // FIREBASE CONEXÕES
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("usuarios");
 
-        //Telefone
+        // TELEFONE
         edtTefone = findViewById(R.id.edtTelefone);
 
-        // Envia para a página de confirmação de cadastro (código OTP)
+        // ENVIA PARA A PÁGINA DE VERIFICAÇÃO OTP
         btnConfirmarCad = findViewById(R.id.fab_next_tel);
         btnConfirmarCad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // SE O CAMPO TELEFONE FOR NULO, MOSTRA UMA MENSAGEM DE TEXTO
                 if (edtTefone.getText().toString().trim().isEmpty()){
                     Toast.makeText(Cellphone_Activity.this, "Por favor, digite seu telefone", Toast.LENGTH_SHORT).show();
                 }
 
-                strTelefone = edtTefone.getText().toString();
-                String userID = firebaseUser.getUid();
-                reference.child(userID).child("telefone").setValue(strTelefone);
+                strTelefone = edtTefone.getText().toString(); // TRANSFORMA O TELEFONE EM STRING
+                String userID = firebaseUser.getUid(); // PEGA O ID DE USUÁRIO
+                reference.child(userID).child("telefone").setValue(strTelefone); // ADICIONA NO BANCO DE DADOS DO USUÁRIO
+
                 Intent intent = new Intent(Cellphone_Activity.this, Confirmar_Login.class);
-                intent.putExtra("telefone", strTelefone);
+                intent.putExtra("telefone", strTelefone); // LEVA A INFORMAÇÃO PRA PRÓXIMA PÁGINA
                 startActivity(intent);
-
-
             }
         });
 

@@ -46,6 +46,8 @@ public class LoginIn_Activity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        // VERIFICA SE O USUÁRIO JÁ ESTÁ LOGADO
+        // SE SIM, VAI PRA PÁGINA PRINCIPAL
         FirebaseUser userAlrdLogin = FirebaseAuth.getInstance().getCurrentUser();
         if(userAlrdLogin != null) {
             Intent i = new Intent(LoginIn_Activity.this, Main_Page.class);

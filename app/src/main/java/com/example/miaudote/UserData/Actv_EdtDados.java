@@ -34,11 +34,13 @@ import com.squareup.picasso.Picasso;
 
 public class Actv_EdtDados extends AppCompatActivity {
 
+    // FIREBASE
     FirebaseAuth mAuth;
     FirebaseUser firebaseUser;
     DatabaseReference reference;
     StorageReference storageReference;
 
+    // WIDGETS
     AppCompatButton btnUploadFoto, btnAtualizarDados;
     TextInputEditText edtNovoNome;
     Uri uriImage;
@@ -52,11 +54,13 @@ public class Actv_EdtDados extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actv_edt_dados);
 
+        // FIREBASE
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("usuarios");
         storageReference = FirebaseStorage.getInstance().getReference("imagens usuarios");
 
+        // WIDGETS
         edtNovoNome = findViewById(R.id.edt_novoNome);
         fotoPerfil = findViewById(R.id.edt_fotoPerfil);
 
@@ -66,11 +70,13 @@ public class Actv_EdtDados extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBarEdtUser);
         progressBar.setVisibility(View.INVISIBLE);
 
+        // VOLTA PRA PÁGINA ANTERIOR
         AppCompatImageButton btnBack = findViewById(R.id.btnEdtUser_back);
         btnBack.setOnClickListener(v -> {
             finish();
         });
 
+        // ACIONA O PHOTOPICKER PRA SELECIONAR A FOTO
         btnUploadFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,10 +87,11 @@ public class Actv_EdtDados extends AppCompatActivity {
             }
         });
 
-        // Update dados (foto de perfil e nome)
+        // UPDATE DADOS (FOTOS DE PERFIL E NOME)
         btnAtualizarDados.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // VERIFICA SE A IMAGEM É NULA OU O CAMPO DE TEXTO
                 if (edtNovoNome.getText() != null || uriImage != null) {
                     updateData();
                 } else {
@@ -94,6 +101,7 @@ public class Actv_EdtDados extends AppCompatActivity {
         });
     }
 
+    // PEGA A IMAGEM SELECIONADA PELO USUÁRIO E COLOCA NO IMAGEVIEW DA TELA
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -106,7 +114,11 @@ public class Actv_EdtDados extends AppCompatActivity {
     }
 
     public void updateData(){
+
+        // SE O USUÁRIO TIVER SELECIONADO UMA IMAGEM
         if(uriImage != null) {
+
+
             StorageReference fileReference = storageReference.child(mAuth.getCurrentUser().getUid() + "." + getFileExtension(uriImage));
             fileReference.putFile(uriImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -115,14 +127,16 @@ public class Actv_EdtDados extends AppCompatActivity {
                         @Override
                         public void onSuccess(Uri uri) {
                             nomeUser = edtNovoNome.getText().toString().trim();
-                            if (!nomeUser.isEmpty()) {
+                            if (!nomeUser.isEmpty()) { // SE O USUÁRIO TIVER DIGITADO O NOME
 
+                                // MUDA A IMAGEM NO BANCO DE DADOS
                                 Uri downloadUri = uri;
                                 firebaseUser = mAuth.getCurrentUser();
                                 UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
                                         .setPhotoUri(downloadUri).build();
                                 firebaseUser.updateProfile(profileChangeRequest);
 
+                                // PEGA O ID DO USUÁRIO PARA MUDAR O NOME
                                 String userID = firebaseUser.getUid();
                                 reference.child(userID).child("nome").setValue(nomeUser).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
@@ -137,6 +151,7 @@ public class Actv_EdtDados extends AppCompatActivity {
                                     }
                                 });
                             } else {
+                                // MUDA A IMAGEM NO BANCO DE DADOS
                                 progressBar.setVisibility(View.VISIBLE);
                                 Uri downloadUri = uri;
                                 firebaseUser = mAuth.getCurrentUser();
@@ -154,7 +169,7 @@ public class Actv_EdtDados extends AppCompatActivity {
                     Toast.makeText(Actv_EdtDados.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
-        } else {
+        } else { // SE O USUÁRIO NÃO TIVER SELECIONADO UMA IMAGEM
             saveData();
         }
     }
@@ -165,6 +180,7 @@ public class Actv_EdtDados extends AppCompatActivity {
         return mime.getExtensionFromMimeType(cR.getType(uri));
     }
 
+    // ATUALIZA SOMENTE O NOME SE A IMAGEM FOR VAZIA
     public void saveData() {
         nomeUser = edtNovoNome.getText().toString().trim();
         if (!nomeUser.isEmpty()) {

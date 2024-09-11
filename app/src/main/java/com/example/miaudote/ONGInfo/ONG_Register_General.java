@@ -44,7 +44,7 @@ public class ONG_Register_General extends AppCompatActivity {
     AppCompatImageButton btnCttOng, btnBack;
     ImageView imgOng;
 
-        // WIDGETS DROPDOWN MENU
+    // WIDGETS DROPDOWN MENU
     String[] itensUf = {"AC", "AL", "AP", "AM", "BA", "CE", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB",
                         "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO", "DF"};
     AutoCompleteTextView autoCompleteTextView;
@@ -57,9 +57,11 @@ public class ONG_Register_General extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ong_register_general);
 
+        // FIREBASE
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();
 
+        // WIDGETS
         edtNomeOng = findViewById(R.id.edtNomeONG);
         edtDescOng = findViewById(R.id.edtDescONG);
         edtCidadeOng = findViewById(R.id.edtOngCidade);
@@ -79,11 +81,11 @@ public class ONG_Register_General extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 saveDataOng();
-            }
+            } // ENVIA PRA PRÓXIMA PÁGINA
         });
 
         btnBack.setOnClickListener(v -> {
-            finish();
+            finish(); // VOLTA PRA PÁGINA ANTERIOR
         });
 
         autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -119,6 +121,7 @@ public class ONG_Register_General extends AppCompatActivity {
 
     }
 
+    // SALVA OS DADOS NO STORAGE
     private void saveDataOng() {
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("imagens ong")
                 .child(uriImage.getLastPathSegment());
@@ -143,6 +146,7 @@ public class ONG_Register_General extends AppCompatActivity {
 
     private void intentDataOng() {
 
+        // ENVIA PRA PRÓXIMA PÁGINAS
         nomeOng = edtNomeOng.getText().toString();
         descOng = edtDescOng.getText().toString();
         cidadeOng = edtCidadeOng.getText().toString();

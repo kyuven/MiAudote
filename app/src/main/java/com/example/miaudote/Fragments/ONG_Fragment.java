@@ -54,7 +54,7 @@ public class ONG_Fragment extends Fragment {
         GridLayoutManager gridLayout = new GridLayoutManager(getActivity(), 2);
         rvOng.setLayoutManager(gridLayout);
 
-        // Botão que direciona para a página de cadastro de ONGs
+        // BOTÃO QUE DIRECIONA PARA A PÁGINA DE CADASTRO DE ONGs
         FloatingActionButton btnAddOng = view.findViewById(R.id.fabAddOng);
         btnAddOng.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), ONG_Register_General.class);

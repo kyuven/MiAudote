@@ -44,11 +44,14 @@ public class MissingPet_Info extends AppCompatActivity implements OnMapReadyCall
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_missing_pet_info);
 
+        // FIREBASE
         mAuth = FirebaseAuth.getInstance();
 
+        // PEGA O FRAGMENT E SETA O MAPA NO FRAGMENTMAP
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapMissingPet);
         mapFragment.getMapAsync(this);
 
+        // WIDGETS REFERENCIAS
         txtNomeAnimal = findViewById(R.id.txtMissingInfo_nomeAnimal);
         txtDescAnimal = findViewById(R.id.txtMissingInfo_desc);
         txtEmail = findViewById(R.id.txtMissingInfo_email);
@@ -60,6 +63,7 @@ public class MissingPet_Info extends AppCompatActivity implements OnMapReadyCall
 
         Bundle bundle = getIntent().getExtras();
         if(bundle != null) {
+            // PEGA AS INFORMAÇÕES DO CARD/FIREBASE E SETA NOS TEXTVIEW
             Picasso.get().load(bundle.getString("imgAnimalM")).resize(130, 130).into(imgAnimal);
 
             txtNomeAnimal.setText(bundle.getString("nomeAnimalM"));
@@ -75,6 +79,7 @@ public class MissingPet_Info extends AppCompatActivity implements OnMapReadyCall
             lat = Double.parseDouble(latitude);
             lng = Double.parseDouble(longitute);
 
+            // PEGA O ID DO USUÁRIO E AS INFORMAÇÕES E SETA NO EMAIL E TELEFONE
             userId = bundle.getString("userIdAnimalM");
             databaseReference = FirebaseDatabase.getInstance().getReference("usuarios").child(userId);
             databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {

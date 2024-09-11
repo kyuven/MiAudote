@@ -119,16 +119,16 @@ public class ADD_MissingPet_Page extends AppCompatActivity implements OnMapReady
 
         ckbEnd = findViewById(R.id.ckbEndAtual);
         progressBar = findViewById(R.id.progressBarAddAnimal);
-        progressBar.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.INVISIBLE); // ESCONDE A BARRA DE PROGRESSO INICIALMENTE
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapAddAnimal);
-        mapFragment.getMapAsync(this);
-        getLastLocation();
+        mapFragment.getMapAsync(this);// ASSINA O CALLBACK DO MAPA
+        getLastLocation(); // PEGA A ÚLTIMA LOCALIZAÇÃO
 
         autoCompleteUf = findViewById(R.id.edtAddAnimalUfAutoComplete);
         adapterUF = new ArrayAdapter<String>(this, R.layout.list_item, itemsUFAnimal);
-        autoCompleteUf.setAdapter(adapterUF);
+        autoCompleteUf.setAdapter(adapterUF); // CONFIGURA O ADAPTADOR DO AUTO COMPLETE
 
         fabAddFotoAnimal = findViewById(R.id.fabAddAnimal_photo);
         imgAddAnimal = findViewById(R.id.addImgAnimal);
@@ -139,6 +139,7 @@ public class ADD_MissingPet_Page extends AppCompatActivity implements OnMapReady
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
+                    // SE A CAIXA DE MARCAÇÃO ESTIVER SELECIONADA
                     txtInptLyt.setVisibility(View.GONE);
                     txtUf.setVisibility(View.GONE);
                     txtCidade.setVisibility(View.GONE);
@@ -148,9 +149,10 @@ public class ADD_MissingPet_Page extends AppCompatActivity implements OnMapReady
                     edtCidade.setVisibility(View.GONE);
                     edtBairro.setVisibility(View.GONE);
                     edtLogradouro.setVisibility(View.GONE);
-                    mapFragment.getView().setVisibility(View.VISIBLE);
-                    getLastLocation();
+                    mapFragment.getView().setVisibility(View.VISIBLE); // MOSTRA O MAPA
+                    getLastLocation(); // ATUALIZA A LOCALIZAÇÃO
                 } else {
+                    // SE A CAIXA DE MARCAÇÃO NÃO ESTIVER SELECIONADA
                     txtInptLyt.setVisibility(View.VISIBLE);
                     txtUf.setVisibility(View.VISIBLE);
                     txtCidade.setVisibility(View.VISIBLE);
@@ -160,7 +162,7 @@ public class ADD_MissingPet_Page extends AppCompatActivity implements OnMapReady
                     edtCidade.setVisibility(View.VISIBLE);
                     edtBairro.setVisibility(View.VISIBLE);
                     edtLogradouro.setVisibility(View.VISIBLE);
-                    mapFragment.getView().setVisibility(View.GONE);
+                    mapFragment.getView().setVisibility(View.GONE); // ESCONDE O MAPA
                 }
             }
         });
@@ -168,10 +170,11 @@ public class ADD_MissingPet_Page extends AppCompatActivity implements OnMapReady
         autoCompleteUf.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ufAnimal = parent.getItemAtPosition(position).toString();
+                ufAnimal = parent.getItemAtPosition(position).toString(); // ATUALIZA O ESTADO DA UF ANIMAL
             }
         });
 
+        // INICIALIZA VISIBILIDADE DOS COMPONENTES
         txtInptLyt.setVisibility(View.GONE);
         txtUf.setVisibility(View.GONE);
         txtCidade.setVisibility(View.GONE);
@@ -183,7 +186,7 @@ public class ADD_MissingPet_Page extends AppCompatActivity implements OnMapReady
         edtLogradouro.setVisibility(View.GONE);
 
         AppCompatImageButton btnBack = findViewById(R.id.btnAddAnimal_back);
-        btnBack.setOnClickListener(v -> finish());
+        btnBack.setOnClickListener(v -> finish()); // VOLTA PARA A TELA ANTERIOR
 
         AppCompatButton btnSalvar = findViewById(R.id.btnAddAnimal);
         btnSalvar.setOnClickListener(v -> {
@@ -193,9 +196,9 @@ public class ADD_MissingPet_Page extends AppCompatActivity implements OnMapReady
                 Toast.makeText(this, "A descrição não pode ser nula.", Toast.LENGTH_SHORT).show();
             } else {
                 if(ckbEnd.isChecked()) {
-                    reverseGeocoding();
+                    reverseGeocoding(); // SE A CAIXA DE MARCAÇÃO ESTIVER SELECIONADA, FAZ O REVERSE GEOCODING
                 } else {
-                    uploadFoto();
+                    uploadFoto(); // SE NÃO, FAZ O UPLOAD DA FOTO
                 }
             }
             progressBar.setVisibility(View.VISIBLE);
@@ -232,11 +235,11 @@ public class ADD_MissingPet_Page extends AppCompatActivity implements OnMapReady
             public void onSuccess(Location location) {
                 if(location != null) {
                     currentLocation = location;
-                    // Atualize o mapa aqui se o mapa já estiver pronto
+                    // ATUALIZE O MAPA AQUI SE O MAPA ESTIVER PRONTO
                     if (myMap != null) {
                         userAnimalLatLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-                        myMap.addMarker(new MarkerOptions().position(userAnimalLatLng).title("Você está aqui"));
-                        myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userAnimalLatLng, 18f));
+                        myMap.addMarker(new MarkerOptions().position(userAnimalLatLng).title("Você está aqui")); // ADICIONA UM MARCADOR NO ENDEREÇO ATUAL DO USUÁRIO
+                        myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userAnimalLatLng, 18f)); // DA ZOOM NO MAPA PRO MARCADOR
                     }
                 } else {
                     Toast.makeText(ADD_MissingPet_Page.this, "Não foi possível obter sua localização.", Toast.LENGTH_SHORT).show();
@@ -274,16 +277,19 @@ public class ADD_MissingPet_Page extends AppCompatActivity implements OnMapReady
             });
 
 
+    // SELECIONE A FOTO
     public void escolherFoto() {
         Intent photoPicker = new Intent(Intent.ACTION_PICK);
         photoPicker.setType("image/*");
         activityResultLauncher.launch(photoPicker);
     }
 
+    // FAZ UPLOAD DA FOTO DO ANIMAL
     public void uploadFoto() {
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("imagens animais")
                 .child(uriImageAnimal.getLastPathSegment());
 
+        // COLOCA O URI NO STORAGE
         storageReference.putFile(uriImageAnimal).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -301,6 +307,7 @@ public class ADD_MissingPet_Page extends AppCompatActivity implements OnMapReady
         });
     }
 
+    // FAZ O UPLOAD DE TODOS OS DADOS
     public void uploadData() {
 
         nomeAnimal = edtNomeAnimal.getText().toString();
@@ -366,6 +373,7 @@ public class ADD_MissingPet_Page extends AppCompatActivity implements OnMapReady
 
     }
 
+    // REVERSE GEOCODING - TRANSFORMA LATITUDE E LONGITUDE EM ENDEREÇO
     public void reverseGeocoding() {
         Geocoder geocoder =  new Geocoder(this, Locale.getDefault());
         try {

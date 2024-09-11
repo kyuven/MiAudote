@@ -44,11 +44,14 @@ public class AdoptionPet_Info extends AppCompatActivity implements OnMapReadyCal
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adoption_pet_info);
 
+        // FIREBASE
         mAuth = FirebaseAuth.getInstance();
 
+        // PEGA O FRAGMENT E SETA O MAPA NO FRAGMENTMAP
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapAdpt);
         mapFragment.getMapAsync(this);
 
+        // WIDGETS REFERÊNCIAS
         btnBackAnimalInfo = findViewById(R.id.btnAdpt_infoAnimal);
         imgAnimalInfo = findViewById(R.id.imgAdptInfo_fotoAnimal);
 
@@ -60,6 +63,7 @@ public class AdoptionPet_Info extends AppCompatActivity implements OnMapReadyCal
 
         Bundle bundle = getIntent().getExtras();
         if(bundle != null) {
+            // PEGA AS INFORMAÇÕES DO CARD/FIREBASE E SETA NOS TEXTVIEW
             Picasso.get().load(bundle.getString("Imagem Animal Adoção")).resize(130, 130).into(imgAnimalInfo);
 
             txtNomeAnimal.setText(bundle.getString("Nome Animal Adoção"));
@@ -75,6 +79,7 @@ public class AdoptionPet_Info extends AppCompatActivity implements OnMapReadyCal
             lat = Double.parseDouble(latAnimal);
             lng = Double.parseDouble(lngAnimal);
 
+            // PEGA O ID DO USUÁRIO E AS INFORMAÇÕES E SETA NO EMAIL E TELEFONE
             userID = bundle.getString("User ID");
             usuarioRef = FirebaseDatabase.getInstance().getReference("usuarios").child(userID);
             usuarioRef.addListenerForSingleValueEvent(new ValueEventListener() {

@@ -34,12 +34,14 @@ public class Main_Page extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_bar);
 
+        // VE SE É A PRIMEIRA VEZ OU NÃO
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         if(sharedPreferences.getBoolean("IS_FIRST_TIME", true)) {
             popUp();
             sharedPreferences.edit().putBoolean("IS_FIRST_TIME", false).apply();
         }
 
+        // SETA OS ÍCONES NO BOTTOM NAVIGATION E OS RESPECTIVOS FRAGMENTS
         bottomNavigationView.setOnItemSelectedListener((NavigationBarView.OnItemSelectedListener) item -> {
             int itemId = item.getItemId();
 
@@ -69,6 +71,7 @@ public class Main_Page extends AppCompatActivity {
 
     }
 
+    // POP UP ASSIM QUE O USUÁRIO FAZ LOGIN NO APLICATIVO
     private void popUp() {
         View alertCustomDialog = LayoutInflater.from(Main_Page.this).inflate(R.layout.pop_up, null);
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(Main_Page.this);
@@ -86,7 +89,7 @@ public class Main_Page extends AppCompatActivity {
     // Método criado para diminuir código entre os if, pois será a mesma função a todos os itens
     // Cria um objeto do tipo Fragment e referenciamos a variável quando chamamos o método dentro do if
     // O boolean indica se o app recém foi aberto: caso sim, abrirá o fragmento que tiver boolean como true (quando abri o app somente)
-        // caso não, ele somente terá como trocar entre os fragments
+    // caso não, ele somente terá como trocar entre os fragments
     private void loadFragment (Fragment fragment, boolean isAppInitialize) {
 
         FragmentManager fragmentManager = getSupportFragmentManager();

@@ -66,9 +66,11 @@ public class Actv_EdtDadosAnimal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actv_edt_dados_animal);
 
+        // FIREBASE
         mAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("animais");
 
+        // WIDGETS
         edtNovoNomeAnimal = findViewById(R.id.edtDadosAnimal_nomeAnimal);
         edtNovaDescAnimal = findViewById(R.id.edtDadosAnimal_desc);
         edtNovoLogradouro = findViewById(R.id.edtDadosAnimal_logradouro);
@@ -82,22 +84,24 @@ public class Actv_EdtDadosAnimal extends AppCompatActivity {
 
         autoEditarCompleteUf = findViewById(R.id.edtDadosAnimal_ufAutoComplete);
         adapterEditarUF = new ArrayAdapter<String>(this, R.layout.list_item, itemsUFAnimal);
-        autoEditarCompleteUf.setAdapter(adapterEditarUF);
+        autoEditarCompleteUf.setAdapter(adapterEditarUF); // CONFIGURA O ADAPTADOR DO AUTO COMPLETE
 
         autoEditarCompleteUf.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ufAnimal = parent.getItemAtPosition(position).toString();
+                ufAnimal = parent.getItemAtPosition(position).toString(); // ATUALIZA O ESTADO DA UF ANIMAL
             }
         });
 
         fabAddFotoEdtAnimal = findViewById(R.id.fabDadosAnimal_photo);
         btnBackAnimalEdtDados = findViewById(R.id.btnEdtDadosAnimal_back);
-        btnBackAnimalEdtDados.setOnClickListener(v -> finish());
-        
+        btnBackAnimalEdtDados.setOnClickListener(v -> finish()); // VOLTA PRA ATIVIDADE ANTERIOR
+
+        // CHAMA O MÉTODO PARA DELETAR O ANIMAL
         btnDeleteAnimalTxt.setOnClickListener(v -> deleteAnimal());
         btnDeleteAnimalIcon.setOnClickListener(v -> deleteAnimal());
 
+        // PEGA AS INFORMAÇÕES DO ANIMAL SELECIONADO
         Bundle bundle = getIntent().getExtras();
         if(bundle != null) {
             Picasso.get().load(bundle.getString("Imagem Animal User")).resize(130, 130).into(imgEdtAnimal);
@@ -115,6 +119,7 @@ public class Actv_EdtDadosAnimal extends AppCompatActivity {
             edtNovoBairro.setText(txtBairroAnimal);
         }
 
+        // PRA MUDAR A FOTO
         fabAddFotoEdtAnimal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,6 +127,7 @@ public class Actv_EdtDadosAnimal extends AppCompatActivity {
             }
         });
 
+        // PRA MUDAR OS DADOS
         btnSaveData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,6 +162,7 @@ public class Actv_EdtDadosAnimal extends AppCompatActivity {
         activityResultLauncher.launch(photoPicker);
     }
 
+    // FAZ UPLOAD DA FOTO
     public void uploadFoto() {
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("imagens animais")
                 .child(uriImageAnimal.getLastPathSegment());
@@ -181,6 +188,7 @@ public class Actv_EdtDadosAnimal extends AppCompatActivity {
     }
 
     public void editDataAnimal() {
+        // PEGA OS NOVOS DADOS DIGITADOS
         txtNovoNomeAnimal = edtNovoNomeAnimal.getText().toString();
         txtNovaDescAnimal = edtNovaDescAnimal.getText().toString();
         txtNovaCidadeAnimal = edtNovoCidade.getText().toString();
@@ -195,6 +203,7 @@ public class Actv_EdtDadosAnimal extends AppCompatActivity {
                     String branchKey = branchSnapshot.getKey();
                     DatabaseReference branchRef = databaseReference.child(branchKey);
 
+                    // PEGA O ANIMAL E ATUALIZA OS DADOS COM OS ATUAIS
                     branchRef.child(animalId).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot animalSnapshot) {
@@ -238,6 +247,7 @@ public class Actv_EdtDadosAnimal extends AppCompatActivity {
         });
     }
 
+    // DELETA O ANIMAL DO BANCO DE DADOS
     private void deleteAnimal() {
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {

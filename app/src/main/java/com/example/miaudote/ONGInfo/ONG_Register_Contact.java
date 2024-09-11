@@ -27,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class ONG_Register_Contact extends AppCompatActivity {
 
+    // WIDGETS
     TextInputEditText edtTelOng, edtInstaOng, edtEmailOng, edtTwitterOng, edtWebsiteOng;
     String imgOng, nomeOng, descOng, ufOng, cidadeOng, bairroOng, logradouroOng,
             teleOng, instaOng, emailong, twitterOng, websiteOng;
@@ -47,7 +48,7 @@ public class ONG_Register_Contact extends AppCompatActivity {
         progressBarOng = findViewById(R.id.progressBarOng);
         progressBarOng.setVisibility(View.INVISIBLE);
 
-        // Pega informações da página anterior
+        // PEGA AS INFORMAÇÕES DA PÁGINA ANTERIOR
         Bundle extras = getIntent().getExtras();
         imgOng = extras.getString("imgOngE");
         nomeOng = extras.getString("nomeOngE");
@@ -61,6 +62,7 @@ public class ONG_Register_Contact extends AppCompatActivity {
         btnSalvar.setOnClickListener(v -> saveDataContato());
     }
 
+    // SALVA OS DADOS DA ONG NO FIREBASE
     public void saveDataContato() {
 
         progressBarOng.setVisibility(View.VISIBLE);
@@ -80,6 +82,7 @@ public class ONG_Register_Contact extends AppCompatActivity {
         OngModel modelOng = new OngModel(imgOng, nomeOng, descOng, ufOng, cidadeOng, bairroOng, logradouroOng,
                                         teleOng, instaOng, emailong, twitterOng, websiteOng);
 
+        // ADICIONA NO BANCO DE DADOS AS INFORMAÇÕES DA ONG
         FirebaseDatabase.getInstance().getReference().child("ong em análise").child(nomeOng)
                 .setValue(modelOng).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

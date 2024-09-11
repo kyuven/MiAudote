@@ -37,10 +37,12 @@ public class UserAnimals extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_animals);
 
+        // FIREBASE
         databaseReference = FirebaseDatabase.getInstance().getReference().child("animais");
         mAuth = FirebaseAuth.getInstance();
         userId = mAuth.getCurrentUser().getUid();
 
+        // WIDGETS
         rvAnimalUser = findViewById(R.id.rvAnimaisUser);
         GridLayoutManager gridLayout = new GridLayoutManager(this, 2);
         rvAnimalUser.setLayoutManager(gridLayout);
@@ -49,6 +51,7 @@ public class UserAnimals extends AppCompatActivity {
         UserAnimalsAdapter userAnimalAdapter = new UserAnimalsAdapter(this, animalUserList);
         rvAnimalUser.setAdapter(userAnimalAdapter);
 
+        // PEGA TODOS OS ANIMAIS CADASTRADOS SOB O ID DO USUÁRIO
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -57,11 +60,11 @@ public class UserAnimals extends AppCompatActivity {
                     for (DataSnapshot animalSnapshot : animalTypeSnapshot.getChildren()) {
                         AnimalModel animal = animalSnapshot.getValue(AnimalModel.class);
                         if (animal != null && userId.equals(animal.getUserId())) {
-                            animalUserList.add(animal);
+                            animalUserList.add(animal); // ADICIONA O ANIMAL NA LISTA
                         }
                     }
                 }
-                userAnimalAdapter.notifyDataSetChanged(); // Notificar o adapter sobre a atualização
+                userAnimalAdapter.notifyDataSetChanged();
             } @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

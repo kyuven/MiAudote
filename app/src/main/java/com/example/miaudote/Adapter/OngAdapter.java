@@ -30,6 +30,7 @@ public class OngAdapter extends RecyclerView.Adapter<MyViewHolder> {
         this.ongModelList = ongModelList;
     }
 
+    // SETA O VIEW COM O CARD
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -40,6 +41,7 @@ public class OngAdapter extends RecyclerView.Adapter<MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
+        // PEGA AS INFORMAÇÕES DO MODEL E COLOCA NO CARD
         OngModel ongModel = ongModelList.get(position);
         Picasso.get().load(ongModel.getImgOng()).resize(140, 94).into(holder.imgOngLogo);
         holder.txtCidadeOng.setText(ongModel.getCidadeOng());
@@ -49,6 +51,7 @@ public class OngAdapter extends RecyclerView.Adapter<MyViewHolder> {
         holder.cardOng.setOnClickListener(new View.OnClickListener() {
            @Override
             public void onClick(View v) {
+               // ENVIA OS DADOS PARA OUTRA PÁGINA CASO SELECIONADO
                Intent i = new Intent(context, ONG_Page.class);
                i.putExtra("Imagem ONG", ongModelList.get(holder.getAdapterPosition()).getImgOng());
                i.putExtra("UF ONG", ongModelList.get(holder.getAdapterPosition()).getUfOng());
@@ -70,6 +73,7 @@ public class OngAdapter extends RecyclerView.Adapter<MyViewHolder> {
         holder.btnSaibaMaisOng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // ENVIA OS DADOS PARA OUTRA PÁGINA CASO SELECIONADO
                 Intent i = new Intent(context, ONG_Page.class);
                 i.putExtra("Imagem ONG", ongModelList.get(holder.getAdapterPosition()).getImgOng());
                 i.putExtra("UF ONG", ongModelList.get(holder.getAdapterPosition()).getUfOng());

@@ -44,8 +44,11 @@ import com.squareup.picasso.Picasso;
 
 public class Perfil_Fragment extends Fragment {
 
+    // FIREBASE
     private FirebaseAuth auth;
     FirebaseUser firebaseUser;
+
+    // WIDGETS
     TextView txtDeleteAcc, txtPerfil_nomeUser, txtPerfil_emailUser;
     ImageView imgPerfil_user;
     LinearLayout linearlyt_dados, linearlyt_email, linearlyt_senha;
@@ -57,12 +60,14 @@ public class Perfil_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_perfil, container, false);
 
+        // FIREBASE
         auth = FirebaseAuth.getInstance();
         firebaseUser = auth.getCurrentUser();
 
+        // WIDGETS
         txtPerfil_nomeUser = view.findViewById(R.id.txtPerfil_nomeUser);
         txtPerfil_emailUser = view.findViewById(R.id.txtPerfil_emailUser);
         imgPerfil_user = view.findViewById(R.id.imgPerfil_user);
@@ -102,10 +107,6 @@ public class Perfil_Fragment extends Fragment {
         });
 
         // ENVIA PARA A PÁGINA DE ANIMAIS CADASTRADOS PELO USUÁRIO
-        //btnAnimaisUser.setOnClickListener(v -> {
-            //Intent i = new Intent(requireActivity(), UserAnimals.class);
-            //startActivity(i);
-        //});
         linearlyt_userAnimals.setOnClickListener(v -> {
             Intent i = new Intent(requireActivity(), UserAnimals.class);
             startActivity(i);

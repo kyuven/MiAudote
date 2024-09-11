@@ -29,6 +29,7 @@ public class UserAnimalsAdapter extends RecyclerView.Adapter<MyViewHolderUser> {
         this.animalUserList = animalUserList;
     }
 
+    // SETA O VIEW COM O CARD
     @NonNull
     @Override
     public MyViewHolderUser onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -38,6 +39,7 @@ public class UserAnimalsAdapter extends RecyclerView.Adapter<MyViewHolderUser> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolderUser holder, int position) {
+        // PEGA AS INFORMAÇÕES DO MODEL E COLOCA NO CARD
         AnimalModel animalModel = animalUserList.get(position);
         Picasso.get().load(animalModel.getImgAnimal()).resize(110, 90).into(holder.imgAnimal);
         holder.txtCidadeAnimal.setText(animalModel.getCidadeAnimal());
@@ -47,6 +49,7 @@ public class UserAnimalsAdapter extends RecyclerView.Adapter<MyViewHolderUser> {
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // ENVIA OS DADOS PARA OUTRA PÁGINA CASO SELECIONADO
                 Intent i = new Intent(context, Actv_EdtDadosAnimal.class);
                 i.putExtra("Imagem Animal User", animalUserList.get(holder.getBindingAdapterPosition()).getImgAnimal());
                 i.putExtra("Nome Animal User", animalUserList.get(holder.getBindingAdapterPosition()).getNomeAnimal());
@@ -72,6 +75,7 @@ public class UserAnimalsAdapter extends RecyclerView.Adapter<MyViewHolderUser> {
 
 class MyViewHolderUser extends RecyclerView.ViewHolder {
 
+    // WIDGETS DO CARD
     ImageView imgAnimal;
     TextView txtCidadeAnimal, txtUfAnimal, txtNomeAnimal;
     CardView cardView;
