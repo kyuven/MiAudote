@@ -217,7 +217,7 @@ public class ADD_MissingPet_Page extends AppCompatActivity implements OnMapReady
             myMap.addMarker(new MarkerOptions().position(userAnimalLatLng).title("Você está aqui"));
             myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userAnimalLatLng, 13));
         } else {
-            Toast.makeText(this, "Não foi possível obter sua localização.", Toast.LENGTH_SHORT).show();
+
         }
     }
 
