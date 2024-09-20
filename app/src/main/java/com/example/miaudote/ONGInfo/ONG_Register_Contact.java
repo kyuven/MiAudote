@@ -46,7 +46,7 @@ public class ONG_Register_Contact extends AppCompatActivity {
         edtWebsiteOng = findViewById(R.id.edtOngWebsite);
 
         progressBarOng = findViewById(R.id.progressBarOng);
-        progressBarOng.setVisibility(View.INVISIBLE);
+        hideLoading();
 
         // PEGA AS INFORMAÇÕES DA PÁGINA ANTERIOR
         Bundle extras = getIntent().getExtras();
@@ -65,7 +65,7 @@ public class ONG_Register_Contact extends AppCompatActivity {
     // SALVA OS DADOS DA ONG NO FIREBASE
     public void saveDataContato() {
 
-        progressBarOng.setVisibility(View.VISIBLE);
+        showLoading();
 
         teleOng = edtTelOng.getText().toString();
         instaOng = edtInstaOng.getText().toString();
@@ -88,7 +88,7 @@ public class ONG_Register_Contact extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            progressBarOng.setVisibility(View.INVISIBLE);
+                            hideLoading();
                             View alertCustomDialog = LayoutInflater.from(ONG_Register_Contact.this).inflate(R.layout.ong_warning, null);
                             AlertDialog.Builder confirmarOng = new AlertDialog.Builder(ONG_Register_Contact.this);
 
@@ -117,6 +117,18 @@ public class ONG_Register_Contact extends AppCompatActivity {
                         Toast.makeText(ONG_Register_Contact.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    private void showLoading() {
+        progressBarOng.setVisibility(View.VISIBLE);
+        // DESABILITA A INTERAÇÃO DO USÁRIO COM A ATIVIDADE
+        findViewById(R.id.root_layoutOng).setEnabled(false);
+    }
+
+    private void hideLoading() {
+        progressBarOng.setVisibility(View.GONE);
+        // ATIVA A INTERAÇÃO DO USÁRIO COM A ATIVIDADE
+        findViewById(R.id.root_layoutOng).setEnabled(true);
     }
 
 }

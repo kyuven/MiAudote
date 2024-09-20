@@ -129,7 +129,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="54dp"
+            android:layout_marginStart="24dp"
 
             android:fontFamily="@font/arimo_variable_font_wght"
             android:text="@string/aviso_senha"
@@ -137,7 +137,6 @@
             android:textSize="12sp"
             android:textStyle="bold"
 
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edt_novaSenha" />
 

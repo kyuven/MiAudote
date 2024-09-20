@@ -20,9 +20,6 @@
             android:name=".UserData.Termos_Activity"
             android:exported="false" />
         <activity
-            android:name=".UserData.Termos"
-            android:exported="false" />
-        <activity
             android:name=".PetInfo.UserAnimals"
             android:exported="false" />
         <activity

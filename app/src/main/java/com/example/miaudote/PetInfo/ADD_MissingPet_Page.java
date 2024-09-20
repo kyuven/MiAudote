@@ -195,13 +195,13 @@ public class ADD_MissingPet_Page extends AppCompatActivity implements OnMapReady
             } else if (edtDescAnimal.getText().toString().isEmpty()) {
                 Toast.makeText(this, "A descrição não pode ser nula.", Toast.LENGTH_SHORT).show();
             } else {
+                showLoading();
                 if(ckbEnd.isChecked()) {
                     reverseGeocoding(); // SE A CAIXA DE MARCAÇÃO ESTIVER SELECIONADA, FAZ O REVERSE GEOCODING
                 } else {
                     uploadFoto(); // SE NÃO, FAZ O UPLOAD DA FOTO
                 }
             }
-            progressBar.setVisibility(View.VISIBLE);
         });
 
         fabAddFotoAnimal.setOnClickListener(v -> escolherFoto());
@@ -356,7 +356,7 @@ public class ADD_MissingPet_Page extends AppCompatActivity implements OnMapReady
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-                                progressBar.setVisibility(View.GONE);
+                                hideLoading();
                                 Toast.makeText(ADD_MissingPet_Page.this, "Animal adicionado com sucesso!", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
@@ -393,5 +393,17 @@ public class ADD_MissingPet_Page extends AppCompatActivity implements OnMapReady
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void showLoading() {
+        progressBar.setVisibility(View.VISIBLE);
+        // DESABILITA A INTERAÇÃO DO USÁRIO COM A ATIVIDADE
+        findViewById(R.id.root_layout).setEnabled(false);
+    }
+
+    private void hideLoading() {
+        progressBar.setVisibility(View.GONE);
+        // ATIVA A INTERAÇÃO DO USÁRIO COM A ATIVIDADE
+        findViewById(R.id.root_layout).setEnabled(true);
     }
 }

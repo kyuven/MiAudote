@@ -269,17 +269,30 @@ public class Perfil_Fragment extends Fragment {
                     String userId = user.getUid();
                     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
+                    // Remover dados do usuário
                     DatabaseReference userRef = databaseReference.child("usuarios").child(userId);
                     userRef.removeValue().addOnCompleteListener(userDeleteTask -> {
                         if (userDeleteTask.isSuccessful()) {
+                            // Remover animais do usuário
                             deleteAnimalsInBranch(databaseReference.child("animais").child("Animal encontrado"), userId);
                             deleteAnimalsInBranch(databaseReference.child("animais").child("Animal para adoção"), userId);
                             deleteAnimalsInBranch(databaseReference.child("animais").child("Animal perdido"), userId);
-                            Intent i = new Intent(getActivity(), LoginIn_Activity.class);
-                            startActivity(i);
                         } else {
                             Log.d(TAG, "Erro ao deletar dados do usuário: " + userDeleteTask.getException().getMessage());
                         }
+                    }).addOnCompleteListener(task -> {
+                        // Exclua o usuário do Firebase Authentication
+                        user.delete().addOnCompleteListener(authDeleteTask -> {
+                            if (authDeleteTask.isSuccessful()) {
+                                Log.d(TAG, "Usuário e dados deletados com sucesso");
+                                // Redirecionar para a página de login
+                                Intent intent = new Intent(getActivity(), LoginIn_Activity.class);
+                                startActivity(intent);
+                                getActivity().finish(); // Opcional: Fechar a atividade atual
+                            } else {
+                                Log.d(TAG, "Erro ao deletar usuário: " + authDeleteTask.getException().getMessage());
+                            }
+                        });
                     });
                 }
             }
@@ -294,7 +307,6 @@ public class Perfil_Fragment extends Fragment {
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             snapshot.getRef().removeValue(); // Remove cada animal
                         }
-
                         checkIfAllBranchesProcessed();
                     }
 
@@ -310,8 +322,6 @@ public class Perfil_Fragment extends Fragment {
         FirebaseAuth.getInstance().getCurrentUser().delete().addOnCompleteListener(authDeleteTask -> {
             if (authDeleteTask.isSuccessful()) {
                 Log.d(TAG, "Usuário e dados deletados com sucesso");
-                Intent i = new Intent(getActivity(), LoginIn_Activity.class);
-                startActivity(i);
             } else {
                 Log.d(TAG, "Erro ao deletar usuário: " + authDeleteTask.getException().getMessage());
             }

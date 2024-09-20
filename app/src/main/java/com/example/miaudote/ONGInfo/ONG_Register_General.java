@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
@@ -43,6 +44,7 @@ public class ONG_Register_General extends AppCompatActivity {
     String nomeOng, descOng, ufOng, cidadeOng, bairroOng, logradouroOng, imgOngStr;
     AppCompatImageButton btnCttOng, btnBack;
     ImageView imgOng;
+    ProgressBar progressBarOngGen;
 
     // WIDGETS DROPDOWN MENU
     String[] itensUf = {"AC", "AL", "AP", "AM", "BA", "CE", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB",
@@ -69,6 +71,9 @@ public class ONG_Register_General extends AppCompatActivity {
         edtLograOng = findViewById(R.id.edtOngLogradouro);
         imgOng = findViewById(R.id.addFotoOng);
 
+        progressBarOngGen = findViewById(R.id.progressBarOngGen);
+        hideLoading();
+
         autoCompleteTextView = findViewById(R.id.dadosOng_ufAutoComplete);
         adapterItens = new ArrayAdapter<String>(this, R.layout.list_item, itensUf);
         autoCompleteTextView.setAdapter(adapterItens);
@@ -80,6 +85,7 @@ public class ONG_Register_General extends AppCompatActivity {
         btnCttOng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showLoading();
                 saveDataOng();
             } // ENVIA PRA PRÓXIMA PÁGINA
         });
@@ -153,6 +159,7 @@ public class ONG_Register_General extends AppCompatActivity {
         bairroOng = edtBairroOng.getText().toString();
         logradouroOng = edtLograOng.getText().toString();
 
+        hideLoading();
         Intent i = new Intent(ONG_Register_General.this, ONG_Register_Contact.class);
         i.putExtra("imgOngE", imgOngStr);
         i.putExtra("nomeOngE", nomeOng);
@@ -163,5 +170,17 @@ public class ONG_Register_General extends AppCompatActivity {
         i.putExtra("logradouroOngE", logradouroOng);
         startActivity(i);
 
+    }
+
+    private void showLoading() {
+        progressBarOngGen.setVisibility(View.VISIBLE);
+        // DESABILITA A INTERAÇÃO DO USÁRIO COM A ATIVIDADE
+        findViewById(R.id.root_layoutOngGen).setEnabled(false);
+    }
+
+    private void hideLoading() {
+        progressBarOngGen.setVisibility(View.GONE);
+        // ATIVA A INTERAÇÃO DO USÁRIO COM A ATIVIDADE
+        findViewById(R.id.root_layoutOngGen).setEnabled(true);
     }
 }
