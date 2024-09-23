@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -132,6 +133,8 @@ public class ONG_Register_General extends AppCompatActivity {
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("imagens ong")
                 .child(uriImage.getLastPathSegment());
 
+        showLoading();
+
         storageReference.putFile(uriImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -159,7 +162,6 @@ public class ONG_Register_General extends AppCompatActivity {
         bairroOng = edtBairroOng.getText().toString();
         logradouroOng = edtLograOng.getText().toString();
 
-        hideLoading();
         Intent i = new Intent(ONG_Register_General.this, ONG_Register_Contact.class);
         i.putExtra("imgOngE", imgOngStr);
         i.putExtra("nomeOngE", nomeOng);
@@ -173,14 +175,12 @@ public class ONG_Register_General extends AppCompatActivity {
     }
 
     private void showLoading() {
-        progressBarOngGen.setVisibility(View.VISIBLE);
-        // DESABILITA A INTERAÇÃO DO USÁRIO COM A ATIVIDADE
-        findViewById(R.id.root_layoutOngGen).setEnabled(false);
+        findViewById(R.id.blockingView).setVisibility(View.VISIBLE);
+        findViewById(R.id.progressBarOngGen).setVisibility(View.VISIBLE);
     }
 
     private void hideLoading() {
-        progressBarOngGen.setVisibility(View.GONE);
-        // ATIVA A INTERAÇÃO DO USÁRIO COM A ATIVIDADE
-        findViewById(R.id.root_layoutOngGen).setEnabled(true);
+        findViewById(R.id.blockingView).setVisibility(View.GONE);
+        findViewById(R.id.progressBarOngGen).setVisibility(View.GONE);
     }
 }

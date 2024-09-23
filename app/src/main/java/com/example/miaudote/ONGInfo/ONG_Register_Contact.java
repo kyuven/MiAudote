@@ -120,15 +120,13 @@ public class ONG_Register_Contact extends AppCompatActivity {
     }
 
     private void showLoading() {
-        progressBarOng.setVisibility(View.VISIBLE);
-        // DESABILITA A INTERAÇÃO DO USÁRIO COM A ATIVIDADE
-        findViewById(R.id.root_layoutOng).setEnabled(false);
+        findViewById(R.id.blockingView).setVisibility(View.VISIBLE);
+        findViewById(R.id.progressBarOngGen).setVisibility(View.VISIBLE);
     }
 
     private void hideLoading() {
-        progressBarOng.setVisibility(View.GONE);
-        // ATIVA A INTERAÇÃO DO USÁRIO COM A ATIVIDADE
-        findViewById(R.id.root_layoutOng).setEnabled(true);
+        findViewById(R.id.blockingView).setVisibility(View.GONE);
+        findViewById(R.id.progressBarOngGen).setVisibility(View.GONE);
     }
 
 }
